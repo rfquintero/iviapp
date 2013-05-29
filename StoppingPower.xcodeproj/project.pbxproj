@@ -16,6 +16,28 @@
 		4544077E1755A9E9005D8C22 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4544077D1755A9E9005D8C22 /* Default.png */; };
 		454407801755A9E9005D8C22 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4544077F1755A9E9005D8C22 /* Default@2x.png */; };
 		454407821755A9E9005D8C22 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 454407811755A9E9005D8C22 /* Default-568h@2x.png */; };
+		4544078E1755B220005D8C22 /* BSPLandingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4544078D1755B220005D8C22 /* BSPLandingViewController.m */; };
+		454407911755B343005D8C22 /* BSPLandingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 454407901755B343005D8C22 /* BSPLandingView.m */; };
+		454407961755B4AC005D8C22 /* BSPPanelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 454407951755B4AC005D8C22 /* BSPPanelView.m */; };
+		4544079A1755B5A3005D8C22 /* UIView+Layouts.m in Sources */ = {isa = PBXBuildFile; fileRef = 454407991755B5A3005D8C22 /* UIView+Layouts.m */; };
+		454407A11755B915005D8C22 /* BSPUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 454407A01755B915005D8C22 /* BSPUI.m */; };
+		454407A71755BA8C005D8C22 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 454407A31755BA8C005D8C22 /* background.png */; };
+		454407A81755BA8C005D8C22 /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 454407A41755BA8C005D8C22 /* background@2x.png */; };
+		454407A91755BA8C005D8C22 /* brado_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 454407A51755BA8C005D8C22 /* brado_logo.png */; };
+		454407AA1755BA8C005D8C22 /* brado_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 454407A61755BA8C005D8C22 /* brado_logo@2x.png */; };
+		454407AC1755BC01005D8C22 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 454407AB1755BC01005D8C22 /* QuartzCore.framework */; };
+		454407AF1755BF33005D8C22 /* button_black.png in Resources */ = {isa = PBXBuildFile; fileRef = 454407AD1755BF33005D8C22 /* button_black.png */; };
+		454407B01755BF33005D8C22 /* button_black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 454407AE1755BF33005D8C22 /* button_black@2x.png */; };
+		454407B31755C230005D8C22 /* BSPUserInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 454407B21755C230005D8C22 /* BSPUserInfoView.m */; };
+		454407BC1755C4BD005D8C22 /* bg_grouped_table.png in Resources */ = {isa = PBXBuildFile; fileRef = 454407B61755C4BD005D8C22 /* bg_grouped_table.png */; };
+		454407BD1755C4BD005D8C22 /* bg_grouped_table@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 454407B71755C4BD005D8C22 /* bg_grouped_table@2x.png */; };
+		454407BE1755C4BD005D8C22 /* ic_check_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 454407B81755C4BD005D8C22 /* ic_check_off.png */; };
+		454407BF1755C4BD005D8C22 /* ic_check_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 454407B91755C4BD005D8C22 /* ic_check_off@2x.png */; };
+		454407C01755C4BD005D8C22 /* ic_check_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 454407BA1755C4BD005D8C22 /* ic_check_on.png */; };
+		454407C11755C4BD005D8C22 /* ic_check_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 454407BB1755C4BD005D8C22 /* ic_check_on@2x.png */; };
+		454407C41755CBBC005D8C22 /* BSPGroupedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 454407C31755CBBC005D8C22 /* BSPGroupedButton.m */; };
+		454407C71755D3F2005D8C22 /* BSPUserInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 454407C61755D3F2005D8C22 /* BSPUserInfoCell.m */; };
+		454407CA1755D4C6005D8C22 /* UIColor+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = 454407C91755D4C6005D8C22 /* UIColor+Custom.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +54,37 @@
 		4544077D1755A9E9005D8C22 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		4544077F1755A9E9005D8C22 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		454407811755A9E9005D8C22 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		4544078C1755B220005D8C22 /* BSPLandingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSPLandingViewController.h; sourceTree = "<group>"; };
+		4544078D1755B220005D8C22 /* BSPLandingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSPLandingViewController.m; sourceTree = "<group>"; };
+		4544078F1755B343005D8C22 /* BSPLandingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSPLandingView.h; sourceTree = "<group>"; };
+		454407901755B343005D8C22 /* BSPLandingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSPLandingView.m; sourceTree = "<group>"; };
+		454407941755B4AC005D8C22 /* BSPPanelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSPPanelView.h; sourceTree = "<group>"; };
+		454407951755B4AC005D8C22 /* BSPPanelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSPPanelView.m; sourceTree = "<group>"; };
+		454407981755B5A3005D8C22 /* UIView+Layouts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Layouts.h"; sourceTree = "<group>"; };
+		454407991755B5A3005D8C22 /* UIView+Layouts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Layouts.m"; sourceTree = "<group>"; };
+		4544079F1755B915005D8C22 /* BSPUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSPUI.h; sourceTree = "<group>"; };
+		454407A01755B915005D8C22 /* BSPUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSPUI.m; sourceTree = "<group>"; };
+		454407A31755BA8C005D8C22 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		454407A41755BA8C005D8C22 /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background@2x.png"; sourceTree = "<group>"; };
+		454407A51755BA8C005D8C22 /* brado_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = brado_logo.png; sourceTree = "<group>"; };
+		454407A61755BA8C005D8C22 /* brado_logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "brado_logo@2x.png"; sourceTree = "<group>"; };
+		454407AB1755BC01005D8C22 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		454407AD1755BF33005D8C22 /* button_black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_black.png; sourceTree = "<group>"; };
+		454407AE1755BF33005D8C22 /* button_black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_black@2x.png"; sourceTree = "<group>"; };
+		454407B11755C230005D8C22 /* BSPUserInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSPUserInfoView.h; sourceTree = "<group>"; };
+		454407B21755C230005D8C22 /* BSPUserInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSPUserInfoView.m; sourceTree = "<group>"; };
+		454407B61755C4BD005D8C22 /* bg_grouped_table.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_grouped_table.png; sourceTree = "<group>"; };
+		454407B71755C4BD005D8C22 /* bg_grouped_table@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_grouped_table@2x.png"; sourceTree = "<group>"; };
+		454407B81755C4BD005D8C22 /* ic_check_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_check_off.png; sourceTree = "<group>"; };
+		454407B91755C4BD005D8C22 /* ic_check_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_check_off@2x.png"; sourceTree = "<group>"; };
+		454407BA1755C4BD005D8C22 /* ic_check_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_check_on.png; sourceTree = "<group>"; };
+		454407BB1755C4BD005D8C22 /* ic_check_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_check_on@2x.png"; sourceTree = "<group>"; };
+		454407C21755CBBC005D8C22 /* BSPGroupedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSPGroupedButton.h; sourceTree = "<group>"; };
+		454407C31755CBBC005D8C22 /* BSPGroupedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSPGroupedButton.m; sourceTree = "<group>"; };
+		454407C51755D3F2005D8C22 /* BSPUserInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSPUserInfoCell.h; sourceTree = "<group>"; };
+		454407C61755D3F2005D8C22 /* BSPUserInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSPUserInfoCell.m; sourceTree = "<group>"; };
+		454407C81755D4C6005D8C22 /* UIColor+Custom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Custom.h"; sourceTree = "<group>"; };
+		454407C91755D4C6005D8C22 /* UIColor+Custom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Custom.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				454407AC1755BC01005D8C22 /* QuartzCore.framework in Frameworks */,
 				4544076C1755A9E9005D8C22 /* UIKit.framework in Frameworks */,
 				4544076E1755A9E9005D8C22 /* Foundation.framework in Frameworks */,
 				454407701755A9E9005D8C22 /* CoreGraphics.framework in Frameworks */,
@@ -53,6 +107,7 @@
 			children = (
 				454407711755A9E9005D8C22 /* StoppingPower */,
 				4544076A1755A9E9005D8C22 /* Frameworks */,
+				454407A21755BA8C005D8C22 /* Resources */,
 				454407691755A9E9005D8C22 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -68,6 +123,7 @@
 		4544076A1755A9E9005D8C22 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				454407AB1755BC01005D8C22 /* QuartzCore.framework */,
 				4544076B1755A9E9005D8C22 /* UIKit.framework */,
 				4544076D1755A9E9005D8C22 /* Foundation.framework */,
 				4544076F1755A9E9005D8C22 /* CoreGraphics.framework */,
@@ -78,6 +134,9 @@
 		454407711755A9E9005D8C22 /* StoppingPower */ = {
 			isa = PBXGroup;
 			children = (
+				454407971755B554005D8C22 /* Categories */,
+				454407921755B471005D8C22 /* Common */,
+				454407881755B1EA005D8C22 /* Landing */,
 				4544077A1755A9E9005D8C22 /* BSPAppDelegate.h */,
 				4544077B1755A9E9005D8C22 /* BSPAppDelegate.m */,
 				454407721755A9E9005D8C22 /* Supporting Files */,
@@ -97,6 +156,113 @@
 				454407811755A9E9005D8C22 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		454407881755B1EA005D8C22 /* Landing */ = {
+			isa = PBXGroup;
+			children = (
+				454407891755B1F2005D8C22 /* Models */,
+				4544078B1755B200005D8C22 /* Views */,
+				4544078A1755B1F7005D8C22 /* Controllers */,
+			);
+			name = Landing;
+			sourceTree = "<group>";
+		};
+		454407891755B1F2005D8C22 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		4544078A1755B1F7005D8C22 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4544078C1755B220005D8C22 /* BSPLandingViewController.h */,
+				4544078D1755B220005D8C22 /* BSPLandingViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		4544078B1755B200005D8C22 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4544078F1755B343005D8C22 /* BSPLandingView.h */,
+				454407901755B343005D8C22 /* BSPLandingView.m */,
+				454407B11755C230005D8C22 /* BSPUserInfoView.h */,
+				454407B21755C230005D8C22 /* BSPUserInfoView.m */,
+				454407C21755CBBC005D8C22 /* BSPGroupedButton.h */,
+				454407C31755CBBC005D8C22 /* BSPGroupedButton.m */,
+				454407C51755D3F2005D8C22 /* BSPUserInfoCell.h */,
+				454407C61755D3F2005D8C22 /* BSPUserInfoCell.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		454407921755B471005D8C22 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				454407931755B475005D8C22 /* Views */,
+				4544079F1755B915005D8C22 /* BSPUI.h */,
+				454407A01755B915005D8C22 /* BSPUI.m */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
+		454407931755B475005D8C22 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				454407941755B4AC005D8C22 /* BSPPanelView.h */,
+				454407951755B4AC005D8C22 /* BSPPanelView.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		454407971755B554005D8C22 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				454407981755B5A3005D8C22 /* UIView+Layouts.h */,
+				454407991755B5A3005D8C22 /* UIView+Layouts.m */,
+				454407C81755D4C6005D8C22 /* UIColor+Custom.h */,
+				454407C91755D4C6005D8C22 /* UIColor+Custom.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		454407A21755BA8C005D8C22 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				454407B51755C4A8005D8C22 /* Common */,
+				454407B41755C4A0005D8C22 /* Landing */,
+			);
+			name = Resources;
+			path = StoppingPower/Resources;
+			sourceTree = "<group>";
+		};
+		454407B41755C4A0005D8C22 /* Landing */ = {
+			isa = PBXGroup;
+			children = (
+				454407A31755BA8C005D8C22 /* background.png */,
+				454407A41755BA8C005D8C22 /* background@2x.png */,
+				454407A51755BA8C005D8C22 /* brado_logo.png */,
+				454407A61755BA8C005D8C22 /* brado_logo@2x.png */,
+			);
+			name = Landing;
+			sourceTree = "<group>";
+		};
+		454407B51755C4A8005D8C22 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				454407AD1755BF33005D8C22 /* button_black.png */,
+				454407AE1755BF33005D8C22 /* button_black@2x.png */,
+				454407B61755C4BD005D8C22 /* bg_grouped_table.png */,
+				454407B71755C4BD005D8C22 /* bg_grouped_table@2x.png */,
+				454407B81755C4BD005D8C22 /* ic_check_off.png */,
+				454407B91755C4BD005D8C22 /* ic_check_off@2x.png */,
+				454407BA1755C4BD005D8C22 /* ic_check_on.png */,
+				454407BB1755C4BD005D8C22 /* ic_check_on@2x.png */,
+			);
+			name = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -155,6 +321,18 @@
 				4544077E1755A9E9005D8C22 /* Default.png in Resources */,
 				454407801755A9E9005D8C22 /* Default@2x.png in Resources */,
 				454407821755A9E9005D8C22 /* Default-568h@2x.png in Resources */,
+				454407A71755BA8C005D8C22 /* background.png in Resources */,
+				454407A81755BA8C005D8C22 /* background@2x.png in Resources */,
+				454407A91755BA8C005D8C22 /* brado_logo.png in Resources */,
+				454407AA1755BA8C005D8C22 /* brado_logo@2x.png in Resources */,
+				454407AF1755BF33005D8C22 /* button_black.png in Resources */,
+				454407B01755BF33005D8C22 /* button_black@2x.png in Resources */,
+				454407BC1755C4BD005D8C22 /* bg_grouped_table.png in Resources */,
+				454407BD1755C4BD005D8C22 /* bg_grouped_table@2x.png in Resources */,
+				454407BE1755C4BD005D8C22 /* ic_check_off.png in Resources */,
+				454407BF1755C4BD005D8C22 /* ic_check_off@2x.png in Resources */,
+				454407C01755C4BD005D8C22 /* ic_check_on.png in Resources */,
+				454407C11755C4BD005D8C22 /* ic_check_on@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,6 +345,15 @@
 			files = (
 				454407781755A9E9005D8C22 /* main.m in Sources */,
 				4544077C1755A9E9005D8C22 /* BSPAppDelegate.m in Sources */,
+				4544078E1755B220005D8C22 /* BSPLandingViewController.m in Sources */,
+				454407911755B343005D8C22 /* BSPLandingView.m in Sources */,
+				454407961755B4AC005D8C22 /* BSPPanelView.m in Sources */,
+				4544079A1755B5A3005D8C22 /* UIView+Layouts.m in Sources */,
+				454407A11755B915005D8C22 /* BSPUI.m in Sources */,
+				454407B31755C230005D8C22 /* BSPUserInfoView.m in Sources */,
+				454407C41755CBBC005D8C22 /* BSPGroupedButton.m in Sources */,
+				454407C71755D3F2005D8C22 /* BSPUserInfoCell.m in Sources */,
+				454407CA1755D4C6005D8C22 /* UIColor+Custom.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
