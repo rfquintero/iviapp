@@ -16,6 +16,10 @@
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
+        self.scrollEnabled = YES;
+        self.showsHorizontalScrollIndicator = NO;
+        self.showsVerticalScrollIndicator = NO;
+        
         self.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background"]];
         self.logoView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"brado_logo"]];
         
@@ -46,6 +50,8 @@
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(maleSelected) name:BSPUserInfoViewMaleSelected object:self.userInfoView];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(femaleSelected) name:BSPUserInfoViewFemaleSelected object:self.userInfoView];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardShown) name:UIKeyboardDidShowNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardHidden) name:UIKeyboardDidHideNotification object:nil];
     }
     return self;
 }
@@ -89,5 +95,14 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:BSPUserInfoViewFemaleSelected object:self];
 }
 
+# pragma mark keyboard
+
+-(void)keyboardShown {
+    [self setContentOffset:CGPointMake(0, self.panelView.frame.origin.y-10) animated:YES];
+}
+
+-(void)keyboardHidden {
+    [self setContentOffset:CGPointMake(0, 0) animated:YES];
+}
 
 @end

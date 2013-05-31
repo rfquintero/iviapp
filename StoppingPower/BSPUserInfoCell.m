@@ -39,4 +39,12 @@
     [self setNeedsLayout];
 }
 
+-(void)setInputTag:(NSInteger)tag {
+    self.textField.tag = tag;
+}
+
+-(void)setInputDelegate:(id<UITextFieldDelegate>)delegate {
+    self.textField.delegate = delegate;
+}
+
 @end

@@ -3,7 +3,7 @@
 #import "BSPUserInfoCell.h"
 #import "BSPUI.h"
 
-@interface BSPUserInfoView()<UITableViewDataSource, UITableViewDelegate>
+@interface BSPUserInfoView()<UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 @property (nonatomic) UIView *backgroundView;
 @property (nonatomic) UITableView *tableView;
 @property (nonatomic) BSPGroupedButton *maleButton;
@@ -87,6 +87,8 @@
     
     if(!cell) {
         cell = [[BSPUserInfoCell alloc] initWithReuseIdentifier:identifier];
+        [cell setInputTag:indexPath.row];
+        [cell setInputDelegate:self];
     }
     
     switch(indexPath.row) {
@@ -116,5 +118,16 @@
         return @"Gender";
 }
 
+#pragma mark Textfields
+-(BOOL)textFieldShouldReturn:(UITextField*)textField; {
+    NSInteger nextTag = textField.tag + 1;
+    UIView* nextResponder = [self.tableView viewWithTag:nextTag];
+    if (nextResponder && !nextResponder.hidden ) {
+        [nextResponder becomeFirstResponder];
+    } else {
+        [textField resignFirstResponder];
+    }
+    return NO;
+}
 
 @end

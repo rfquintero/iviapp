@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BSPLandingView : UIView
+@interface BSPLandingView : UIScrollView
 -(void)setMaleSelected:(BOOL)selected;
 -(void)setFemaleSelected:(BOOL)selected;
 @end

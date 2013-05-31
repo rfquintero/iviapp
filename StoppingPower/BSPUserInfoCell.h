@@ -11,4 +11,6 @@
 @interface BSPUserInfoCell : UITableViewCell
 -(id)initWithReuseIdentifier:(NSString*)reuseIdentifier;
 -(void)setTitle:(NSString*)title;
+-(void)setInputTag:(NSInteger)tag;
+-(void)setInputDelegate:(id<UITextFieldDelegate>)delegate;
 @end
