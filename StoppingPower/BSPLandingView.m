@@ -9,6 +9,8 @@
 @property (nonatomic) UIButton *settingsButton;
 @property (nonatomic) BSPPanelView *panelView;
 @property (nonatomic) BSPUserInfoView *userInfoView;
+@property (nonatomic, weak) id<BSPLandingViewDelegate> landingDelegate;
+@property (nonatomic) CGFloat offsetX;
 @end
 
 @implementation BSPLandingView
@@ -63,8 +65,10 @@
 -(void)layoutSubviews {
     [super layoutSubviews];
     
+    CGRect boundsWithOffset = CGRectMake(0, 0, self.bounds.size.width-self.offsetX, self.bounds.size.height);
+    
     self.backgroundView.frame = self.bounds;
-    [self.logoView centerHorizonallyAtY:65 inBounds:self.bounds thatFits:CGSizeUnbounded];
+    [self.logoView centerHorizonallyAtY:65 inBounds:boundsWithOffset thatFits:CGSizeUnbounded];
     [self.panelView centerHorizonallyAtY:CGRectGetMaxY(self.logoView.frame)+35 inBounds:self.bounds withSize:CGSizeMake(540,375)];
     [self.settingsButton setFrameAtOrigin:CGPointMake(20, self.bounds.size.height-50) thatFits:CGSizeUnbounded];
 }
@@ -77,6 +81,24 @@
     [self.userInfoView setFemaleSelected:selected];
 }
 
+-(void)animateOffsetX:(CGFloat)offsetX showInfo:(BOOL)show {
+    self.panelView.hidden = NO;
+    self.offsetX = offsetX;
+    NSString *settingsTitle = show ? @"Select Study" : @"Close Selection";
+    [UIView animateWithDuration:0.3f animations:^{
+        [self setFrameAtOrigin:CGPointMake(offsetX, self.frame.origin.y)];
+        self.panelView.alpha = show ? 1.0f : 0.0f;
+        [self.settingsButton setTitle:settingsTitle forState:UIControlStateNormal];
+        [self layoutSubviews];
+    } completion:^(BOOL finished) {
+        self.panelView.hidden = !show;
+    }];
+}
+
+-(void)setSettingsButtonText:(NSString*)text {
+    
+}
+
 #pragma mark callbacks
 
 -(void)startSelected {
@@ -84,15 +106,15 @@
 }
 
 -(void)settingsSelected {
-    
+    [self.landingDelegate settingsSelected];
 }
 
 -(void)maleSelected {
-    [[NSNotificationCenter defaultCenter] postNotificationName:BSPUserInfoViewMaleSelected object:self];
+    [self.landingDelegate maleSelected];
 }
 
 -(void)femaleSelected {
-    [[NSNotificationCenter defaultCenter] postNotificationName:BSPUserInfoViewFemaleSelected object:self];
+    [self.landingDelegate femaleSelected];
 }
 
 # pragma mark keyboard

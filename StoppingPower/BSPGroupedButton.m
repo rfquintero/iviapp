@@ -7,7 +7,6 @@
 @property (nonatomic) UIImageView *checkBoxView;
 @end
 
-
 @implementation BSPGroupedButton
 
 - (id)initWithFrame:(CGRect)frame {

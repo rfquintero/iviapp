@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		451CFAEA176E3B99000339DB /* BSPStudyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 451CFAE9176E3B99000339DB /* BSPStudyTableViewCell.m */; };
+		451CFAF1176E4449000339DB /* bg_study_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 451CFAEB176E4449000339DB /* bg_study_selected.png */; };
+		451CFAF2176E4449000339DB /* bg_study_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 451CFAEC176E4449000339DB /* bg_study_selected@2x.png */; };
+		451CFAF3176E4449000339DB /* bg_study.png in Resources */ = {isa = PBXBuildFile; fileRef = 451CFAED176E4449000339DB /* bg_study.png */; };
+		451CFAF4176E4449000339DB /* bg_study@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 451CFAEE176E4449000339DB /* bg_study@2x.png */; };
+		451CFAF5176E4449000339DB /* ic_study_circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 451CFAEF176E4449000339DB /* ic_study_circle.png */; };
+		451CFAF6176E4449000339DB /* ic_study_circle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 451CFAF0176E4449000339DB /* ic_study_circle@2x.png */; };
+		451CFAF9176E482B000339DB /* BSPStudyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 451CFAF8176E482B000339DB /* BSPStudyView.m */; };
+		451CFAFD176E48A6000339DB /* BSPStudy.m in Sources */ = {isa = PBXBuildFile; fileRef = 451CFAFC176E48A6000339DB /* BSPStudy.m */; };
 		4544076C1755A9E9005D8C22 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4544076B1755A9E9005D8C22 /* UIKit.framework */; };
 		4544076E1755A9E9005D8C22 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4544076D1755A9E9005D8C22 /* Foundation.framework */; };
 		454407701755A9E9005D8C22 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4544076F1755A9E9005D8C22 /* CoreGraphics.framework */; };
@@ -41,6 +50,18 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		451CFAE8176E3B99000339DB /* BSPStudyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSPStudyTableViewCell.h; sourceTree = "<group>"; };
+		451CFAE9176E3B99000339DB /* BSPStudyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSPStudyTableViewCell.m; sourceTree = "<group>"; };
+		451CFAEB176E4449000339DB /* bg_study_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_study_selected.png; sourceTree = "<group>"; };
+		451CFAEC176E4449000339DB /* bg_study_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_study_selected@2x.png"; sourceTree = "<group>"; };
+		451CFAED176E4449000339DB /* bg_study.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_study.png; sourceTree = "<group>"; };
+		451CFAEE176E4449000339DB /* bg_study@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_study@2x.png"; sourceTree = "<group>"; };
+		451CFAEF176E4449000339DB /* ic_study_circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_study_circle.png; sourceTree = "<group>"; };
+		451CFAF0176E4449000339DB /* ic_study_circle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_study_circle@2x.png"; sourceTree = "<group>"; };
+		451CFAF7176E482B000339DB /* BSPStudyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSPStudyView.h; sourceTree = "<group>"; };
+		451CFAF8176E482B000339DB /* BSPStudyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSPStudyView.m; sourceTree = "<group>"; };
+		451CFAFB176E48A6000339DB /* BSPStudy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSPStudy.h; sourceTree = "<group>"; };
+		451CFAFC176E48A6000339DB /* BSPStudy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSPStudy.m; sourceTree = "<group>"; };
 		454407681755A9E9005D8C22 /* StoppingPower.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StoppingPower.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4544076B1755A9E9005D8C22 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4544076D1755A9E9005D8C22 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -102,6 +123,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		451CFAFA176E488B000339DB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				451CFAFB176E48A6000339DB /* BSPStudy.h */,
+				451CFAFC176E48A6000339DB /* BSPStudy.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		4544075F1755A9E9005D8C22 = {
 			isa = PBXGroup;
 			children = (
@@ -191,10 +221,12 @@
 				454407901755B343005D8C22 /* BSPLandingView.m */,
 				454407B11755C230005D8C22 /* BSPUserInfoView.h */,
 				454407B21755C230005D8C22 /* BSPUserInfoView.m */,
-				454407C21755CBBC005D8C22 /* BSPGroupedButton.h */,
-				454407C31755CBBC005D8C22 /* BSPGroupedButton.m */,
 				454407C51755D3F2005D8C22 /* BSPUserInfoCell.h */,
 				454407C61755D3F2005D8C22 /* BSPUserInfoCell.m */,
+				451CFAF7176E482B000339DB /* BSPStudyView.h */,
+				451CFAF8176E482B000339DB /* BSPStudyView.m */,
+				451CFAE8176E3B99000339DB /* BSPStudyTableViewCell.h */,
+				451CFAE9176E3B99000339DB /* BSPStudyTableViewCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -202,6 +234,7 @@
 		454407921755B471005D8C22 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				451CFAFA176E488B000339DB /* Models */,
 				454407931755B475005D8C22 /* Views */,
 				4544079F1755B915005D8C22 /* BSPUI.h */,
 				454407A01755B915005D8C22 /* BSPUI.m */,
@@ -212,6 +245,8 @@
 		454407931755B475005D8C22 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				454407C21755CBBC005D8C22 /* BSPGroupedButton.h */,
+				454407C31755CBBC005D8C22 /* BSPGroupedButton.m */,
 				454407941755B4AC005D8C22 /* BSPPanelView.h */,
 				454407951755B4AC005D8C22 /* BSPPanelView.m */,
 			);
@@ -242,6 +277,12 @@
 		454407B41755C4A0005D8C22 /* Landing */ = {
 			isa = PBXGroup;
 			children = (
+				451CFAEB176E4449000339DB /* bg_study_selected.png */,
+				451CFAEC176E4449000339DB /* bg_study_selected@2x.png */,
+				451CFAED176E4449000339DB /* bg_study.png */,
+				451CFAEE176E4449000339DB /* bg_study@2x.png */,
+				451CFAEF176E4449000339DB /* ic_study_circle.png */,
+				451CFAF0176E4449000339DB /* ic_study_circle@2x.png */,
 				454407A31755BA8C005D8C22 /* background.png */,
 				454407A41755BA8C005D8C22 /* background@2x.png */,
 				454407A51755BA8C005D8C22 /* brado_logo.png */,
@@ -333,6 +374,12 @@
 				454407BF1755C4BD005D8C22 /* ic_check_off@2x.png in Resources */,
 				454407C01755C4BD005D8C22 /* ic_check_on.png in Resources */,
 				454407C11755C4BD005D8C22 /* ic_check_on@2x.png in Resources */,
+				451CFAF1176E4449000339DB /* bg_study_selected.png in Resources */,
+				451CFAF2176E4449000339DB /* bg_study_selected@2x.png in Resources */,
+				451CFAF3176E4449000339DB /* bg_study.png in Resources */,
+				451CFAF4176E4449000339DB /* bg_study@2x.png in Resources */,
+				451CFAF5176E4449000339DB /* ic_study_circle.png in Resources */,
+				451CFAF6176E4449000339DB /* ic_study_circle@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,6 +401,9 @@
 				454407C41755CBBC005D8C22 /* BSPGroupedButton.m in Sources */,
 				454407C71755D3F2005D8C22 /* BSPUserInfoCell.m in Sources */,
 				454407CA1755D4C6005D8C22 /* UIColor+Custom.m in Sources */,
+				451CFAEA176E3B99000339DB /* BSPStudyTableViewCell.m in Sources */,
+				451CFAF9176E482B000339DB /* BSPStudyView.m in Sources */,
+				451CFAFD176E48A6000339DB /* BSPStudy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -432,10 +482,13 @@
 		454407861755A9E9005D8C22 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "StoppingPower/StoppingPower-Prefix.pch";
 				INFOPLIST_FILE = "StoppingPower/StoppingPower-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -443,10 +496,13 @@
 		454407871755A9E9005D8C22 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "StoppingPower/StoppingPower-Prefix.pch";
 				INFOPLIST_FILE = "StoppingPower/StoppingPower-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -470,6 +526,7 @@
 				454407871755A9E9005D8C22 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

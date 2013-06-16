@@ -10,6 +10,9 @@
 
 @interface UIColor (Custom)
 +(UIColor*)groupedTableBlue;
++(UIColor*)studyOrange;
++(UIColor*)studyGray;
++(UIColor*)studyBgDarkGray;
 
 +(UIColor *)colorWithHexString:(NSString *)hexString;
 @end

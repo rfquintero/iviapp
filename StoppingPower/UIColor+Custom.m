@@ -14,6 +14,9 @@ return colorName; \
 @implementation UIColor (Custom)
 
 CREATE_HEX_COLOR(groupedTableBlue, @"385583");
+CREATE_HEX_COLOR(studyOrange, @"C85031");
+CREATE_HEX_COLOR(studyGray, @"484848");
+CREATE_HEX_COLOR(studyBgDarkGray, @"2C2C2C");
 
 + (CGFloat)colorComponentFrom:(NSString *)string start:(NSUInteger)start length:(NSUInteger)length {
     NSString *substring = [string substringWithRange:NSMakeRange(start, length)];

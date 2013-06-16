@@ -1,14 +1,14 @@
-//
-//  BSPLandingView.h
-//  StoppingPower
-//
-//  Created by Ruben Quintero on 5/28/13.
-//  Copyright (c) 2013 Ruben Quintero. All rights reserved.
-//
-
 #import <UIKit/UIKit.h>
+
+@protocol BSPLandingViewDelegate <NSObject>
+-(void)maleSelected;
+-(void)femaleSelected;
+-(void)settingsSelected;
+@end
 
 @interface BSPLandingView : UIScrollView
 -(void)setMaleSelected:(BOOL)selected;
 -(void)setFemaleSelected:(BOOL)selected;
+-(void)setLandingDelegate:(id<BSPLandingViewDelegate>)delegate;
+-(void)animateOffsetX:(CGFloat)offsetX showInfo:(BOOL)show;
 @end
