@@ -16,5 +16,10 @@
 +(UIFont*)italicFontOfSize:(CGFloat)size;
 +(UIFont*)boldItalicFontOfSize:(CGFloat)size;
 
++(UIFont*)myriadFontOfSize:(CGFloat)size;
++(UIFont*)myriadBoldFontOfSize:(CGFloat)size;
++(UIFont*)myriadItaliceFontOfSize:(CGFloat)size;
++(UIFont*)myriadBoldItalicFontOfSize:(CGFloat)size;
+
 +(UILabel*)labelWithFont:(UIFont*)font;
 @end

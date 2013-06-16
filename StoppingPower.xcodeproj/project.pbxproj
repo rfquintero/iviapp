@@ -16,6 +16,10 @@
 		451CFAF6176E4449000339DB /* ic_study_circle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 451CFAF0176E4449000339DB /* ic_study_circle@2x.png */; };
 		451CFAF9176E482B000339DB /* BSPStudyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 451CFAF8176E482B000339DB /* BSPStudyView.m */; };
 		451CFAFD176E48A6000339DB /* BSPStudy.m in Sources */ = {isa = PBXBuildFile; fileRef = 451CFAFC176E48A6000339DB /* BSPStudy.m */; };
+		451CFB1E176E71F7000339DB /* MyriadPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 451CFB1A176E71F7000339DB /* MyriadPro-Bold.otf */; };
+		451CFB1F176E71F7000339DB /* MyriadPro-BoldIt.otf in Resources */ = {isa = PBXBuildFile; fileRef = 451CFB1B176E71F7000339DB /* MyriadPro-BoldIt.otf */; };
+		451CFB20176E71F7000339DB /* MyriadPro-It.otf in Resources */ = {isa = PBXBuildFile; fileRef = 451CFB1C176E71F7000339DB /* MyriadPro-It.otf */; };
+		451CFB21176E71F7000339DB /* MyriadPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 451CFB1D176E71F7000339DB /* MyriadPro-Regular.otf */; };
 		4544076C1755A9E9005D8C22 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4544076B1755A9E9005D8C22 /* UIKit.framework */; };
 		4544076E1755A9E9005D8C22 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4544076D1755A9E9005D8C22 /* Foundation.framework */; };
 		454407701755A9E9005D8C22 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4544076F1755A9E9005D8C22 /* CoreGraphics.framework */; };
@@ -62,6 +66,10 @@
 		451CFAF8176E482B000339DB /* BSPStudyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSPStudyView.m; sourceTree = "<group>"; };
 		451CFAFB176E48A6000339DB /* BSPStudy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSPStudy.h; sourceTree = "<group>"; };
 		451CFAFC176E48A6000339DB /* BSPStudy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSPStudy.m; sourceTree = "<group>"; };
+		451CFB1A176E71F7000339DB /* MyriadPro-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadPro-Bold.otf"; sourceTree = "<group>"; };
+		451CFB1B176E71F7000339DB /* MyriadPro-BoldIt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadPro-BoldIt.otf"; sourceTree = "<group>"; };
+		451CFB1C176E71F7000339DB /* MyriadPro-It.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadPro-It.otf"; sourceTree = "<group>"; };
+		451CFB1D176E71F7000339DB /* MyriadPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadPro-Regular.otf"; sourceTree = "<group>"; };
 		454407681755A9E9005D8C22 /* StoppingPower.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StoppingPower.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4544076B1755A9E9005D8C22 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4544076D1755A9E9005D8C22 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -130,6 +138,17 @@
 				451CFAFC176E48A6000339DB /* BSPStudy.m */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		451CFB05176E6FCC000339DB /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				451CFB1A176E71F7000339DB /* MyriadPro-Bold.otf */,
+				451CFB1B176E71F7000339DB /* MyriadPro-BoldIt.otf */,
+				451CFB1C176E71F7000339DB /* MyriadPro-It.otf */,
+				451CFB1D176E71F7000339DB /* MyriadPro-Regular.otf */,
+			);
+			path = fonts;
 			sourceTree = "<group>";
 		};
 		4544075F1755A9E9005D8C22 = {
@@ -267,6 +286,7 @@
 		454407A21755BA8C005D8C22 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				451CFB05176E6FCC000339DB /* fonts */,
 				454407B51755C4A8005D8C22 /* Common */,
 				454407B41755C4A0005D8C22 /* Landing */,
 			);
@@ -380,6 +400,10 @@
 				451CFAF4176E4449000339DB /* bg_study@2x.png in Resources */,
 				451CFAF5176E4449000339DB /* ic_study_circle.png in Resources */,
 				451CFAF6176E4449000339DB /* ic_study_circle@2x.png in Resources */,
+				451CFB1E176E71F7000339DB /* MyriadPro-Bold.otf in Resources */,
+				451CFB1F176E71F7000339DB /* MyriadPro-BoldIt.otf in Resources */,
+				451CFB20176E71F7000339DB /* MyriadPro-It.otf in Resources */,
+				451CFB21176E71F7000339DB /* MyriadPro-Regular.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

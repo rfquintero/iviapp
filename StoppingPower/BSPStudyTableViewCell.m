@@ -23,15 +23,15 @@
         self.background = [[UIImageView alloc] init];
         self.circle = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ic_study_circle"]];
         
-        UILabel *numberLabel = [BSPUI labelWithFont:[BSPUI boldFontOfSize:32.0f]];
+        UILabel *numberLabel = [BSPUI labelWithFont:[BSPUI myriadBoldFontOfSize:36.0f]];
         numberLabel.textColor = [UIColor studyGray];
         [self addShadow:numberLabel];
         
-        UILabel *titleLabel = [BSPUI labelWithFont:[BSPUI boldFontOfSize:24.0f]];
+        UILabel *titleLabel = [BSPUI labelWithFont:[BSPUI myriadBoldFontOfSize:24.0f]];
         titleLabel.textColor = [UIColor whiteColor];
         [self addShadow:titleLabel];
         
-        UILabel *descriptionLabel = [BSPUI labelWithFont:[BSPUI fontOfSize:18.0f]];
+        UILabel *descriptionLabel = [BSPUI labelWithFont:[BSPUI myriadFontOfSize:18.0f]];
         descriptionLabel.textColor = [UIColor whiteColor];
         descriptionLabel.numberOfLines = 2;
         [self addShadow:descriptionLabel];
@@ -64,7 +64,7 @@
     CGFloat paddingX = 20.0f;
     self.background.frame = CGRectMake(paddingX, 0, self.contentView.bounds.size.width - 2*paddingX, self.background.image.size.height);
     [self.circle centerVerticallyAtX:paddingX inBounds:self.background.bounds thatFits:CGSizeUnbounded];
-    [self.numberLabel centerInBounds:self.circle.bounds offsetX:-0.5 offsetY:4];
+    [self.numberLabel centerInBounds:self.circle.bounds offsetX:0 offsetY:10];
     
     CGFloat textOffsetX = CGRectGetMaxX(self.circle.frame)+14.0f;
     CGSize textSize = CGSizeMake(self.background.bounds.size.width - textOffsetX - paddingX, CGFLOAT_MAX);
