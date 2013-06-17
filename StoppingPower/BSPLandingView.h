@@ -11,4 +11,5 @@
 -(void)setFemaleSelected:(BOOL)selected;
 -(void)setLandingDelegate:(id<BSPLandingViewDelegate>)delegate;
 -(void)animateOffsetX:(CGFloat)offsetX showInfo:(BOOL)show;
+-(void)setLoading:(BOOL)loading animated:(BOOL)animated;
 @end

@@ -6,6 +6,7 @@
 #define kFadeHeight 300
 
 @interface BSPStudyView()<UITableViewDataSource, UITableViewDelegate>
+@property (nonatomic) UITableView *tableView;
 @property (nonatomic) UIView *fade;
 @property (nonatomic) NSInteger selectedIndex;
 @property (nonatomic) NSArray *studies;
@@ -23,6 +24,7 @@
         tableView.dataSource = self;
         tableView.autoresizingMask = UIViewFlexibleHeightWidth;
         tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        self.tableView = tableView;
         
         UIColor *gradientStart = [[UIColor blackColor] colorWithAlphaComponent:0.0f];
         UIColor *gradientEnd = [[UIColor blackColor] colorWithAlphaComponent:0.3f];
@@ -52,6 +54,11 @@
     } else {
         return nil;
     }
+}
+
+-(void)setStudies:(NSArray *)studies {
+    _studies = studies;
+    [self.tableView reloadData];
 }
 
 #pragma mark UITableViewDataSource

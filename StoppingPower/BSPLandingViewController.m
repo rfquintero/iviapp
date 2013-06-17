@@ -2,7 +2,7 @@
 #import "BSPLandingView.h"
 #import "BSPStudyView.h"
 #import "BSPUI.h"
-#import "BSPStudy.h"
+#import "BSPStudyModel.h"
 
 
 #define kSettingsWidth 480
@@ -10,10 +10,18 @@
 @interface BSPLandingViewController ()<BSPLandingViewDelegate>
 @property (nonatomic) BSPLandingView *landingView;
 @property (nonatomic) BSPStudyView *studyView;
+@property (nonatomic) BSPStudyModel *model;
 @property (nonatomic) BOOL settingsShowing;
 @end
 
 @implementation BSPLandingViewController
+
+-(id)initWithAppState:(BSPApplicationState*)applicationState {
+    if(self = [super init]) {
+        self.model = [[BSPStudyModel alloc] initWithDao:applicationState.dao];
+    }
+    return self;
+}
 
 -(void)loadView {
     [super loadView];
@@ -21,11 +29,10 @@
     self.landingView = [[BSPLandingView alloc] initWithFrame:self.view.bounds];
     self.landingView.autoresizingMask = UIViewFlexibleHeightWidth;
     self.landingView.landingDelegate = self;
+    [self.landingView setLoading:YES animated:NO];
     
     self.studyView = [[BSPStudyView alloc] initWithFrame:CGRectMake(0, 0, kSettingsWidth, self.view.bounds.size.height)];
     self.studyView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
-    
-    [self.studyView setStudies:[self createStudies]];
     
     [self.view addSubview:self.studyView];
     [self.view addSubview:self.landingView];
@@ -33,7 +40,16 @@
 
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(studiesFound) name:BSPStudyModelStudiesRetrieved object:self.model];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(imagesRetrieved) name:BSPStudyModelStudyImagesRetrieved object:self.model];
+    if(self.model.studies.count < 1) {
+        [self.model retrieveStudies];
+    }
+}
 
+-(void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark callbacks
@@ -53,18 +69,11 @@
     [self.landingView animateOffsetX:x showInfo:!self.settingsShowing];
 }
 
-
--(NSArray*)createStudies {
-    NSMutableArray *studies = [NSMutableArray array];
-    [studies addObject:[[BSPStudy alloc] initWithTitle:@"Study 1" description:@"This is my description that stretches into two separate lines!"]];
-    [studies addObject:[[BSPStudy alloc] initWithTitle:@"Study 2" description:@"This is my description"]];
-    [studies addObject:[[BSPStudy alloc] initWithTitle:@"Study 3" description:@"This is my description"]];
-    [studies addObject:[[BSPStudy alloc] initWithTitle:@"Study 4" description:@"This is my description"]];
-    [studies addObject:[[BSPStudy alloc] initWithTitle:@"Study 5" description:@"This is my description"]];
-    [studies addObject:[[BSPStudy alloc] initWithTitle:@"Study 6" description:@"This is my description"]];
-    [studies addObject:[[BSPStudy alloc] initWithTitle:@"Study 7" description:@"This is my description"]];
-    [studies addObject:[[BSPStudy alloc] initWithTitle:@"Study 8" description:@"This is my description"]];
-    return studies;
+-(void)studiesFound {
+    [self.studyView setStudies:self.model.studies];
+    [self.landingView setLoading:NO animated:YES];
 }
+
+
 
 @end

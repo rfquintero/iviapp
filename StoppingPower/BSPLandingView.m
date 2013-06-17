@@ -9,8 +9,11 @@
 @property (nonatomic) UIButton *settingsButton;
 @property (nonatomic) BSPPanelView *panelView;
 @property (nonatomic) BSPUserInfoView *userInfoView;
+@property (nonatomic) UIActivityIndicatorView *spinner;
+@property (nonatomic) UILabel *loadingLabel;
 @property (nonatomic, weak) id<BSPLandingViewDelegate> landingDelegate;
 @property (nonatomic) CGFloat offsetX;
+@property (nonatomic) BOOL loading;
 @end
 
 @implementation BSPLandingView
@@ -45,8 +48,19 @@
         [settingsButton setContentEdgeInsets:UIEdgeInsetsMake(2, 10, 2, 10)];
         self.settingsButton = settingsButton;
         
+        self.spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+        [self.spinner startAnimating];
+        [self.spinner sizeToFit];
+        
+        self.loadingLabel = [BSPUI labelWithFont:[BSPUI boldFontOfSize:20.0f]];
+        self.loadingLabel.text = @"Loading...";
+        self.loadingLabel.textColor = [UIColor whiteColor];
+        [self.loadingLabel sizeToFit];
+        
         [self addSubview:self.backgroundView];
         [self addSubview:self.logoView];
+        [self addSubview:self.spinner];
+        [self addSubview:self.loadingLabel];
         [self addSubview:panelView];
         [self addSubview:settingsButton];
         
@@ -67,9 +81,16 @@
     
     CGRect boundsWithOffset = CGRectMake(0, 0, self.bounds.size.width-self.offsetX, self.bounds.size.height);
     
+    self.panelView.alpha = self.loading ? 0.0f : 1.0f;
+    self.settingsButton.hidden = self.loading;
+    self.loadingLabel.hidden = !self.loading;
+    self.spinner.hidden = !self.loading;
+    
     self.backgroundView.frame = self.bounds;
-    [self.logoView centerHorizonallyAtY:65 inBounds:boundsWithOffset thatFits:CGSizeUnbounded];
+    [self.logoView centerHorizonallyAtY:(self.loading ? 175 : 65) inBounds:boundsWithOffset thatFits:CGSizeUnbounded];
     [self.panelView centerHorizonallyAtY:CGRectGetMaxY(self.logoView.frame)+35 inBounds:self.bounds withSize:CGSizeMake(540,375)];
+    [self.spinner centerHorizonallyAtY:CGRectGetMaxY(self.logoView.frame)+35 inBounds:self.bounds thatFits:CGSizeUnbounded];
+    [self.loadingLabel centerHorizonallyAtY:CGRectGetMaxY(self.spinner.frame)+10 inBounds:self.bounds thatFits:CGSizeUnbounded];
     [self.settingsButton setFrameAtOrigin:CGPointMake(20, self.bounds.size.height-50) thatFits:CGSizeUnbounded];
 }
 
@@ -95,8 +116,24 @@
     }];
 }
 
--(void)setSettingsButtonText:(NSString*)text {
-    
+-(void)setLoading:(BOOL)loading animated:(BOOL)animated {
+    _loading = loading;
+    if(!loading) {
+        [self.spinner stopAnimating];
+    } else {
+        [self.spinner startAnimating];
+    }
+
+    self.panelView.hidden = NO;
+    if(animated) {
+        [UIView animateWithDuration:0.3f animations:^{
+            [self layoutSubviews];
+        } completion:^(BOOL finished) {
+            self.panelView.hidden = loading;
+        }];
+    } else {
+        [self layoutSubviews];
+    }
 }
 
 #pragma mark callbacks
