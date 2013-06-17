@@ -12,6 +12,7 @@
 @property (nonatomic) BSPStudyView *studyView;
 @property (nonatomic) BSPStudyModel *model;
 @property (nonatomic) BOOL settingsShowing;
+@property (nonatomic) UIAlertView *alertView;
 @end
 
 @implementation BSPLandingViewController
@@ -42,6 +43,7 @@
     [super viewWillAppear:animated];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(studiesFound) name:BSPStudyModelStudiesRetrieved object:self.model];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(imagesRetrieved) name:BSPStudyModelStudyImagesRetrieved object:self.model];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(error:) name:BSPStudyModelError object:self.model];
     if(self.model.studies.count < 1) {
         [self.model retrieveStudies];
     }
@@ -71,9 +73,19 @@
 
 -(void)studiesFound {
     [self.studyView setStudies:self.model.studies];
+    [self.model retrieveAllImages];
+}
+
+-(void)imagesRetrieved {
     [self.landingView setLoading:NO animated:YES];
 }
 
-
+-(void)error:(NSNotification*)notification {
+    NSError *error = [notification.userInfo objectForKey:BSPStudyModelErrorKey];
+    if(!self.alertView) {
+        self.alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:error.localizedDescription delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        [self.alertView show];
+    }
+}
 
 @end

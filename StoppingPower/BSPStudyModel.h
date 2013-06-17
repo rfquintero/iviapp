@@ -12,5 +12,5 @@
 
 -(id)initWithDao:(BSPDao*)dao;
 -(void)retrieveStudies;
--(void)retrieveImagesForStudy:(BSPStudy*) study;
+-(void)retrieveAllImages;
 @end

@@ -2,7 +2,7 @@
 
 @interface BSPDao()
 @property (nonatomic) NSOperationQueue *queue;
-@property (nonatomic) NSString *endpoint;
+@property (nonatomic, readwrite) NSString *endpoint;
 @end
 
 @implementation BSPDao

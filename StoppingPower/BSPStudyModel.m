@@ -5,6 +5,7 @@
 @interface BSPStudyModel()
 @property (nonatomic, readwrite) NSArray *studies;
 @property (atomic) NSUInteger imageCount;
+@property (atomic) NSUInteger studyCount;
 @property (nonatomic) NSUInteger imageProgress;
 @property (nonatomic) BSPDao *dao;
 @end
@@ -70,10 +71,24 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:name object:self userInfo:userInfo];
 }
 
+-(void)retrieveAllImages {
+    self.studyCount = 0;
+    [self retrieveNextStudyImages];
+}
+
+-(void)retrieveNextStudyImages {
+    if(self.studyCount < self.studies.count) {
+        [self retrieveImagesForStudy:self.studies[self.studyCount]];
+    } else {
+        [self postNotificationNamed:BSPStudyModelStudyImagesRetrieved userInfo:nil];
+    }
+}
+
 -(void)imageRetrieved {
     self.imageProgress = self.imageProgress + 1;
     if(self.imageProgress >= self.imageCount) {
-        [self postNotificationNamed:BSPStudyModelStudyImagesRetrieved userInfo:nil];
+        self.studyCount = self.studyCount + 1;
+        [self retrieveNextStudyImages];
     }
 }
 
@@ -87,11 +102,14 @@
 }
 
 -(void)downloadImage:(NSString*)imageUrlString {
-    NSURL* imageUrl = [NSURL URLWithString:imageUrlString];
+    NSURL* imageUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", self.dao.endpoint, imageUrlString]];
     [[SDWebImageDownloader sharedDownloader] downloadImageWithURL:imageUrl options:0 progress:^(NSUInteger receivedSize, long long expectedSize) {
     } completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished) {
         if(image && finished) {
             [self performSelectorOnMainThread:@selector(imageRetrieved) withObject:nil waitUntilDone:NO];
+        } else {
+            error = [NSError errorWithDomain:@"An error occured while retrieving study information. Please try again later." code:0 userInfo:nil];
+            [self postNotificationNamed:BSPStudyModelError userInfo:@{BSPStudyModelErrorKey : error}];
         }
     }];
 }
