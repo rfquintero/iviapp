@@ -3,11 +3,12 @@
 #import "BSPStudyView.h"
 #import "BSPUI.h"
 #import "BSPStudyModel.h"
-
+#import "BSPStudyControllerViewController.h"
 
 #define kSettingsWidth 480
 
 @interface BSPLandingViewController ()<BSPLandingViewDelegate>
+@property (nonatomic) BSPApplicationState *applicationState;
 @property (nonatomic) BSPLandingView *landingView;
 @property (nonatomic) BSPStudyView *studyView;
 @property (nonatomic) BSPStudyModel *model;
@@ -19,6 +20,7 @@
 
 -(id)initWithAppState:(BSPApplicationState*)applicationState {
     if(self = [super init]) {
+        self.applicationState = applicationState;
         self.model = [[BSPStudyModel alloc] initWithDao:applicationState.dao];
     }
     return self;
@@ -41,6 +43,7 @@
 
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(studiesFound) name:BSPStudyModelStudiesRetrieved object:self.model];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(imagesRetrieved) name:BSPStudyModelStudyImagesRetrieved object:self.model];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(error:) name:BSPStudyModelError object:self.model];
@@ -69,6 +72,13 @@
     self.settingsShowing = !self.settingsShowing;
     CGFloat x = self.settingsShowing ? kSettingsWidth : 0;
     [self.landingView animateOffsetX:x showInfo:!self.settingsShowing];
+}
+
+-(void)startSelected {
+    if(self.studyView.selectedStudy) {
+        UIViewController *vc = [[BSPStudyControllerViewController alloc] initWithAppState:self.applicationState study:self.studyView.selectedStudy];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 
 -(void)studiesFound {

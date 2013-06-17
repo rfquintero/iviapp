@@ -25,7 +25,7 @@
     self.applicationState = applicationState;
     
     self.window.backgroundColor = [UIColor whiteColor];
-    self.window.rootViewController = [[BSPLandingViewController alloc] initWithAppState:applicationState];
+    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[BSPLandingViewController alloc] initWithAppState:applicationState]];
     [self.window makeKeyAndVisible];
     return YES;
 }

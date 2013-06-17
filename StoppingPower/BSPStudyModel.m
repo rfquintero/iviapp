@@ -55,8 +55,8 @@
 -(NSArray*)parsePairs:(NSArray*)jsonPairs {
     NSMutableArray *pairs = [NSMutableArray array];
     for(NSDictionary *jsonPair in jsonPairs) {
-        NSString *leftUrl = jsonPair[@"choice1"];
-        NSString *rightUrl = jsonPair[@"choice2"];
+        NSString *leftUrl = [NSString stringWithFormat:@"%@%@", self.dao.endpoint, jsonPair[@"choice1"]];
+        NSString *rightUrl = [NSString stringWithFormat:@"%@%@", self.dao.endpoint, jsonPair[@"choice2"]];
         NSUInteger clickCount = 0;
         
         BSPImagePair *pair = [[BSPImagePair alloc] initWithLeftImageUrlString:leftUrl right:rightUrl];
@@ -102,7 +102,7 @@
 }
 
 -(void)downloadImage:(NSString*)imageUrlString {
-    NSURL* imageUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", self.dao.endpoint, imageUrlString]];
+    NSURL* imageUrl = [NSURL URLWithString:imageUrlString];
     [[SDWebImageDownloader sharedDownloader] downloadImageWithURL:imageUrl options:0 progress:^(NSUInteger receivedSize, long long expectedSize) {
     } completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished) {
         if(image && finished) {

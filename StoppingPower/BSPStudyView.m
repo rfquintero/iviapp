@@ -45,11 +45,12 @@
 
 -(void)layoutSubviews {
     [super layoutSubviews];
+    self.tableView.frame = self.bounds;
     self.fade.frame = CGRectMake(0, self.bounds.size.height-kFadeHeight, self.bounds.size.width, kFadeHeight);
 }
 
 -(BSPStudy*)selectedStudy {
-    if(self.selectedStudy >= 0) {
+    if(self.selectedIndex >= 0) {
         return self.studies[self.selectedIndex];
     } else {
         return nil;
@@ -59,6 +60,7 @@
 -(void)setStudies:(NSArray *)studies {
     _studies = studies;
     [self.tableView reloadData];
+    [self setNeedsLayout];
 }
 
 #pragma mark UITableViewDataSource

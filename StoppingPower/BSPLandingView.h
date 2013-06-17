@@ -4,6 +4,7 @@
 -(void)maleSelected;
 -(void)femaleSelected;
 -(void)settingsSelected;
+-(void)startSelected;
 @end
 
 @interface BSPLandingView : UIScrollView

@@ -139,7 +139,7 @@
 #pragma mark callbacks
 
 -(void)startSelected {
-    
+    [self.landingDelegate startSelected];
 }
 
 -(void)settingsSelected {

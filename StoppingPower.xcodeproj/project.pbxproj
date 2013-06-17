@@ -57,6 +57,8 @@
 		459C0FA8176ED77E00C335F9 /* BSPImagePair.m in Sources */ = {isa = PBXBuildFile; fileRef = 459C0FA7176ED77E00C335F9 /* BSPImagePair.m */; };
 		459C0FAB176EDAC200C335F9 /* BSPDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 459C0FAA176EDAC200C335F9 /* BSPDao.m */; };
 		459C0FAE176EE38600C335F9 /* BSPApplicationState.m in Sources */ = {isa = PBXBuildFile; fileRef = 459C0FAD176EE38600C335F9 /* BSPApplicationState.m */; };
+		459C0FB5176F3E9D00C335F9 /* BSPStudyControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 459C0FB4176F3E9D00C335F9 /* BSPStudyControllerViewController.m */; };
+		459C0FBB176F3F5D00C335F9 /* BSPStudyPairView.m in Sources */ = {isa = PBXBuildFile; fileRef = 459C0FBA176F3F5D00C335F9 /* BSPStudyPairView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -130,6 +132,10 @@
 		459C0FAA176EDAC200C335F9 /* BSPDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSPDao.m; sourceTree = "<group>"; };
 		459C0FAC176EE38600C335F9 /* BSPApplicationState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSPApplicationState.h; sourceTree = "<group>"; };
 		459C0FAD176EE38600C335F9 /* BSPApplicationState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSPApplicationState.m; sourceTree = "<group>"; };
+		459C0FB3176F3E9D00C335F9 /* BSPStudyControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSPStudyControllerViewController.h; sourceTree = "<group>"; };
+		459C0FB4176F3E9D00C335F9 /* BSPStudyControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSPStudyControllerViewController.m; sourceTree = "<group>"; };
+		459C0FB9176F3F5D00C335F9 /* BSPStudyPairView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSPStudyPairView.h; sourceTree = "<group>"; };
+		459C0FBA176F3F5D00C335F9 /* BSPStudyPairView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSPStudyPairView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,6 +215,7 @@
 		454407711755A9E9005D8C22 /* StoppingPower */ = {
 			isa = PBXGroup;
 			children = (
+				459C0FB0176F3E6800C335F9 /* Study */,
 				454407971755B554005D8C22 /* Categories */,
 				454407921755B471005D8C22 /* Common */,
 				454407881755B1EA005D8C22 /* Landing */,
@@ -354,6 +361,33 @@
 			name = Common;
 			sourceTree = "<group>";
 		};
+		459C0FB0176F3E6800C335F9 /* Study */ = {
+			isa = PBXGroup;
+			children = (
+				459C0FB2176F3E8500C335F9 /* Views */,
+				459C0FB1176F3E7900C335F9 /* Controllers */,
+			);
+			name = Study;
+			sourceTree = "<group>";
+		};
+		459C0FB1176F3E7900C335F9 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				459C0FB3176F3E9D00C335F9 /* BSPStudyControllerViewController.h */,
+				459C0FB4176F3E9D00C335F9 /* BSPStudyControllerViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		459C0FB2176F3E8500C335F9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				459C0FB9176F3F5D00C335F9 /* BSPStudyPairView.h */,
+				459C0FBA176F3F5D00C335F9 /* BSPStudyPairView.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -460,6 +494,8 @@
 				459C0FA8176ED77E00C335F9 /* BSPImagePair.m in Sources */,
 				459C0FAB176EDAC200C335F9 /* BSPDao.m in Sources */,
 				459C0FAE176EE38600C335F9 /* BSPApplicationState.m in Sources */,
+				459C0FB5176F3E9D00C335F9 /* BSPStudyControllerViewController.m in Sources */,
+				459C0FBB176F3F5D00C335F9 /* BSPStudyPairView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
