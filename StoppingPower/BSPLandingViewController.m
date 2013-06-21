@@ -72,6 +72,7 @@
     self.settingsShowing = !self.settingsShowing;
     CGFloat x = self.settingsShowing ? kSettingsWidth : 0;
     [self.landingView animateOffsetX:x showInfo:!self.settingsShowing];
+    [self.studyView refresh];
 }
 
 -(void)startSelected {

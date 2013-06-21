@@ -81,7 +81,6 @@
     
     CGRect boundsWithOffset = CGRectMake(0, 0, self.bounds.size.width-self.offsetX, self.bounds.size.height);
     
-    self.panelView.alpha = self.loading ? 0.0f : 1.0f;
     self.settingsButton.hidden = self.loading;
     self.loadingLabel.hidden = !self.loading;
     self.spinner.hidden = !self.loading;
@@ -127,11 +126,13 @@
     self.panelView.hidden = NO;
     if(animated) {
         [UIView animateWithDuration:0.3f animations:^{
+            self.panelView.alpha = self.loading ? 0.0f : 1.0f;
             [self layoutSubviews];
         } completion:^(BOOL finished) {
             self.panelView.hidden = loading;
         }];
     } else {
+        self.panelView.alpha = self.loading ? 0.0f : 1.0f;
         [self layoutSubviews];
     }
 }

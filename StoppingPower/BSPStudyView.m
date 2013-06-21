@@ -61,6 +61,11 @@
     _studies = studies;
     [self.tableView reloadData];
     [self setNeedsLayout];
+    [self setNeedsDisplay];
+}
+
+-(void)refresh {
+    [self.tableView reloadData];
 }
 
 #pragma mark UITableViewDataSource
