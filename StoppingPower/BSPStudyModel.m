@@ -55,8 +55,8 @@
 -(NSArray*)parsePairs:(NSArray*)jsonPairs {
     NSMutableArray *pairs = [NSMutableArray array];
     for(NSDictionary *jsonPair in jsonPairs) {
-        NSString *leftUrl = [NSString stringWithFormat:@"%@%@", self.dao.endpoint, jsonPair[@"choice1"]];
-        NSString *rightUrl = [NSString stringWithFormat:@"%@%@", self.dao.endpoint, jsonPair[@"choice2"]];
+        NSString *leftUrl = [NSString stringWithFormat:@"%@", jsonPair[@"choice1"]];
+        NSString *rightUrl = [NSString stringWithFormat:@"%@", jsonPair[@"choice2"]];
         NSUInteger clickCount = 0;
         
         BSPImagePair *pair = [[BSPImagePair alloc] initWithLeftImageUrlString:leftUrl right:rightUrl];
