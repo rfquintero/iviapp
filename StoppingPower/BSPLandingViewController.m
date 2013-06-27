@@ -73,6 +73,7 @@
 }
 
 -(void)updateStudies {
+    [self.landingView setLoading:YES animated:NO];
     [self.model retrieveStudies];
 }
 
