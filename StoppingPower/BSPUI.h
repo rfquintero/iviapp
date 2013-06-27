@@ -22,4 +22,5 @@
 +(UIFont*)myriadBoldItalicFontOfSize:(CGFloat)size;
 
 +(UILabel*)labelWithFont:(UIFont*)font;
++(UIButton*)blackButtonWithTitle:(NSString*)title;
 @end

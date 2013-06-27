@@ -60,6 +60,7 @@
 		459C0FB5176F3E9D00C335F9 /* BSPStudyControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 459C0FB4176F3E9D00C335F9 /* BSPStudyControllerViewController.m */; };
 		459C0FBB176F3F5D00C335F9 /* BSPStudyPairView.m in Sources */ = {isa = PBXBuildFile; fileRef = 459C0FBA176F3F5D00C335F9 /* BSPStudyPairView.m */; };
 		45F01ED21778C6B50059D2A9 /* BSPUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F01ED11778C6B50059D2A9 /* BSPUserModel.m */; };
+		45F01EEF177BD6A10059D2A9 /* BSPCompletionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F01EEE177BD6A10059D2A9 /* BSPCompletionView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -139,6 +140,8 @@
 		459C0FBA176F3F5D00C335F9 /* BSPStudyPairView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSPStudyPairView.m; sourceTree = "<group>"; };
 		45F01ED01778C6B50059D2A9 /* BSPUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSPUserModel.h; sourceTree = "<group>"; };
 		45F01ED11778C6B50059D2A9 /* BSPUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSPUserModel.m; sourceTree = "<group>"; };
+		45F01EED177BD6A10059D2A9 /* BSPCompletionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSPCompletionView.h; sourceTree = "<group>"; };
+		45F01EEE177BD6A10059D2A9 /* BSPCompletionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSPCompletionView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -388,6 +391,8 @@
 			children = (
 				459C0FB9176F3F5D00C335F9 /* BSPStudyPairView.h */,
 				459C0FBA176F3F5D00C335F9 /* BSPStudyPairView.m */,
+				45F01EED177BD6A10059D2A9 /* BSPCompletionView.h */,
+				45F01EEE177BD6A10059D2A9 /* BSPCompletionView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -510,6 +515,7 @@
 				459C0FB5176F3E9D00C335F9 /* BSPStudyControllerViewController.m in Sources */,
 				459C0FBB176F3F5D00C335F9 /* BSPStudyPairView.m in Sources */,
 				45F01ED21778C6B50059D2A9 /* BSPUserModel.m in Sources */,
+				45F01EEF177BD6A10059D2A9 /* BSPCompletionView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

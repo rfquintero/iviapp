@@ -39,13 +39,8 @@
         UIImage *buttonImage = [UIImage imageNamed:@"button_black"];
         buttonImage = [buttonImage resizableImageWithCapInsets:UIEdgeInsetsMake(0, 8, 0, 8)];
         
-        UIButton *settingsButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [settingsButton setTitle:@"Select Study" forState:UIControlStateNormal];
+        UIButton *settingsButton = [BSPUI blackButtonWithTitle:@"Select Study"];
         [settingsButton addTarget:self action:@selector(settingsSelected) forControlEvents:UIControlEventTouchUpInside];
-        [settingsButton setBackgroundImage:buttonImage forState:UIControlStateNormal];
-        [settingsButton setTintColor:[UIColor blackColor]];
-        [settingsButton.titleLabel setFont:[BSPUI boldFontOfSize:16.0f]];
-        [settingsButton setContentEdgeInsets:UIEdgeInsetsMake(2, 10, 2, 10)];
         self.settingsButton = settingsButton;
         
         self.spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
