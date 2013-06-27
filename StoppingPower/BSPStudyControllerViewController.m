@@ -2,6 +2,7 @@
 #import "BSPStudyPairView.h"
 #import "BSPUI.h"
 #import "BSPCompletionView.h"
+#import "BSPInstructionView.h"
 
 @interface BSPStudyControllerViewController ()
 @property (nonatomic) BSPApplicationState *applicationState;
@@ -34,8 +35,12 @@
     [completeView addDoneTarget:self action:@selector(finished)];
     self.completeView = completeView;
     
+    BSPInstructionView *instructionView = [[BSPInstructionView alloc] initWithFrame:self.view.bounds];
+    instructionView.autoresizingMask = UIViewFlexibleHeightWidth;
+    
     [self.view addSubview:pairView];
     [self.view addSubview:completeView];
+    [self.view addSubview:instructionView];
 }
 
 -(void)viewWillAppear:(BOOL)animated {

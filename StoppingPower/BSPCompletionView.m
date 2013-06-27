@@ -12,7 +12,7 @@
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [UIColor blackColor];
+        self.backgroundColor = [UIColor studyBgDarkGray];
         
         UILabel *titleLabel = [BSPUI labelWithFont:[BSPUI boldFontOfSize:48.0f]];
         titleLabel.text = @"Study Complete!";

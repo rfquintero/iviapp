@@ -63,6 +63,9 @@
 		45F01EEF177BD6A10059D2A9 /* BSPCompletionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F01EEE177BD6A10059D2A9 /* BSPCompletionView.m */; };
 		45F01EF2177BF8E10059D2A9 /* BSPResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F01EF1177BF8E00059D2A9 /* BSPResult.m */; };
 		45F01EF5177C10A90059D2A9 /* BSPResultSync.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F01EF4177C10A70059D2A9 /* BSPResultSync.m */; };
+		45F01EF8177C1E5E0059D2A9 /* BSPInstructionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F01EF7177C1E5E0059D2A9 /* BSPInstructionView.m */; };
+		45F01EFB177C214D0059D2A9 /* bg_instructions.png in Resources */ = {isa = PBXBuildFile; fileRef = 45F01EF9177C214C0059D2A9 /* bg_instructions.png */; };
+		45F01EFC177C214D0059D2A9 /* bg_instructions@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 45F01EFA177C214D0059D2A9 /* bg_instructions@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -148,6 +151,10 @@
 		45F01EF1177BF8E00059D2A9 /* BSPResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSPResult.m; sourceTree = "<group>"; };
 		45F01EF3177C10A60059D2A9 /* BSPResultSync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSPResultSync.h; sourceTree = "<group>"; };
 		45F01EF4177C10A70059D2A9 /* BSPResultSync.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSPResultSync.m; sourceTree = "<group>"; };
+		45F01EF6177C1E5D0059D2A9 /* BSPInstructionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSPInstructionView.h; sourceTree = "<group>"; };
+		45F01EF7177C1E5E0059D2A9 /* BSPInstructionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSPInstructionView.m; sourceTree = "<group>"; };
+		45F01EF9177C214C0059D2A9 /* bg_instructions.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_instructions.png; sourceTree = "<group>"; };
+		45F01EFA177C214D0059D2A9 /* bg_instructions@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_instructions@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -337,6 +344,8 @@
 		454407A21755BA8C005D8C22 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				45F01EF9177C214C0059D2A9 /* bg_instructions.png */,
+				45F01EFA177C214D0059D2A9 /* bg_instructions@2x.png */,
 				451CFB05176E6FCC000339DB /* fonts */,
 				454407B51755C4A8005D8C22 /* Common */,
 				454407B41755C4A0005D8C22 /* Landing */,
@@ -403,6 +412,8 @@
 				459C0FBA176F3F5D00C335F9 /* BSPStudyPairView.m */,
 				45F01EED177BD6A10059D2A9 /* BSPCompletionView.h */,
 				45F01EEE177BD6A10059D2A9 /* BSPCompletionView.m */,
+				45F01EF6177C1E5D0059D2A9 /* BSPInstructionView.h */,
+				45F01EF7177C1E5E0059D2A9 /* BSPInstructionView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -494,6 +505,8 @@
 				451CFB1F176E71F7000339DB /* MyriadPro-BoldIt.otf in Resources */,
 				451CFB20176E71F7000339DB /* MyriadPro-It.otf in Resources */,
 				451CFB21176E71F7000339DB /* MyriadPro-Regular.otf in Resources */,
+				45F01EFB177C214D0059D2A9 /* bg_instructions.png in Resources */,
+				45F01EFC177C214D0059D2A9 /* bg_instructions@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -528,6 +541,7 @@
 				45F01EEF177BD6A10059D2A9 /* BSPCompletionView.m in Sources */,
 				45F01EF2177BF8E10059D2A9 /* BSPResult.m in Sources */,
 				45F01EF5177C10A90059D2A9 /* BSPResultSync.m in Sources */,
+				45F01EF8177C1E5E0059D2A9 /* BSPInstructionView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
