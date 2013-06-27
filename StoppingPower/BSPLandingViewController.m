@@ -52,8 +52,9 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(error:) name:BSPStudyModelError object:self.model];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(studySelected) name:BSPStudyViewStudySelected object:self.studyView];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refresh) name:BSPUserModelChanged object:self.userModel];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(retrieveStudies) name:UIApplicationDidBecomeActiveNotification object:nil];
     if(self.model.studies.count < 1) {
-        [self.model retrieveStudies];
+        [self retrieveStudies];
     }
     [self clearFields];
     [self refresh];
@@ -62,6 +63,10 @@
 -(void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+-(void)retrieveStudies {
+    [self.model retrieveStudies];
 }
 
 -(void)clearFields {
