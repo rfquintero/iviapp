@@ -6,6 +6,8 @@
 
 @interface BSPStudyPairView()
 @property (nonatomic) BSPStudy *study;
+@property (nonatomic) BSPImagePair *currentPair;
+
 @property (nonatomic) NSUInteger page;
 @property (nonatomic) UIView *header;
 @property (nonatomic) UILabel *titleLabel;
@@ -86,6 +88,9 @@
     CGSize pageSize = [self.pageLabel sizeThatFits:CGSizeUnbounded];
     [self.pageLabel centerVerticallyAtX:width-pageSize.width-5 inBounds:self.header.bounds withSize:pageSize];
     
+    CGFloat descriptionWidth = width - CGRectGetMaxX(self.titleLabel.frame) - pageSize.width - 5 - 20;
+    [self.descriptionLabel centerVerticallyAtX:CGRectGetMaxX(self.titleLabel.frame)+10 inBounds:self.header.bounds thatFits:CGSizeMake(descriptionWidth, CGFLOAT_MAX)];
+    
     CGRect imageBounds = CGRectMake(0, CGRectGetMaxY(self.header.frame), width, height - self.header.frame.size.height);
     [self.leftImage centerVerticallyAtX:0 inBounds:imageBounds withSize:imageSize];
     [self.rightImage centerVerticallyAtX:width-imageSize.width inBounds:imageBounds withSize:imageSize];
@@ -100,9 +105,9 @@
 
 -(void)loadNextPage {
     if(self.page < self.study.pairs.count) {
-        BSPImagePair *pair = self.study.pairs[self.page];
-        [self.leftImage setImageWithURL:[NSURL URLWithString:pair.leftImageUrlString] forState:UIControlStateNormal];
-        [self.rightImage setImageWithURL:[NSURL URLWithString:pair.rightImageUrlString]  forState:UIControlStateNormal];
+        self.currentPair = self.study.pairs[self.page];
+        [self.leftImage setImageWithURL:[NSURL URLWithString:self.currentPair.leftImageUrlString] forState:UIControlStateNormal];
+        [self.rightImage setImageWithURL:[NSURL URLWithString:self.currentPair.rightImageUrlString]  forState:UIControlStateNormal];
         self.pageLabel.text = [NSString stringWithFormat:@"%i of %i", (self.page+1), self.study.pairs.count];
         
         self.page = self.page + 1;
@@ -113,10 +118,15 @@
 }
 
 -(void)leftSelected {
-    [self loadNextPage];
+    [self imageSelected:self.currentPair.leftId];
 }
 
 -(void)rightSelected {
+    [self imageSelected:self.currentPair.rightId];
+}
+
+-(void)imageSelected:(NSString*)imageId {
+    [[NSNotificationCenter defaultCenter] postNotificationName:BSPStudyPairViewImageSelected object:self userInfo:@{BSPStudyPairViewImageKey : imageId}];
     [self loadNextPage];
 }
 

@@ -7,15 +7,16 @@
 @property (nonatomic) BSPApplicationState *applicationState;
 @property (nonatomic) BSPStudyPairView *pairView;
 @property (nonatomic) BSPCompletionView *completeView;
-@property (nonatomic) BSPStudy *study;
+@property (nonatomic) BSPUserModel *model;
 @end
 
 @implementation BSPStudyControllerViewController
 
--(id)initWithAppState:(BSPApplicationState*)applicationState study:(BSPStudy*)study {
+-(id)initWithAppState:(BSPApplicationState*)applicationState userModel:(BSPUserModel*)userModel {
     if(self = [super init]) {
         self.applicationState = applicationState;
-        self.study = study;
+        self.model = userModel;
+        [self.model prepare];
     }
     return self;
 }
@@ -23,7 +24,7 @@
 -(void)loadView {
     [super loadView];
     
-    BSPStudyPairView *pairView = [[BSPStudyPairView alloc] initWithFrame:self.view.bounds study:self.study];
+    BSPStudyPairView *pairView = [[BSPStudyPairView alloc] initWithFrame:self.view.bounds study:self.model.study];
     pairView.autoresizingMask = UIViewFlexibleHeightWidth;
     self.pairView = pairView;
     
@@ -41,6 +42,7 @@
     [super viewWillAppear:animated];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(studyComplete) name:BSPStudyPairViewCompleted object:self.pairView];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(studyCancelled) name:BSPStudyPairViewCancelled object:self.pairView];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(imageSelected:) name:BSPStudyPairViewImageSelected object:self.pairView];
 }
 
 -(void)viewWillDisappear:(BOOL)animated {
@@ -56,7 +58,12 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+-(void)imageSelected:(NSNotification*)notification {
+    [self.model selectedImageWithId:notification.userInfo[BSPStudyPairViewImageKey]];
+}
+
 -(void)finished {
+    [self.applicationState.resultSync addResult:[self.model createResult]];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

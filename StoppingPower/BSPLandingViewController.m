@@ -52,10 +52,13 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(error:) name:BSPStudyModelError object:self.model];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(studySelected) name:BSPStudyViewStudySelected object:self.studyView];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refresh) name:BSPUserModelChanged object:self.userModel];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(retrieveStudies) name:UIApplicationDidBecomeActiveNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(becameActive) name:UIApplicationDidBecomeActiveNotification object:nil];
+
     if(self.model.studies.count < 1) {
-        [self retrieveStudies];
+        [self updateStudies];
     }
+    
+    [self syncResults];
     [self clearFields];
     [self refresh];
 }
@@ -65,8 +68,17 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
--(void)retrieveStudies {
+-(void)syncResults {
+    [self.applicationState.resultSync sync];
+}
+
+-(void)updateStudies {
     [self.model retrieveStudies];
+}
+
+-(void)becameActive {
+    [self updateStudies];
+    [self syncResults];
 }
 
 -(void)clearFields {
@@ -100,7 +112,7 @@
 
 -(void)startSelected {
     if(self.studyView.selectedStudy) {
-        UIViewController *vc = [[BSPStudyControllerViewController alloc] initWithAppState:self.applicationState study:self.studyView.selectedStudy];
+        UIViewController *vc = [[BSPStudyControllerViewController alloc] initWithAppState:self.applicationState userModel:self.userModel];
         [self.navigationController pushViewController:vc animated:YES];
     }
 }

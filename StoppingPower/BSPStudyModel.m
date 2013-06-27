@@ -41,7 +41,7 @@
         if(published) {
             NSString *objectId = jsonStudy[@"id"];
             NSString *title = jsonStudy[@"name"];
-            NSString *description = nil;
+            NSString *description = jsonStudy[@"caption"];
             NSArray *pairs = [self parsePairs:jsonStudy[@"pairs"]];
 
             [studies addObject:[[BSPStudy alloc] initWithId:objectId title:title description:description pairs:pairs]];
@@ -55,13 +55,12 @@
 -(NSArray*)parsePairs:(NSArray*)jsonPairs {
     NSMutableArray *pairs = [NSMutableArray array];
     for(NSDictionary *jsonPair in jsonPairs) {
-        NSString *leftUrl = [NSString stringWithFormat:@"%@", jsonPair[@"choice1"]];
-        NSString *rightUrl = [NSString stringWithFormat:@"%@", jsonPair[@"choice2"]];
-        NSUInteger clickCount = 0;
+        NSString *leftUrl = jsonPair[@"choice1"];
+        NSString *rightUrl = jsonPair[@"choice2"];
+        NSString *leftId = jsonPair[@"choice1_id"];
+        NSString *rightId = jsonPair[@"choice2_id"];
         
-        BSPImagePair *pair = [[BSPImagePair alloc] initWithLeftImageUrlString:leftUrl right:rightUrl];
-        pair.clickCount = clickCount;
-        [pairs addObject:pair];
+        [pairs addObject:[[BSPImagePair alloc] initWithLeftId:leftId leftUrlString:leftUrl rightId:rightId rightUrlString:rightUrl]];
     }
     
     return pairs;
@@ -111,6 +110,7 @@
     SDWebImageManager *manager = [SDWebImageManager sharedManager];
     [manager downloadWithURL:imageUrl options:0 progress:^(NSUInteger receivedSize, long long expectedSize) {}
                    completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished) {
+                       NSLog(@"Image Retrieved from (0-web, 1-disk, 2-mem): %i", cacheType);
                        if(image && finished) {
                            [self performSelectorOnMainThread:@selector(imageRetrieved) withObject:nil waitUntilDone:NO];
                        } else {

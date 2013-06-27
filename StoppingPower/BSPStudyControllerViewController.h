@@ -1,7 +1,7 @@
 #import <UIKit/UIKit.h>
 #import "BSPApplicationState.h"
-#import "BSPStudy.h"
+#import "BSPUserModel.h"
 
 @interface BSPStudyControllerViewController : UIViewController
--(id)initWithAppState:(BSPApplicationState*)applicationState study:(BSPStudy*)study;
+-(id)initWithAppState:(BSPApplicationState*)applicationState userModel:(BSPUserModel*)userModel;
 @end

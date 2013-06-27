@@ -61,6 +61,8 @@
 		459C0FBB176F3F5D00C335F9 /* BSPStudyPairView.m in Sources */ = {isa = PBXBuildFile; fileRef = 459C0FBA176F3F5D00C335F9 /* BSPStudyPairView.m */; };
 		45F01ED21778C6B50059D2A9 /* BSPUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F01ED11778C6B50059D2A9 /* BSPUserModel.m */; };
 		45F01EEF177BD6A10059D2A9 /* BSPCompletionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F01EEE177BD6A10059D2A9 /* BSPCompletionView.m */; };
+		45F01EF2177BF8E10059D2A9 /* BSPResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F01EF1177BF8E00059D2A9 /* BSPResult.m */; };
+		45F01EF5177C10A90059D2A9 /* BSPResultSync.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F01EF4177C10A70059D2A9 /* BSPResultSync.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -142,6 +144,10 @@
 		45F01ED11778C6B50059D2A9 /* BSPUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSPUserModel.m; sourceTree = "<group>"; };
 		45F01EED177BD6A10059D2A9 /* BSPCompletionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSPCompletionView.h; sourceTree = "<group>"; };
 		45F01EEE177BD6A10059D2A9 /* BSPCompletionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSPCompletionView.m; sourceTree = "<group>"; };
+		45F01EF0177BF8E00059D2A9 /* BSPResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSPResult.h; sourceTree = "<group>"; };
+		45F01EF1177BF8E00059D2A9 /* BSPResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSPResult.m; sourceTree = "<group>"; };
+		45F01EF3177C10A60059D2A9 /* BSPResultSync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSPResultSync.h; sourceTree = "<group>"; };
+		45F01EF4177C10A70059D2A9 /* BSPResultSync.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSPResultSync.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +178,10 @@
 				459C0FAA176EDAC200C335F9 /* BSPDao.m */,
 				459C0FAC176EE38600C335F9 /* BSPApplicationState.h */,
 				459C0FAD176EE38600C335F9 /* BSPApplicationState.m */,
+				45F01EF0177BF8E00059D2A9 /* BSPResult.h */,
+				45F01EF1177BF8E00059D2A9 /* BSPResult.m */,
+				45F01EF3177C10A60059D2A9 /* BSPResultSync.h */,
+				45F01EF4177C10A70059D2A9 /* BSPResultSync.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -516,6 +526,8 @@
 				459C0FBB176F3F5D00C335F9 /* BSPStudyPairView.m in Sources */,
 				45F01ED21778C6B50059D2A9 /* BSPUserModel.m in Sources */,
 				45F01EEF177BD6A10059D2A9 /* BSPCompletionView.m in Sources */,
+				45F01EF2177BF8E10059D2A9 /* BSPResult.m in Sources */,
+				45F01EF5177C10A90059D2A9 /* BSPResultSync.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

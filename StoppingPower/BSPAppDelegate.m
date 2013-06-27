@@ -17,8 +17,7 @@
 
 @implementation BSPAppDelegate
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
     BSPApplicationState *applicationState = [[BSPApplicationState alloc] init];
@@ -28,6 +27,10 @@
     self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[BSPLandingViewController alloc] initWithAppState:applicationState]];
     [self.window makeKeyAndVisible];
     return YES;
+}
+
+-(void)applicationDidEnterBackground:(UIApplication *)application {
+    [self.applicationState.resultSync saveToDisk];
 }
 
 @end
