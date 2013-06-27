@@ -12,4 +12,5 @@
 - (id)initWithFrame:(CGRect)frame contentView:(UIView*)contentView;
 -(void)setTitle:(NSString*)title;
 -(void)setRightButtonTitle:(NSString*)title target:(id)target action:(SEL)action;
+-(void)setRightButtonEnabled:(BOOL)enabled;
 @end

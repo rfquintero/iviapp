@@ -66,6 +66,9 @@
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(maleSelected) name:BSPUserInfoViewMaleSelected object:self.userInfoView];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(femaleSelected) name:BSPUserInfoViewFemaleSelected object:self.userInfoView];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(firstNameChanged:) name:BSPUserInfoViewFirstNameChanged object:self.userInfoView];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(lastNameChanged:) name:BSPUserInfoViewLastNameChanged object:self.userInfoView];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(groupChanged:) name:BSPUserInfoViewGroupChanged object:self.userInfoView];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardShown) name:UIKeyboardDidShowNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardHidden) name:UIKeyboardDidHideNotification object:nil];
     }
@@ -93,12 +96,22 @@
     [self.settingsButton setFrameAtOrigin:CGPointMake(20, self.bounds.size.height-50) thatFits:CGSizeUnbounded];
 }
 
+-(void)setStartEnabled:(BOOL)enabled {
+    [self.panelView setRightButtonEnabled:enabled];
+}
+
 -(void)setMaleSelected:(BOOL)selected {
     [self.userInfoView setMaleSelected:selected];
 }
 
 -(void)setFemaleSelected:(BOOL)selected {
     [self.userInfoView setFemaleSelected:selected];
+}
+
+-(void)clearFields {
+    [self.userInfoView setMaleSelected:NO];
+    [self.userInfoView setFemaleSelected:NO];
+    [self.userInfoView clearFields];
 }
 
 -(void)animateOffsetX:(CGFloat)offsetX showInfo:(BOOL)show {
@@ -137,6 +150,10 @@
     }
 }
 
+-(void)stopLoadingIndicator {
+    [self.spinner stopAnimating];
+}
+
 #pragma mark callbacks
 
 -(void)startSelected {
@@ -153,6 +170,18 @@
 
 -(void)femaleSelected {
     [self.landingDelegate femaleSelected];
+}
+
+-(void)firstNameChanged:(NSNotification*)notification {
+    [self.landingDelegate firstNameChanged:notification.userInfo[BSPUserInfoViewValueKey]];
+}
+
+-(void)lastNameChanged:(NSNotification*)notification {
+    [self.landingDelegate lastNameChanged:notification.userInfo[BSPUserInfoViewValueKey]];
+}
+
+-(void)groupChanged:(NSNotification*)notification {
+    [self.landingDelegate groupChanged:notification.userInfo[BSPUserInfoViewValueKey]];
 }
 
 # pragma mark keyboard

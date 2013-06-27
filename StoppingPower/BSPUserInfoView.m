@@ -63,14 +63,28 @@
     [self.femaleButton setSelected:selected];
 }
 
+-(void)postNotification:(NSString*)name value:(id)value {
+    NSDictionary *userInfo = nil;
+    if(value) {
+        userInfo = @{BSPUserInfoViewValueKey : value};
+    }
+    [[NSNotificationCenter defaultCenter] postNotificationName:name object:self userInfo:userInfo];
+}
+
 #pragma mark callbacks
 
 -(void)maleSelected {
-    [[NSNotificationCenter defaultCenter] postNotificationName:BSPUserInfoViewMaleSelected object:self];
+    [self postNotification:BSPUserInfoViewMaleSelected value:nil];
 }
 
 -(void)femaleSelected {
-    [[NSNotificationCenter defaultCenter] postNotificationName:BSPUserInfoViewFemaleSelected object:self];
+    [self postNotification:BSPUserInfoViewFemaleSelected value:nil];
+}
+
+-(void)clearFields {
+    for (BSPUserInfoCell *cell in [self.tableView visibleCells]) {
+        [cell clear];
+    }
 }
 
 #pragma mark UITableViewDataSource
@@ -128,6 +142,16 @@
         [textField resignFirstResponder];
     }
     return NO;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    if(textField.tag == 0) {
+        [self postNotification:BSPUserInfoViewFirstNameChanged value:textField.text];
+    } else if (textField.tag == 1) {
+        [self postNotification:BSPUserInfoViewLastNameChanged value:textField.text];
+    } else if (textField.tag == 2) {
+        [self postNotification:BSPUserInfoViewGroupChanged value:textField.text];
+    }
 }
 
 @end

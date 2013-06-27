@@ -51,4 +51,8 @@
     [self.navItem setRightBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:title style:UIBarButtonItemStyleDone target:target action:action] animated:NO];
 }
 
+-(void)setRightButtonEnabled:(BOOL)enabled {
+    self.navItem.rightBarButtonItem.enabled = enabled;
+}
+
 @end

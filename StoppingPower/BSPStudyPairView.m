@@ -1,6 +1,7 @@
 #import "BSPStudyPairView.h"
 #import "BSPUI.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import <SDWebImage/UIButton+WebCache.h>
 #import "BSPImagePair.h"
 
 @interface BSPStudyPairView()
@@ -10,8 +11,8 @@
 @property (nonatomic) UILabel *titleLabel;
 @property (nonatomic) UILabel *descriptionLabel;
 @property (nonatomic) UILabel *pageLabel;
-@property (nonatomic) UIImageView *leftImage;
-@property (nonatomic) UIImageView *rightImage;
+@property (nonatomic) UIButton *leftImage;
+@property (nonatomic) UIButton *rightImage;
 @property (nonatomic) UIButton *cancelButton;
 @end
 
@@ -36,18 +37,13 @@
         self.pageLabel = [BSPUI labelWithFont:[BSPUI fontOfSize:14.0f]];
         self.pageLabel.textColor = [UIColor whiteColor];
         
-        UITapGestureRecognizer *leftTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(leftSelected)];
-        UITapGestureRecognizer *rightTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(leftSelected)];
+        self.leftImage = [UIButton buttonWithType:UIButtonTypeCustom];
+        self.leftImage.imageView.contentMode = UIViewContentModeScaleAspectFit;
+        [self.leftImage addTarget:self action:@selector(leftSelected) forControlEvents:UIControlEventTouchUpInside];
         
-        self.leftImage = [[UIImageView alloc] initWithFrame:CGRectZero];
-        self.leftImage.contentMode = UIViewContentModeScaleAspectFit;
-        self.leftImage.userInteractionEnabled = YES;
-        [self.leftImage addGestureRecognizer:leftTap];
-        
-        self.rightImage = [[UIImageView alloc] initWithFrame:CGRectZero];
-        self.rightImage.contentMode = UIViewContentModeScaleAspectFit;
-        self.rightImage.userInteractionEnabled = YES;
-        [self.rightImage addGestureRecognizer:rightTap];
+        self.rightImage = [UIButton buttonWithType:UIButtonTypeCustom];
+        self.rightImage.imageView.contentMode = UIViewContentModeScaleAspectFit;
+        [self.rightImage addTarget:self action:@selector(rightSelected) forControlEvents:UIControlEventTouchUpInside];
         
         UIImage *buttonImage = [UIImage imageNamed:@"button_black"];
         buttonImage = [buttonImage resizableImageWithCapInsets:UIEdgeInsetsMake(0, 8, 0, 8)];
@@ -105,8 +101,8 @@
 -(void)loadNextPage {
     if(self.page < self.study.pairs.count) {
         BSPImagePair *pair = self.study.pairs[self.page];
-        [self.leftImage setImageWithURL:[NSURL URLWithString:pair.leftImageUrlString]];
-        [self.rightImage setImageWithURL:[NSURL URLWithString:pair.rightImageUrlString]];
+        [self.leftImage setImageWithURL:[NSURL URLWithString:pair.leftImageUrlString] forState:UIControlStateNormal];
+        [self.rightImage setImageWithURL:[NSURL URLWithString:pair.rightImageUrlString]  forState:UIControlStateNormal];
         self.pageLabel.text = [NSString stringWithFormat:@"%i of %i", (self.page+1), self.study.pairs.count];
         
         self.page = self.page + 1;
@@ -117,6 +113,10 @@
 }
 
 -(void)leftSelected {
+    [self loadNextPage];
+}
+
+-(void)rightSelected {
     [self loadNextPage];
 }
 

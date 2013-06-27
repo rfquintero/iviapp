@@ -47,4 +47,8 @@
     self.textField.delegate = delegate;
 }
 
+-(void)clear {
+    self.textField.text = @"";
+}
+
 @end

@@ -13,4 +13,5 @@
 -(void)setTitle:(NSString*)title;
 -(void)setInputTag:(NSInteger)tag;
 -(void)setInputDelegate:(id<UITextFieldDelegate>)delegate;
+-(void)clear;
 @end

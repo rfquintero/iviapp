@@ -103,6 +103,7 @@
             
         [tableView endUpdates];
     }
+    [[NSNotificationCenter defaultCenter] postNotificationName:BSPStudyViewStudySelected object:self];
 }
 
 @end
