@@ -109,6 +109,10 @@
 		45F01FB1177CE5A00059D2A9 /* BSPInstructionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F01EF7177C1E5E0059D2A9 /* BSPInstructionView.m */; };
 		45F01FB2177CE5AC0059D2A9 /* BSPDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F01F03177CD0AD0059D2A9 /* BSPDatabase.m */; };
 		45F01FB3177CE5AC0059D2A9 /* BSPDatabaseUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F01F20177CD1E10059D2A9 /* BSPDatabaseUtilities.m */; };
+		45F01FD3177D00810059D2A9 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 45F01FCF177D00800059D2A9 /* README.md */; };
+		45F01FD4177D00810059D2A9 /* release_notes.md in Resources */ = {isa = PBXBuildFile; fileRef = 45F01FD0177D00800059D2A9 /* release_notes.md */; };
+		45F01FD5177D00CD0059D2A9 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 45F01FCE177D00800059D2A9 /* libTestFlight.a */; };
+		45F01FD7177D00E20059D2A9 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 45F01FD6177D00DF0059D2A9 /* libz.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -231,6 +235,11 @@
 		45F01F93177CE2DA0059D2A9 /* OCMockRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMockRecorder.h; sourceTree = "<group>"; };
 		45F01F96177CE3DD0059D2A9 /* BSPDatabaseTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSPDatabaseTest.h; sourceTree = "<group>"; };
 		45F01F97177CE3DD0059D2A9 /* BSPDatabaseTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSPDatabaseTest.m; sourceTree = "<group>"; };
+		45F01FCE177D00800059D2A9 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
+		45F01FCF177D00800059D2A9 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		45F01FD0177D00800059D2A9 /* release_notes.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes.md; sourceTree = "<group>"; };
+		45F01FD1177D00800059D2A9 /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
+		45F01FD6177D00DF0059D2A9 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -238,6 +247,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45F01FD7177D00E20059D2A9 /* libz.dylib in Frameworks */,
 				45F01F48177CD5210059D2A9 /* libsqlite3.dylib in Frameworks */,
 				459C0FA2176ED5A100C335F9 /* SDWebImage.framework in Frameworks */,
 				451CFB25176ED2C3000339DB /* ImageIO.framework in Frameworks */,
@@ -245,6 +255,7 @@
 				4544076C1755A9E9005D8C22 /* UIKit.framework in Frameworks */,
 				4544076E1755A9E9005D8C22 /* Foundation.framework in Frameworks */,
 				454407701755A9E9005D8C22 /* CoreGraphics.framework in Frameworks */,
+				45F01FD5177D00CD0059D2A9 /* libTestFlight.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,6 +311,7 @@
 		4544075F1755A9E9005D8C22 = {
 			isa = PBXGroup;
 			children = (
+				45F01FD6177D00DF0059D2A9 /* libz.dylib */,
 				454407711755A9E9005D8C22 /* StoppingPower */,
 				45F01F72177CE2960059D2A9 /* StoppingPowerTests */,
 				4544076A1755A9E9005D8C22 /* Frameworks */,
@@ -320,6 +332,7 @@
 		4544076A1755A9E9005D8C22 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				45F01FCD177D00800059D2A9 /* TestFlightSDK1.2.6 */,
 				45F01F8B177CE2DA0059D2A9 /* GHUnitIOS.framework */,
 				45F01F8C177CE2DA0059D2A9 /* OCMock */,
 				45F01F47177CD51F0059D2A9 /* libsqlite3.dylib */,
@@ -576,6 +589,18 @@
 			path = Frameworks/OCMock;
 			sourceTree = "<group>";
 		};
+		45F01FCD177D00800059D2A9 /* TestFlightSDK1.2.6 */ = {
+			isa = PBXGroup;
+			children = (
+				45F01FCE177D00800059D2A9 /* libTestFlight.a */,
+				45F01FCF177D00800059D2A9 /* README.md */,
+				45F01FD0177D00800059D2A9 /* release_notes.md */,
+				45F01FD1177D00800059D2A9 /* TestFlight.h */,
+			);
+			name = TestFlightSDK1.2.6;
+			path = Frameworks/TestFlightSDK1.2.6;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -686,6 +711,8 @@
 				45F01F7F177CE2970059D2A9 /* Default.png in Resources */,
 				45F01F81177CE2970059D2A9 /* Default@2x.png in Resources */,
 				45F01F83177CE2970059D2A9 /* Default-568h@2x.png in Resources */,
+				45F01FD3177D00810059D2A9 /* README.md in Resources */,
+				45F01FD4177D00810059D2A9 /* release_notes.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -860,6 +887,10 @@
 				GCC_PREFIX_HEADER = "StoppingPower/StoppingPower-Prefix.pch";
 				INFOPLIST_FILE = "StoppingPower/StoppingPower-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Frameworks/TestFlightSDK1.2.6\"",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -879,6 +910,10 @@
 				GCC_PREFIX_HEADER = "StoppingPower/StoppingPower-Prefix.pch";
 				INFOPLIST_FILE = "StoppingPower/StoppingPower-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Frameworks/TestFlightSDK1.2.6\"",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -902,6 +937,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Frameworks/OCMock\"",
+					"\"$(SRCROOT)/Frameworks/TestFlightSDK1.2.6\"",
 				);
 				OTHER_LDFLAGS = (
 					"-all_load",
@@ -929,6 +965,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Frameworks/OCMock\"",
+					"\"$(SRCROOT)/Frameworks/TestFlightSDK1.2.6\"",
 				);
 				OTHER_LDFLAGS = (
 					"-all_load",
