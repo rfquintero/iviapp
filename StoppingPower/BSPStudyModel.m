@@ -39,9 +39,9 @@
     for(NSDictionary *jsonStudy in jsonStudies) {
         BOOL published = [jsonStudy[@"published"] boolValue];
         if(published) {
-            NSString *objectId = jsonStudy[@"id"];
-            NSString *title = jsonStudy[@"name"];
-            NSString *description = jsonStudy[@"caption"];
+            NSString *objectId = [self nullSafe:jsonStudy[@"id"]];
+            NSString *title = [self nullSafe:jsonStudy[@"name"]];
+            NSString *description = [self nullSafe:jsonStudy[@"caption"]];
             NSArray *pairs = [self parsePairs:jsonStudy[@"pairs"]];
 
             [studies addObject:[[BSPStudy alloc] initWithId:objectId title:title description:description pairs:pairs]];
@@ -55,15 +55,26 @@
 -(NSArray*)parsePairs:(NSArray*)jsonPairs {
     NSMutableArray *pairs = [NSMutableArray array];
     for(NSDictionary *jsonPair in jsonPairs) {
-        NSString *leftUrl = jsonPair[@"choice1"];
-        NSString *rightUrl = jsonPair[@"choice2"];
-        NSString *leftId = jsonPair[@"choice1_id"];
-        NSString *rightId = jsonPair[@"choice2_id"];
+        NSString *leftUrl = [self nullSafe:jsonPair[@"choice1"]];
+        NSString *rightUrl = [self nullSafe:jsonPair[@"choice2"]];
+        NSString *leftId = [self nullSafe:jsonPair[@"choice1_id"]];
+        NSString *rightId = [self nullSafe:jsonPair[@"choice2_id"]];
         
         [pairs addObject:[[BSPImagePair alloc] initWithLeftId:leftId leftUrlString:leftUrl rightId:rightId rightUrlString:rightUrl]];
     }
     
     return pairs;
+}
+
+-(NSString*)nullSafe:(NSString*)string {
+    if(string == NULL) {
+        return @"";
+    } else if (!string) {
+        return @"";
+    } else if ([NSNull null] == string) {
+        return @"";
+    }
+    return string;
 }
 
 -(void)postNotificationOnMainThread:(NSString*)name userInfo:(NSDictionary*)userInfo {
