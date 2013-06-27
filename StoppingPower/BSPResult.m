@@ -1,45 +1,30 @@
 #import "BSPResult.h"
 
-@interface BSPResult()
-@property (nonatomic) NSMutableDictionary *dictionary;
-@end
-
 @implementation BSPResult
 
--(id)init {
-    if(self = [super init]) {
-        self.dictionary = [NSMutableDictionary dictionary];
-    }
-    return self;
+-(void)setStudyId:(NSString *)studyId {
+    _studyId = [self stringify:studyId];
 }
 
--(void)setFirstName:(NSString*)firstName {
-    self.dictionary[@"first_name"] = firstName;
+-(void)setGroupId:(NSString *)groupId {
+    _groupId = [self stringify:groupId];
 }
 
--(void)setLastName:(NSString*)lastName {
-    self.dictionary[@"last_name"] = lastName;
-}
-
--(void)setGroupId:(NSString*)groupId {
-    self.dictionary[@"group_id"] = groupId;
-}
-
--(void)setGender:(NSString*)gender {
-    self.dictionary[@"gender"] = gender;
-}
-
--(void)setStudyId:(NSString*)studyId {
-    self.dictionary[@"study_id"] = studyId;
-}
-
--(void)setSelections:(NSArray*)selections {
-    self.dictionary[@"selections"] = selections;
+-(NSString*)stringify:(id)value {
+    return [NSString stringWithFormat:@"%@", value];
 }
 
 -(NSData*)jsonData {
-    NSDictionary *result = @{@"result" : self.dictionary};
-    return [NSJSONSerialization dataWithJSONObject:result options:0 error:nil];
+    NSMutableDictionary *result = [NSMutableDictionary dictionary];
+    result[@"first_name"] = self.firstName;
+    result[@"last_name"] = self.lastName;
+    result[@"group_id"] = self.groupId;
+    result[@"gender"] = self.gender;
+    result[@"study_id"] = self.studyId;
+    result[@"selections"] = self.selections;
+    
+    NSDictionary *jsonResult = @{@"result" : result};
+    return [NSJSONSerialization dataWithJSONObject:jsonResult options:0 error:nil];
 }
 
 @end

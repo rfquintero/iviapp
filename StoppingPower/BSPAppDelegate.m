@@ -29,8 +29,4 @@
     return YES;
 }
 
--(void)applicationDidEnterBackground:(UIApplication *)application {
-    [self.applicationState.resultSync saveToDisk];
-}
-
 @end

@@ -66,7 +66,60 @@
 		45F01EF8177C1E5E0059D2A9 /* BSPInstructionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F01EF7177C1E5E0059D2A9 /* BSPInstructionView.m */; };
 		45F01EFB177C214D0059D2A9 /* bg_instructions.png in Resources */ = {isa = PBXBuildFile; fileRef = 45F01EF9177C214C0059D2A9 /* bg_instructions.png */; };
 		45F01EFC177C214D0059D2A9 /* bg_instructions@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 45F01EFA177C214D0059D2A9 /* bg_instructions@2x.png */; };
+		45F01F04177CD0B30059D2A9 /* BSPDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F01F03177CD0AD0059D2A9 /* BSPDatabase.m */; };
+		45F01F21177CD1E10059D2A9 /* BSPDatabaseUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F01F20177CD1E10059D2A9 /* BSPDatabaseUtilities.m */; };
+		45F01F48177CD5210059D2A9 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 45F01F47177CD51F0059D2A9 /* libsqlite3.dylib */; };
+		45F01F6F177CE2960059D2A9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4544076B1755A9E9005D8C22 /* UIKit.framework */; };
+		45F01F70177CE2960059D2A9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4544076D1755A9E9005D8C22 /* Foundation.framework */; };
+		45F01F71177CE2960059D2A9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4544076F1755A9E9005D8C22 /* CoreGraphics.framework */; };
+		45F01F77177CE2970059D2A9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 45F01F75177CE2970059D2A9 /* InfoPlist.strings */; };
+		45F01F79177CE2970059D2A9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F01F78177CE2970059D2A9 /* main.m */; };
+		45F01F7F177CE2970059D2A9 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 45F01F7E177CE2970059D2A9 /* Default.png */; };
+		45F01F81177CE2970059D2A9 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 45F01F80177CE2970059D2A9 /* Default@2x.png */; };
+		45F01F83177CE2970059D2A9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 45F01F82177CE2970059D2A9 /* Default-568h@2x.png */; };
+		45F01F87177CE2C60059D2A9 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 459C0FA1176ED5A100C335F9 /* SDWebImage.framework */; };
+		45F01F88177CE2C70059D2A9 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 451CFB24176ED2C3000339DB /* ImageIO.framework */; };
+		45F01F89177CE2C70059D2A9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 454407AB1755BC01005D8C22 /* QuartzCore.framework */; };
+		45F01F8A177CE2CA0059D2A9 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 45F01F47177CD51F0059D2A9 /* libsqlite3.dylib */; };
+		45F01F94177CE2DA0059D2A9 /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45F01F8B177CE2DA0059D2A9 /* GHUnitIOS.framework */; };
+		45F01F95177CE2DA0059D2A9 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 45F01F8D177CE2DA0059D2A9 /* libOCMock.a */; };
+		45F01F98177CE3DD0059D2A9 /* BSPDatabaseTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F01F97177CE3DD0059D2A9 /* BSPDatabaseTest.m */; };
+		45F01F9B177CE5860059D2A9 /* BSPUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F01ED11778C6B50059D2A9 /* BSPUserModel.m */; };
+		45F01F9C177CE5860059D2A9 /* BSPStudyControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 459C0FB4176F3E9D00C335F9 /* BSPStudyControllerViewController.m */; };
+		45F01F9D177CE5860059D2A9 /* UIView+Layouts.m in Sources */ = {isa = PBXBuildFile; fileRef = 454407991755B5A3005D8C22 /* UIView+Layouts.m */; };
+		45F01F9E177CE5860059D2A9 /* UIColor+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = 454407C91755D4C6005D8C22 /* UIColor+Custom.m */; };
+		45F01F9F177CE5860059D2A9 /* BSPStudy.m in Sources */ = {isa = PBXBuildFile; fileRef = 451CFAFC176E48A6000339DB /* BSPStudy.m */; };
+		45F01FA0177CE5860059D2A9 /* BSPImagePair.m in Sources */ = {isa = PBXBuildFile; fileRef = 459C0FA7176ED77E00C335F9 /* BSPImagePair.m */; };
+		45F01FA1177CE5860059D2A9 /* BSPDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 459C0FAA176EDAC200C335F9 /* BSPDao.m */; };
+		45F01FA2177CE5860059D2A9 /* BSPApplicationState.m in Sources */ = {isa = PBXBuildFile; fileRef = 459C0FAD176EE38600C335F9 /* BSPApplicationState.m */; };
+		45F01FA3177CE5860059D2A9 /* BSPResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F01EF1177BF8E00059D2A9 /* BSPResult.m */; };
+		45F01FA4177CE5860059D2A9 /* BSPResultSync.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F01EF4177C10A70059D2A9 /* BSPResultSync.m */; };
+		45F01FA5177CE5860059D2A9 /* BSPGroupedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 454407C31755CBBC005D8C22 /* BSPGroupedButton.m */; };
+		45F01FA6177CE5860059D2A9 /* BSPPanelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 454407951755B4AC005D8C22 /* BSPPanelView.m */; };
+		45F01FA7177CE5860059D2A9 /* BSPUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 454407A01755B915005D8C22 /* BSPUI.m */; };
+		45F01FA8177CE5860059D2A9 /* BSPStudyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 459C0FA4176ED65300C335F9 /* BSPStudyModel.m */; };
+		45F01FA9177CE5860059D2A9 /* BSPLandingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 454407901755B343005D8C22 /* BSPLandingView.m */; };
+		45F01FAA177CE5860059D2A9 /* BSPUserInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 454407B21755C230005D8C22 /* BSPUserInfoView.m */; };
+		45F01FAB177CE5860059D2A9 /* BSPUserInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 454407C61755D3F2005D8C22 /* BSPUserInfoCell.m */; };
+		45F01FAC177CE5860059D2A9 /* BSPStudyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 451CFAF8176E482B000339DB /* BSPStudyView.m */; };
+		45F01FAD177CE5860059D2A9 /* BSPStudyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 451CFAE9176E3B99000339DB /* BSPStudyTableViewCell.m */; };
+		45F01FAE177CE5860059D2A9 /* BSPLandingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4544078D1755B220005D8C22 /* BSPLandingViewController.m */; };
+		45F01FAF177CE5A00059D2A9 /* BSPStudyPairView.m in Sources */ = {isa = PBXBuildFile; fileRef = 459C0FBA176F3F5D00C335F9 /* BSPStudyPairView.m */; };
+		45F01FB0177CE5A00059D2A9 /* BSPCompletionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F01EEE177BD6A10059D2A9 /* BSPCompletionView.m */; };
+		45F01FB1177CE5A00059D2A9 /* BSPInstructionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F01EF7177C1E5E0059D2A9 /* BSPInstructionView.m */; };
+		45F01FB2177CE5AC0059D2A9 /* BSPDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F01F03177CD0AD0059D2A9 /* BSPDatabase.m */; };
+		45F01FB3177CE5AC0059D2A9 /* BSPDatabaseUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F01F20177CD1E10059D2A9 /* BSPDatabaseUtilities.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		45F01F99177CE4EB0059D2A9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 454407601755A9E9005D8C22 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 454407671755A9E9005D8C22;
+			remoteInfo = StoppingPower;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		451CFAE8176E3B99000339DB /* BSPStudyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSPStudyTableViewCell.h; sourceTree = "<group>"; };
@@ -155,6 +208,29 @@
 		45F01EF7177C1E5E0059D2A9 /* BSPInstructionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSPInstructionView.m; sourceTree = "<group>"; };
 		45F01EF9177C214C0059D2A9 /* bg_instructions.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_instructions.png; sourceTree = "<group>"; };
 		45F01EFA177C214D0059D2A9 /* bg_instructions@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_instructions@2x.png"; sourceTree = "<group>"; };
+		45F01F02177CD0AA0059D2A9 /* BSPDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSPDatabase.h; sourceTree = "<group>"; };
+		45F01F03177CD0AD0059D2A9 /* BSPDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSPDatabase.m; sourceTree = "<group>"; };
+		45F01F1F177CD1E10059D2A9 /* BSPDatabaseUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSPDatabaseUtilities.h; sourceTree = "<group>"; };
+		45F01F20177CD1E10059D2A9 /* BSPDatabaseUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSPDatabaseUtilities.m; sourceTree = "<group>"; };
+		45F01F47177CD51F0059D2A9 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		45F01F6E177CE2960059D2A9 /* StoppingPowerTests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StoppingPowerTests.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		45F01F74177CE2970059D2A9 /* StoppingPowerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "StoppingPowerTests-Info.plist"; sourceTree = "<group>"; };
+		45F01F76177CE2970059D2A9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		45F01F78177CE2970059D2A9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		45F01F7A177CE2970059D2A9 /* StoppingPowerTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "StoppingPowerTests-Prefix.pch"; sourceTree = "<group>"; };
+		45F01F7E177CE2970059D2A9 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		45F01F80177CE2970059D2A9 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		45F01F82177CE2970059D2A9 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		45F01F8B177CE2DA0059D2A9 /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnitIOS.framework; path = Frameworks/GHUnitIOS.framework; sourceTree = "<group>"; };
+		45F01F8D177CE2DA0059D2A9 /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libOCMock.a; sourceTree = "<group>"; };
+		45F01F8E177CE2DA0059D2A9 /* NSNotificationCenter+OCMAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNotificationCenter+OCMAdditions.h"; sourceTree = "<group>"; };
+		45F01F8F177CE2DA0059D2A9 /* OCMArg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMArg.h; sourceTree = "<group>"; };
+		45F01F90177CE2DA0059D2A9 /* OCMConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMConstraint.h; sourceTree = "<group>"; };
+		45F01F91177CE2DA0059D2A9 /* OCMock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMock.h; sourceTree = "<group>"; };
+		45F01F92177CE2DA0059D2A9 /* OCMockObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMockObject.h; sourceTree = "<group>"; };
+		45F01F93177CE2DA0059D2A9 /* OCMockRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMockRecorder.h; sourceTree = "<group>"; };
+		45F01F96177CE3DD0059D2A9 /* BSPDatabaseTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSPDatabaseTest.h; sourceTree = "<group>"; };
+		45F01F97177CE3DD0059D2A9 /* BSPDatabaseTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSPDatabaseTest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,12 +238,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45F01F48177CD5210059D2A9 /* libsqlite3.dylib in Frameworks */,
 				459C0FA2176ED5A100C335F9 /* SDWebImage.framework in Frameworks */,
 				451CFB25176ED2C3000339DB /* ImageIO.framework in Frameworks */,
 				454407AC1755BC01005D8C22 /* QuartzCore.framework in Frameworks */,
 				4544076C1755A9E9005D8C22 /* UIKit.framework in Frameworks */,
 				4544076E1755A9E9005D8C22 /* Foundation.framework in Frameworks */,
 				454407701755A9E9005D8C22 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		45F01F6B177CE2960059D2A9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				45F01F6F177CE2960059D2A9 /* UIKit.framework in Frameworks */,
+				45F01F70177CE2960059D2A9 /* Foundation.framework in Frameworks */,
+				45F01F71177CE2960059D2A9 /* CoreGraphics.framework in Frameworks */,
+				45F01F87177CE2C60059D2A9 /* SDWebImage.framework in Frameworks */,
+				45F01F88177CE2C70059D2A9 /* ImageIO.framework in Frameworks */,
+				45F01F89177CE2C70059D2A9 /* QuartzCore.framework in Frameworks */,
+				45F01F8A177CE2CA0059D2A9 /* libsqlite3.dylib in Frameworks */,
+				45F01F94177CE2DA0059D2A9 /* GHUnitIOS.framework in Frameworks */,
+				45F01F95177CE2DA0059D2A9 /* libOCMock.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,6 +301,7 @@
 			isa = PBXGroup;
 			children = (
 				454407711755A9E9005D8C22 /* StoppingPower */,
+				45F01F72177CE2960059D2A9 /* StoppingPowerTests */,
 				4544076A1755A9E9005D8C22 /* Frameworks */,
 				454407A21755BA8C005D8C22 /* Resources */,
 				454407691755A9E9005D8C22 /* Products */,
@@ -218,6 +312,7 @@
 			isa = PBXGroup;
 			children = (
 				454407681755A9E9005D8C22 /* StoppingPower.app */,
+				45F01F6E177CE2960059D2A9 /* StoppingPowerTests.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -225,6 +320,9 @@
 		4544076A1755A9E9005D8C22 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				45F01F8B177CE2DA0059D2A9 /* GHUnitIOS.framework */,
+				45F01F8C177CE2DA0059D2A9 /* OCMock */,
+				45F01F47177CD51F0059D2A9 /* libsqlite3.dylib */,
 				459C0FA1176ED5A100C335F9 /* SDWebImage.framework */,
 				451CFB24176ED2C3000339DB /* ImageIO.framework */,
 				454407AB1755BC01005D8C22 /* QuartzCore.framework */,
@@ -238,6 +336,7 @@
 		454407711755A9E9005D8C22 /* StoppingPower */ = {
 			isa = PBXGroup;
 			children = (
+				45F01F1E177CD1B70059D2A9 /* Data Storage */,
 				459C0FB0176F3E6800C335F9 /* Study */,
 				454407971755B554005D8C22 /* Categories */,
 				454407921755B471005D8C22 /* Common */,
@@ -427,6 +526,56 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		45F01F1E177CD1B70059D2A9 /* Data Storage */ = {
+			isa = PBXGroup;
+			children = (
+				45F01F02177CD0AA0059D2A9 /* BSPDatabase.h */,
+				45F01F03177CD0AD0059D2A9 /* BSPDatabase.m */,
+				45F01F1F177CD1E10059D2A9 /* BSPDatabaseUtilities.h */,
+				45F01F20177CD1E10059D2A9 /* BSPDatabaseUtilities.m */,
+			);
+			name = "Data Storage";
+			sourceTree = "<group>";
+		};
+		45F01F72177CE2960059D2A9 /* StoppingPowerTests */ = {
+			isa = PBXGroup;
+			children = (
+				45F01F73177CE2970059D2A9 /* Supporting Files */,
+				45F01F96177CE3DD0059D2A9 /* BSPDatabaseTest.h */,
+				45F01F97177CE3DD0059D2A9 /* BSPDatabaseTest.m */,
+			);
+			path = StoppingPowerTests;
+			sourceTree = "<group>";
+		};
+		45F01F73177CE2970059D2A9 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				45F01F74177CE2970059D2A9 /* StoppingPowerTests-Info.plist */,
+				45F01F75177CE2970059D2A9 /* InfoPlist.strings */,
+				45F01F78177CE2970059D2A9 /* main.m */,
+				45F01F7A177CE2970059D2A9 /* StoppingPowerTests-Prefix.pch */,
+				45F01F7E177CE2970059D2A9 /* Default.png */,
+				45F01F80177CE2970059D2A9 /* Default@2x.png */,
+				45F01F82177CE2970059D2A9 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		45F01F8C177CE2DA0059D2A9 /* OCMock */ = {
+			isa = PBXGroup;
+			children = (
+				45F01F8D177CE2DA0059D2A9 /* libOCMock.a */,
+				45F01F8E177CE2DA0059D2A9 /* NSNotificationCenter+OCMAdditions.h */,
+				45F01F8F177CE2DA0059D2A9 /* OCMArg.h */,
+				45F01F90177CE2DA0059D2A9 /* OCMConstraint.h */,
+				45F01F91177CE2DA0059D2A9 /* OCMock.h */,
+				45F01F92177CE2DA0059D2A9 /* OCMockObject.h */,
+				45F01F93177CE2DA0059D2A9 /* OCMockRecorder.h */,
+			);
+			name = OCMock;
+			path = Frameworks/OCMock;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -445,6 +594,24 @@
 			name = StoppingPower;
 			productName = StoppingPower;
 			productReference = 454407681755A9E9005D8C22 /* StoppingPower.app */;
+			productType = "com.apple.product-type.application";
+		};
+		45F01F6D177CE2960059D2A9 /* StoppingPowerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 45F01F84177CE2970059D2A9 /* Build configuration list for PBXNativeTarget "StoppingPowerTests" */;
+			buildPhases = (
+				45F01F6A177CE2960059D2A9 /* Sources */,
+				45F01F6B177CE2960059D2A9 /* Frameworks */,
+				45F01F6C177CE2960059D2A9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				45F01F9A177CE4EB0059D2A9 /* PBXTargetDependency */,
+			);
+			name = StoppingPowerTests;
+			productName = StoppingPowerTests;
+			productReference = 45F01F6E177CE2960059D2A9 /* StoppingPowerTests.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -470,6 +637,7 @@
 			projectRoot = "";
 			targets = (
 				454407671755A9E9005D8C22 /* StoppingPower */,
+				45F01F6D177CE2960059D2A9 /* StoppingPowerTests */,
 			);
 		};
 /* End PBXProject section */
@@ -510,6 +678,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		45F01F6C177CE2960059D2A9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				45F01F77177CE2970059D2A9 /* InfoPlist.strings in Resources */,
+				45F01F7F177CE2970059D2A9 /* Default.png in Resources */,
+				45F01F81177CE2970059D2A9 /* Default@2x.png in Resources */,
+				45F01F83177CE2970059D2A9 /* Default-568h@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -542,16 +721,68 @@
 				45F01EF2177BF8E10059D2A9 /* BSPResult.m in Sources */,
 				45F01EF5177C10A90059D2A9 /* BSPResultSync.m in Sources */,
 				45F01EF8177C1E5E0059D2A9 /* BSPInstructionView.m in Sources */,
+				45F01F04177CD0B30059D2A9 /* BSPDatabase.m in Sources */,
+				45F01F21177CD1E10059D2A9 /* BSPDatabaseUtilities.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		45F01F6A177CE2960059D2A9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				45F01FB2177CE5AC0059D2A9 /* BSPDatabase.m in Sources */,
+				45F01FB3177CE5AC0059D2A9 /* BSPDatabaseUtilities.m in Sources */,
+				45F01FAF177CE5A00059D2A9 /* BSPStudyPairView.m in Sources */,
+				45F01FB0177CE5A00059D2A9 /* BSPCompletionView.m in Sources */,
+				45F01FB1177CE5A00059D2A9 /* BSPInstructionView.m in Sources */,
+				45F01F9B177CE5860059D2A9 /* BSPUserModel.m in Sources */,
+				45F01F9C177CE5860059D2A9 /* BSPStudyControllerViewController.m in Sources */,
+				45F01F9D177CE5860059D2A9 /* UIView+Layouts.m in Sources */,
+				45F01F9E177CE5860059D2A9 /* UIColor+Custom.m in Sources */,
+				45F01F9F177CE5860059D2A9 /* BSPStudy.m in Sources */,
+				45F01FA0177CE5860059D2A9 /* BSPImagePair.m in Sources */,
+				45F01FA1177CE5860059D2A9 /* BSPDao.m in Sources */,
+				45F01FA2177CE5860059D2A9 /* BSPApplicationState.m in Sources */,
+				45F01FA3177CE5860059D2A9 /* BSPResult.m in Sources */,
+				45F01FA4177CE5860059D2A9 /* BSPResultSync.m in Sources */,
+				45F01FA5177CE5860059D2A9 /* BSPGroupedButton.m in Sources */,
+				45F01FA6177CE5860059D2A9 /* BSPPanelView.m in Sources */,
+				45F01FA7177CE5860059D2A9 /* BSPUI.m in Sources */,
+				45F01FA8177CE5860059D2A9 /* BSPStudyModel.m in Sources */,
+				45F01FA9177CE5860059D2A9 /* BSPLandingView.m in Sources */,
+				45F01FAA177CE5860059D2A9 /* BSPUserInfoView.m in Sources */,
+				45F01FAB177CE5860059D2A9 /* BSPUserInfoCell.m in Sources */,
+				45F01FAC177CE5860059D2A9 /* BSPStudyView.m in Sources */,
+				45F01FAD177CE5860059D2A9 /* BSPStudyTableViewCell.m in Sources */,
+				45F01FAE177CE5860059D2A9 /* BSPLandingViewController.m in Sources */,
+				45F01F79177CE2970059D2A9 /* main.m in Sources */,
+				45F01F98177CE3DD0059D2A9 /* BSPDatabaseTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		45F01F9A177CE4EB0059D2A9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 454407671755A9E9005D8C22 /* StoppingPower */;
+			targetProxy = 45F01F99177CE4EB0059D2A9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		454407741755A9E9005D8C22 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				454407751755A9E9005D8C22 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		45F01F75177CE2970059D2A9 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				45F01F76177CE2970059D2A9 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -655,6 +886,60 @@
 			};
 			name = Release;
 		};
+		45F01F85177CE2970059D2A9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "StoppingPowerTests/StoppingPowerTests-Prefix.pch";
+				HEADER_SEARCH_PATHS = "${SRCROOT}/Frameworks/**";
+				INFOPLIST_FILE = "StoppingPowerTests/StoppingPowerTests-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Frameworks/OCMock\"",
+				);
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		45F01F86177CE2970059D2A9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "StoppingPowerTests/StoppingPowerTests-Prefix.pch";
+				HEADER_SEARCH_PATHS = "${SRCROOT}/Frameworks/**";
+				INFOPLIST_FILE = "StoppingPowerTests/StoppingPowerTests-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Frameworks/OCMock\"",
+				);
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -675,6 +960,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		45F01F84177CE2970059D2A9 /* Build configuration list for PBXNativeTarget "StoppingPowerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				45F01F85177CE2970059D2A9 /* Debug */,
+				45F01F86177CE2970059D2A9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

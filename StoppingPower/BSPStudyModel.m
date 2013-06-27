@@ -71,7 +71,7 @@
         return @"";
     } else if (!string) {
         return @"";
-    } else if ([NSNull null] == string) {
+    } else if ([[NSNull null] isEqual:string]) {
         return @"";
     }
     return string;

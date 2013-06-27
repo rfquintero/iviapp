@@ -2,15 +2,15 @@
 
 @interface BSPResultSync()
 @property (nonatomic) BSPDao *dao;
-@property (nonatomic) NSMutableArray *results;
+@property (nonatomic) BSPDatabase *database;
 @property (nonatomic) BOOL syncing;
 @end
 
 @implementation BSPResultSync
--(id)initWithDao:(BSPDao*)dao {
+-(id)initWithDao:(BSPDao*)dao database:(BSPDatabase *)database {
     if(self = [super init]) {
         self.dao = dao;
-        self.results = [NSMutableArray array];
+        self.database = database;
     }
     return self;
 }
@@ -20,14 +20,15 @@
 }
 
 -(void)startSync {
-    if(self.results.count > 0 && !self.syncing) {
+    NSArray *results = [self.database getResults];
+    if(results.count > 0 && !self.syncing) {
         self.syncing = YES;
-        BSPResult *result = self.results[0];
+        BSPResult *result = results[0];
         [self.dao publishResult:result handler:^(NSURLResponse *response, NSData *data, NSError *error) {
             if(!error && response) {
                 NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*)response;
                 if(httpResponse.statusCode == 200) {
-                    [self performSelectorOnMainThread:@selector(resultPosted) withObject:nil waitUntilDone:NO];
+                    [self performSelectorOnMainThread:@selector(resultPosted:) withObject:result waitUntilDone:NO];
                 } else {
                     [self performSelectorOnMainThread:@selector(failed) withObject:nil waitUntilDone:NO];
                 }
@@ -38,9 +39,9 @@
     }
 }
 
--(void)resultPosted {
+-(void)resultPosted:(BSPResult*)result {
     self.syncing = NO;
-    [self.results removeObjectAtIndex:0];
+    [self.database removeResult:result];
     [self startSync];
 }
 
@@ -49,11 +50,7 @@
 }
 
 -(void)addResult:(BSPResult*)result {
-    [self.results addObject:result];
-}
-
--(void)saveToDisk {
-    
+    [self.database saveResult:result];
 }
 
 @end
