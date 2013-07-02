@@ -36,12 +36,39 @@
 
 -(void)layoutSubviews {
     [super layoutSubviews];
-    self.imageView.frame = self.bounds;
-    self.touchView.frame = self.bounds;
+    if(self.imageView.image) {
+        CGSize rect = self.bounds.size;
+        CGSize image = self.imageView.image.size;
+        CGFloat captionHeight = 25;
+        rect.height -= captionHeight;
+        
+        CGFloat xRatio = image.width / rect.width;
+        CGFloat yRatio = image.height / rect.height;
+        CGPoint origin;
+        CGSize size;
+        
+        if(xRatio > yRatio) {
+            CGFloat ratio = rect.width / image.width;
+            size = CGSizeMake(rect.width, image.height*ratio);
+            origin = CGPointMake(0, roundf((rect.height-image.height*ratio)/2));
+        } else {
+            CGFloat ratio = rect.height / image.height;
+            size = CGSizeMake(image.width*ratio, rect.height);
+            origin = CGPointMake(roundf((rect.width-image.width*ratio)/2),0);
+        }
+        
+        self.caption.frame = CGRectMake(0, origin.y, rect.width, captionHeight);
+        self.imageView.frame = CGRectMake(origin.x, origin.y + captionHeight, size.width, size.height);
+        self.touchView.frame = self.imageView.frame;
+    }
 }
 
 -(void)setImageWithURL:(NSString*)imageUrl caption:(NSString*)caption {
-    [self.imageView setImageWithURL:[NSURL URLWithString:imageUrl]];
+    __block id _self = self;
+    [self.imageView setImageWithURL:[NSURL URLWithString:imageUrl] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+        [_self setNeedsLayout];
+    }];
+    [self.caption setText:caption];
 }
 
 -(void)addTarget:(id)target action:(SEL)action {
