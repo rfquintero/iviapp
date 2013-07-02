@@ -8,6 +8,7 @@
 @property (nonatomic) BSPApplicationState *applicationState;
 @property (nonatomic) BSPStudyPairView *pairView;
 @property (nonatomic) BSPCompletionView *completeView;
+@property (nonatomic) BSPInstructionView *instructionView;
 @property (nonatomic) BSPUserModel *model;
 @end
 
@@ -37,6 +38,7 @@
     
     BSPInstructionView *instructionView = [[BSPInstructionView alloc] initWithFrame:self.view.bounds];
     instructionView.autoresizingMask = UIViewFlexibleHeightWidth;
+    self.instructionView = instructionView;
     
     [self.view addSubview:pairView];
     [self.view addSubview:completeView];
@@ -48,11 +50,16 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(studyComplete) name:BSPStudyPairViewCompleted object:self.pairView];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(studyCancelled) name:BSPStudyPairViewCancelled object:self.pairView];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(imageSelected:) name:BSPStudyPairViewImageSelected object:self.pairView];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(startStudy) name:BSPInstructionViewDismissed object:self.instructionView];
 }
 
 -(void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+-(void)startStudy {
+    [self.pairView startStudyTimer];
 }
 
 -(void)studyComplete {

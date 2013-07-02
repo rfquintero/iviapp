@@ -40,6 +40,7 @@
 
 -(void)dismiss {
     self.hidden = YES;
+    [[NSNotificationCenter defaultCenter] postNotificationName:BSPInstructionViewDismissed object:self];
 }
 
 -(void)layoutSubviews {

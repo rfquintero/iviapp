@@ -9,4 +9,5 @@
 @interface BSPStudyPairView : UIView
 -(id)initWithFrame:(CGRect)frame study:(BSPStudy*)study;
 -(void)startStudyTimer;
+-(void)killTimer;
 @end

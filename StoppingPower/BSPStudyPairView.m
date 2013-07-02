@@ -4,10 +4,10 @@
 #import "BSPStudyImage.h"
 
 @interface BSPStudyPairView()
-@property (nonatomic) BSPStudy *study;
 @property (nonatomic) BSPImagePair *currentPair;
+@property (nonatomic) NSMutableArray *pairs;
 
-@property (nonatomic) NSUInteger page;
+@property (nonatomic) NSUInteger totalPairs;
 @property (nonatomic) UIView *header;
 @property (nonatomic) UILabel *titleLabel;
 @property (nonatomic) UILabel *descriptionLabel;
@@ -15,6 +15,10 @@
 @property (nonatomic) BSPStudyImage *leftImage;
 @property (nonatomic) BSPStudyImage *rightImage;
 @property (nonatomic) UIButton *cancelButton;
+@property (nonatomic) UILabel *timerLabel;
+
+@property (nonatomic) NSTimer *timer;
+@property (nonatomic) NSDate *startTime;
 @end
 
 @implementation BSPStudyPairView
@@ -24,8 +28,8 @@
     if (self) {
 
         self.backgroundColor = [UIColor studyBgDarkGray];
-        self.study = study;
-        self.page = 0;
+        self.pairs = [NSMutableArray arrayWithArray:study.pairs];
+        self.totalPairs = self.pairs.count;
         
         self.titleLabel = [BSPUI labelWithFont:[BSPUI boldFontOfSize:16.0f]];
         self.titleLabel.textColor = [UIColor whiteColor];
@@ -43,6 +47,11 @@
                 
         self.rightImage = [[BSPStudyImage alloc] initWithFrame:CGRectZero];
         [self.rightImage addTarget:self action:@selector(leftSelected)];
+        
+        self.timerLabel = [BSPUI labelWithFont:[BSPUI boldFontOfSize:24.0f]];
+        self.timerLabel.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.8f];
+        self.timerLabel.textColor = [UIColor whiteColor];
+        self.timerLabel.textAlignment = NSTextAlignmentCenter;
         
         UIImage *buttonImage = [UIImage imageNamed:@"button_black"];
         buttonImage = [buttonImage resizableImageWithCapInsets:UIEdgeInsetsMake(0, 8, 0, 8)];
@@ -62,10 +71,16 @@
         [self addSubview:self.leftImage];
         [self addSubview:self.rightImage];
         [self addSubview:self.cancelButton];
+        [self addSubview:self.timerLabel];
         
         [self loadNextPage];
     }
     return self;
+}
+
+-(void)dealloc {
+    [self killTimer];
+    self.timer = nil;
 }
 
 -(void)layoutSubviews {
@@ -82,6 +97,8 @@
     CGFloat descriptionWidth = width - CGRectGetMaxX(self.titleLabel.frame) - pageSize.width - 5 - 20;
     [self.descriptionLabel centerVerticallyAtX:CGRectGetMaxX(self.titleLabel.frame)+10 inBounds:self.header.bounds thatFits:CGSizeMake(descriptionWidth, CGFLOAT_MAX)];
     
+    [self.timerLabel centerHorizonallyAtY:CGRectGetMaxY(self.header.frame) inBounds:self.bounds withSize:CGSizeMake(100, 25)];
+    
     CGSize cancelSize = [self.cancelButton sizeThatFits:CGSizeUnbounded];
     self.cancelButton.frame = CGRectMake(width-cancelSize.width-10, height-cancelSize.height-10, cancelSize.width, cancelSize.height);
     
@@ -96,21 +113,43 @@
 }
 
 -(void)loadNextPage {
-    if(self.page < self.study.pairs.count) {
-        self.currentPair = self.study.pairs[self.page];
+    if(self.pairs.count > 0) {
+        self.currentPair = self.pairs[0];
         [self.leftImage setImageWithURL:self.currentPair.leftImageUrlString caption:self.currentPair.leftCaption];
         [self.rightImage setImageWithURL:self.currentPair.rightImageUrlString caption:self.currentPair.rightCaption];
-        self.pageLabel.text = [NSString stringWithFormat:@"%i of %i", (self.page+1), self.study.pairs.count];
+        self.pageLabel.text = [NSString stringWithFormat:@"%i of %i", (self.totalPairs - self.pairs.count + 1), self.totalPairs];
         
-        self.page = self.page + 1;
         [self setNeedsLayout];
     } else {
         [[NSNotificationCenter defaultCenter] postNotificationName:BSPStudyPairViewCompleted object:self];
     }
 }
 
+-(void)setTimer:(NSTimer *)timer {
+    [self.timer invalidate];
+    _timer = timer;
+}
+
+-(void)killTimer {
+    self.timer = nil;
+}
+
 -(void)startStudyTimer {
-    
+    self.startTime = [NSDate date];
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:0.01f target:self selector:@selector(timerFired) userInfo:nil repeats:YES];
+}
+
+-(void)timerFired {
+    NSTimeInterval elapsed = 2.0f+[self.startTime timeIntervalSinceNow];
+    if(elapsed < 0 && self.pairs.count > 0) {
+        [self killTimer];
+        id pair = [self dequeuePair];
+        [self.pairs addObject:pair];
+        [self loadNextAndCheckTimer];
+    } else {
+        self.timerLabel.text = [NSString stringWithFormat:@"%0.2f", elapsed];
+    }
+    [self setNeedsLayout];
 }
 
 -(void)leftSelected {
@@ -122,8 +161,26 @@
 }
 
 -(void)imageSelected:(NSString*)imageId {
+    [self killTimer];
     [[NSNotificationCenter defaultCenter] postNotificationName:BSPStudyPairViewImageSelected object:self userInfo:@{BSPStudyPairViewImageKey : imageId}];
+    [self dequeuePair];
+    [self loadNextAndCheckTimer];
+}
+
+-(void)loadNextAndCheckTimer {
     [self loadNextPage];
+    if(self.pairs.count > 0) {
+        [self startStudyTimer];
+    }
+}
+
+-(id)dequeuePair {
+    if(self.pairs.count > 0) {
+        id pair = self.pairs[0];
+        [self.pairs removeObjectAtIndex:0];
+        return pair;
+    }
+    return nil;
 }
 
 @end
