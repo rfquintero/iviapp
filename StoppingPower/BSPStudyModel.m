@@ -38,7 +38,8 @@
     NSMutableArray *studies = [NSMutableArray array];
     for(NSDictionary *jsonStudy in jsonStudies) {
         BOOL published = [jsonStudy[@"published"] boolValue];
-        if(published) {
+        BOOL active = [jsonStudy[@"active"] boolValue];
+        if(published && active) {
             NSString *objectId = [self nullSafe:jsonStudy[@"id"]];
             NSString *title = [self nullSafe:jsonStudy[@"name"]];
             NSString *description = [self nullSafe:jsonStudy[@"caption"]];
@@ -59,8 +60,10 @@
         NSString *rightUrl = [self nullSafe:jsonPair[@"choice2"]];
         NSString *leftId = [self nullSafe:jsonPair[@"choice1_id"]];
         NSString *rightId = [self nullSafe:jsonPair[@"choice2_id"]];
+        NSString *leftCaption = [self nullSafe:jsonPair[@"choice1_caption"]];
+        NSString *rightCaption = [self nullSafe:jsonPair[@"choice2_caption"]];
         
-        [pairs addObject:[[BSPImagePair alloc] initWithLeftId:leftId leftUrlString:leftUrl rightId:rightId rightUrlString:rightUrl]];
+        [pairs addObject:[[BSPImagePair alloc] initWithLeftId:leftId leftUrlString:leftUrl leftCaption:leftCaption rightId:rightId rightUrlString:rightUrl rightCaption:rightCaption]];
     }
     
     return pairs;

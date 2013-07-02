@@ -157,4 +157,14 @@
     return toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft || toInterfaceOrientation == UIInterfaceOrientationLandscapeRight;
 }
 
+-(void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    if(self.alertView) {
+        [self.alertView dismissWithClickedButtonIndex:0 animated:NO];
+    }
+    self.alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Not enough free space to store all study images. Please de-activate unneeded studies and try again." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+    [self.alertView show];
+    [self.landingView stopLoadingIndicator];
+}
+
 @end

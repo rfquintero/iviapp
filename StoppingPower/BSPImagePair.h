@@ -3,7 +3,9 @@
 @interface BSPImagePair : NSObject
 @property (nonatomic, readonly) NSString *leftId;
 @property (nonatomic, readonly) NSString *leftImageUrlString;
+@property (nonatomic, readonly) NSString *leftCaption;
 @property (nonatomic, readonly) NSString *rightId;
 @property (nonatomic, readonly) NSString *rightImageUrlString;
--(id)initWithLeftId:(NSString*)leftId leftUrlString:(NSString*)leftUrlString rightId:(NSString*)rightId rightUrlString:(NSString*)rightUrlString;
+@property (nonatomic, readonly) NSString *rightCaption;
+-(id)initWithLeftId:(NSString*)leftId leftUrlString:(NSString*)leftUrlString leftCaption:(NSString*)leftCaption rightId:(NSString*)rightId rightUrlString:(NSString*)rightUrlString rightCaption:(NSString*)rightCaption;
 @end

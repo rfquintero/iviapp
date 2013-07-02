@@ -1,8 +1,7 @@
 #import "BSPStudyPairView.h"
 #import "BSPUI.h"
-#import <SDWebImage/UIImageView+WebCache.h>
-#import <SDWebImage/UIButton+WebCache.h>
 #import "BSPImagePair.h"
+#import "BSPStudyImage.h"
 
 @interface BSPStudyPairView()
 @property (nonatomic) BSPStudy *study;
@@ -13,8 +12,8 @@
 @property (nonatomic) UILabel *titleLabel;
 @property (nonatomic) UILabel *descriptionLabel;
 @property (nonatomic) UILabel *pageLabel;
-@property (nonatomic) UIButton *leftImage;
-@property (nonatomic) UIButton *rightImage;
+@property (nonatomic) BSPStudyImage *leftImage;
+@property (nonatomic) BSPStudyImage *rightImage;
 @property (nonatomic) UIButton *cancelButton;
 @end
 
@@ -39,24 +38,17 @@
         self.pageLabel = [BSPUI labelWithFont:[BSPUI fontOfSize:14.0f]];
         self.pageLabel.textColor = [UIColor whiteColor];
         
-        self.leftImage = [UIButton buttonWithType:UIButtonTypeCustom];
-        self.leftImage.imageView.contentMode = UIViewContentModeScaleAspectFit;
-        [self.leftImage addTarget:self action:@selector(leftSelected) forControlEvents:UIControlEventTouchUpInside];
-        
-        self.rightImage = [UIButton buttonWithType:UIButtonTypeCustom];
-        self.rightImage.imageView.contentMode = UIViewContentModeScaleAspectFit;
-        [self.rightImage addTarget:self action:@selector(rightSelected) forControlEvents:UIControlEventTouchUpInside];
+        self.leftImage = [[BSPStudyImage alloc] initWithFrame:CGRectZero];
+        [self.leftImage addTarget:self action:@selector(leftSelected)];
+                
+        self.rightImage = [[BSPStudyImage alloc] initWithFrame:CGRectZero];
+        [self.rightImage addTarget:self action:@selector(leftSelected)];
         
         UIImage *buttonImage = [UIImage imageNamed:@"button_black"];
         buttonImage = [buttonImage resizableImageWithCapInsets:UIEdgeInsetsMake(0, 8, 0, 8)];
         
-        UIButton *cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [cancelButton setTitle:@"Cancel Study" forState:UIControlStateNormal];
+        UIButton *cancelButton = [BSPUI blackButtonWithTitle:@"Cancel Study"];
         [cancelButton addTarget:self action:@selector(cancelStudy) forControlEvents:UIControlEventTouchUpInside];
-        [cancelButton setBackgroundImage:buttonImage forState:UIControlStateNormal];
-        [cancelButton setTintColor:[UIColor blackColor]];
-        [cancelButton.titleLabel setFont:[BSPUI boldFontOfSize:16.0f]];
-        [cancelButton setContentEdgeInsets:UIEdgeInsetsMake(2, 10, 2, 10)];
         self.cancelButton = cancelButton;
         
         self.header = [[UIView alloc] init];
@@ -80,7 +72,6 @@
     [super layoutSubviews];
     CGFloat width = self.bounds.size.width;
     CGFloat height = self.bounds.size.height;
-    CGSize imageSize = CGSizeMake(500, 600);
     
     self.header.frame = CGRectMake(0, 0, width, 40);
     [self.titleLabel centerVerticallyAtX:5.0 inBounds:self.header.bounds thatFits:CGSizeUnbounded];
@@ -91,12 +82,13 @@
     CGFloat descriptionWidth = width - CGRectGetMaxX(self.titleLabel.frame) - pageSize.width - 5 - 20;
     [self.descriptionLabel centerVerticallyAtX:CGRectGetMaxX(self.titleLabel.frame)+10 inBounds:self.header.bounds thatFits:CGSizeMake(descriptionWidth, CGFLOAT_MAX)];
     
-    CGRect imageBounds = CGRectMake(0, CGRectGetMaxY(self.header.frame), width, height - self.header.frame.size.height);
-    [self.leftImage centerVerticallyAtX:0 inBounds:imageBounds withSize:imageSize];
-    [self.rightImage centerVerticallyAtX:width-imageSize.width inBounds:imageBounds withSize:imageSize];
-    
     CGSize cancelSize = [self.cancelButton sizeThatFits:CGSizeUnbounded];
     self.cancelButton.frame = CGRectMake(width-cancelSize.width-10, height-cancelSize.height-10, cancelSize.width, cancelSize.height);
+    
+    CGFloat imageOffsetY = CGRectGetMaxY(self.header.frame);
+    CGSize imageSize = CGSizeMake(roundf((width-2)/2), roundf(CGRectGetMinY(self.cancelButton.frame)-10-imageOffsetY));
+    self.leftImage.frame = CGRectMake(0, imageOffsetY, imageSize.width, imageSize.height);
+    self.rightImage.frame = CGRectMake(width-imageSize.width, imageOffsetY, imageSize.width, imageSize.height);
 }
 
 -(void)cancelStudy {
@@ -106,8 +98,8 @@
 -(void)loadNextPage {
     if(self.page < self.study.pairs.count) {
         self.currentPair = self.study.pairs[self.page];
-        [self.leftImage setImageWithURL:[NSURL URLWithString:self.currentPair.leftImageUrlString] forState:UIControlStateNormal];
-        [self.rightImage setImageWithURL:[NSURL URLWithString:self.currentPair.rightImageUrlString]  forState:UIControlStateNormal];
+        [self.leftImage setImageWithURL:self.currentPair.leftImageUrlString caption:self.currentPair.leftCaption];
+        [self.rightImage setImageWithURL:self.currentPair.rightImageUrlString caption:self.currentPair.rightCaption];
         self.pageLabel.text = [NSString stringWithFormat:@"%i of %i", (self.page+1), self.study.pairs.count];
         
         self.page = self.page + 1;
@@ -115,6 +107,10 @@
     } else {
         [[NSNotificationCenter defaultCenter] postNotificationName:BSPStudyPairViewCompleted object:self];
     }
+}
+
+-(void)startStudyTimer {
+    
 }
 
 -(void)leftSelected {
