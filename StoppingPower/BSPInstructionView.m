@@ -18,7 +18,7 @@
         UILabel *textLabel = [BSPUI labelWithFont:[BSPUI boldFontOfSize:20.0f]];
         textLabel.numberOfLines = 0;
         textLabel.textColor = [UIColor whiteColor];
-        textLabel.text = @"Touch the image that gets your attention first. You have two seconds to make your choice, as indicated by the time bar above the images.";
+        textLabel.text = @"Touch the image that gets your attention first. You have two seconds to make your choice, as indicated by the time clock above the images.";
         
         UIButton *button = [BSPUI blackButtonWithTitle:@"Ok, I got it."];
         [button addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
