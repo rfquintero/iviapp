@@ -46,7 +46,7 @@
         [self.leftImage addTarget:self action:@selector(leftSelected)];
                 
         self.rightImage = [[BSPStudyImage alloc] initWithFrame:CGRectZero];
-        [self.rightImage addTarget:self action:@selector(leftSelected)];
+        [self.rightImage addTarget:self action:@selector(rightSelected)];
         
         self.timerLabel = [BSPUI labelWithFont:[BSPUI boldFontOfSize:24.0f]];
         self.timerLabel.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.8f];
