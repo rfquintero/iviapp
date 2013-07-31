@@ -4,7 +4,7 @@
 #import "BSPCompletionView.h"
 #import "BSPInstructionView.h"
 
-@interface BSPStudyControllerViewController ()
+@interface BSPStudyControllerViewController ()<UIAlertViewDelegate>
 @property (nonatomic) BSPApplicationState *applicationState;
 @property (nonatomic) BSPStudyPairView *pairView;
 @property (nonatomic) BSPCompletionView *completeView;
@@ -67,7 +67,9 @@
 }
 
 -(void)studyCancelled {
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.pairView killTimer];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Cancel Study?" message:@"Are you sure you want to cancel the study?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+    [alert show];
 }
 
 -(void)imageSelected:(NSNotification*)notification {
@@ -81,6 +83,14 @@
 
 -(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
     return toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft || toInterfaceOrientation == UIInterfaceOrientationLandscapeRight;
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if(buttonIndex == alertView.cancelButtonIndex) {
+        [self.pairView startStudyTimer];
+    } else {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 @end
