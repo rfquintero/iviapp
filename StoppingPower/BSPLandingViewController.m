@@ -74,11 +74,12 @@
 
 -(void)updateStudies {
     [self.landingView setLoading:YES animated:NO];
+    [self.userModel setStudy:nil];
+    [self.studyView clearSelection];
     [self.model retrieveStudies];
 }
 
 -(void)becameActive {
-    [self updateStudies];
     [self syncResults];
 }
 
@@ -109,6 +110,11 @@
     CGFloat x = self.settingsShowing ? kSettingsWidth : 0;
     [self.landingView animateOffsetX:x showInfo:!self.settingsShowing];
     [self.studyView refresh];
+}
+
+-(void)refreshSelected {
+    [self settingsSelected];
+    [self updateStudies];
 }
 
 -(void)startSelected {

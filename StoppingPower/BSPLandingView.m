@@ -7,6 +7,7 @@
 @property (nonatomic) UIView *backgroundView;
 @property (nonatomic) UIView *logoView;
 @property (nonatomic) UIButton *settingsButton;
+@property (nonatomic) UIButton *refreshButton;
 @property (nonatomic) BSPPanelView *panelView;
 @property (nonatomic) BSPUserInfoView *userInfoView;
 @property (nonatomic) UIActivityIndicatorView *spinner;
@@ -43,6 +44,12 @@
         [settingsButton addTarget:self action:@selector(settingsSelected) forControlEvents:UIControlEventTouchUpInside];
         self.settingsButton = settingsButton;
         
+        UIButton *refreshButton = [BSPUI blackButtonWithTitle:@"Refresh Studies"];
+        [refreshButton addTarget:self action:@selector(refreshSelected) forControlEvents:UIControlEventTouchUpInside];
+        refreshButton.alpha = 0.0f;
+        refreshButton.hidden = YES;
+        self.refreshButton = refreshButton;
+        
         self.spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
         [self.spinner startAnimating];
         [self.spinner sizeToFit];
@@ -58,6 +65,7 @@
         [self addSubview:self.loadingLabel];
         [self addSubview:panelView];
         [self addSubview:settingsButton];
+        [self addSubview:refreshButton];
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(maleSelected) name:BSPUserInfoViewMaleSelected object:self.userInfoView];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(femaleSelected) name:BSPUserInfoViewFemaleSelected object:self.userInfoView];
@@ -89,6 +97,7 @@
     [self.spinner centerHorizonallyAtY:CGRectGetMaxY(self.logoView.frame)+35 inBounds:self.bounds thatFits:CGSizeUnbounded];
     [self.loadingLabel centerHorizonallyAtY:CGRectGetMaxY(self.spinner.frame)+10 inBounds:self.bounds thatFits:CGSizeUnbounded];
     [self.settingsButton setFrameAtOrigin:CGPointMake(20, self.bounds.size.height-50) thatFits:CGSizeUnbounded];
+    [self.refreshButton setFrameAtOrigin:CGPointMake(CGRectGetMaxX(self.settingsButton.frame)+30, self.bounds.size.height-50) thatFits:CGSizeUnbounded];
 }
 
 -(void)setStartEnabled:(BOOL)enabled {
@@ -111,15 +120,18 @@
 
 -(void)animateOffsetX:(CGFloat)offsetX showInfo:(BOOL)show {
     self.panelView.hidden = NO;
+    self.refreshButton.hidden = NO;
     self.offsetX = offsetX;
     NSString *settingsTitle = show ? @"Select Study" : @"Close Selection";
     [UIView animateWithDuration:0.3f animations:^{
         [self setFrameAtOrigin:CGPointMake(offsetX, self.frame.origin.y)];
         self.panelView.alpha = show ? 1.0f : 0.0f;
+        self.refreshButton.alpha = show ? 0.0f : 1.0f;
         [self.settingsButton setTitle:settingsTitle forState:UIControlStateNormal];
         [self layoutSubviews];
     } completion:^(BOOL finished) {
         self.panelView.hidden = !show;
+        self.refreshButton.hidden = show;
     }];
 }
 
@@ -131,8 +143,8 @@
         [self.spinner startAnimating];
     }
 
-    self.panelView.hidden = NO;
     if(animated) {
+        self.panelView.hidden = NO;
         [UIView animateWithDuration:0.3f animations:^{
             self.panelView.alpha = self.loading ? 0.0f : 1.0f;
             [self layoutSubviews];
@@ -140,6 +152,7 @@
             self.panelView.hidden = loading;
         }];
     } else {
+        self.panelView.hidden = loading;
         self.panelView.alpha = self.loading ? 0.0f : 1.0f;
         [self layoutSubviews];
     }
@@ -157,6 +170,10 @@
 
 -(void)settingsSelected {
     [self.landingDelegate settingsSelected];
+}
+
+-(void)refreshSelected {
+    [self.landingDelegate refreshSelected];
 }
 
 -(void)maleSelected {

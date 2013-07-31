@@ -5,6 +5,7 @@
 -(void)femaleSelected;
 -(void)settingsSelected;
 -(void)startSelected;
+-(void)refreshSelected;
 -(void)firstNameChanged:(NSString*)value;
 -(void)lastNameChanged:(NSString*)value;
 -(void)groupChanged:(NSString*)value;

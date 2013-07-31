@@ -57,6 +57,11 @@
     }
 }
 
+-(void)clearSelection {
+    self.selectedIndex = -1;
+    [self.tableView reloadData];
+}
+
 -(void)setStudies:(NSArray *)studies {
     _studies = studies;
     [self.tableView reloadData];
