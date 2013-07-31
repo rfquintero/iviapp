@@ -3,6 +3,7 @@
 #import "BSPUI.h"
 #import "BSPCompletionView.h"
 #import "BSPInstructionView.h"
+#import "TestFlight.h"
 
 @interface BSPStudyControllerViewController ()<UIAlertViewDelegate>
 @property (nonatomic) BSPApplicationState *applicationState;
@@ -67,6 +68,7 @@
 }
 
 -(void)studyCancelled {
+    TFLog(@"**Cancel Selected**");
     [self.pairView killTimer];
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Cancel Study?" message:@"Are you sure you want to cancel the study?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
     [alert show];
@@ -77,6 +79,7 @@
 }
 
 -(void)finished {
+    TFLog(@"**Study completed! Adding result to sync. Study: %@ User: %@ %@", self.model.study.title, self.model.firstName, self.model.lastName);
     [self.applicationState.resultSync addResult:[self.model createResult]];
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -87,8 +90,10 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if(buttonIndex == alertView.cancelButtonIndex) {
+        TFLog(@"Cancel aborted, resuming study.");
         [self.pairView startStudyTimer];
     } else {
+        TFLog(@"Study cancelled. Returning to dashboard.");
         [self.navigationController popViewControllerAnimated:YES];
     }
 }

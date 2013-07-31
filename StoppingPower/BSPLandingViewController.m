@@ -5,6 +5,7 @@
 #import "BSPStudyModel.h"
 #import "BSPStudyControllerViewController.h"
 #import "BSPUserModel.h"
+#import "TestFlight.h"
 
 #define kSettingsWidth 480
 
@@ -73,6 +74,7 @@
 }
 
 -(void)updateStudies {
+    TFLog(@"**Updating Studies**");
     [self.landingView setLoading:YES animated:NO];
     [self.userModel setStudy:nil];
     [self.studyView clearSelection];
@@ -119,6 +121,7 @@
 
 -(void)startSelected {
     if(self.studyView.selectedStudy) {
+        TFLog(@"**Beginning study: %@ User: %@ %@", self.userModel.study.title, self.userModel.firstName, self.userModel.lastName);
         UIViewController *vc = [[BSPStudyControllerViewController alloc] initWithAppState:self.applicationState userModel:self.userModel];
         [self.navigationController pushViewController:vc animated:YES];
     }
@@ -157,6 +160,7 @@
 
 -(void)studySelected {
     [self.userModel setStudy:self.studyView.selectedStudy];
+    TFLog(@"Study selected: %@", self.studyView.selectedStudy.title);
 }
 
 -(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
@@ -165,6 +169,7 @@
 
 -(void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+    TFLog(@"Received memory warning: showing alert message.");
     if(self.alertView) {
         [self.alertView dismissWithClickedButtonIndex:0 animated:NO];
     }

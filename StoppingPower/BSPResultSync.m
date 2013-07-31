@@ -1,4 +1,5 @@
 #import "BSPResultSync.h"
+#import "TestFlight.h"
 
 @interface BSPResultSync()
 @property (nonatomic) BSPDao *dao;
@@ -24,28 +25,31 @@
     if(results.count > 0 && !self.syncing) {
         self.syncing = YES;
         BSPResult *result = results[0];
+        TFLog(@"Publishing Result %@: %@ %@ - S:%@", result.objectId, result.firstName, result.lastName, result.studyId);
         [self.dao publishResult:result handler:^(NSURLResponse *response, NSData *data, NSError *error) {
             if(!error && response) {
                 NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*)response;
                 if(httpResponse.statusCode == 200) {
                     [self performSelectorOnMainThread:@selector(resultPosted:) withObject:result waitUntilDone:NO];
                 } else {
-                    [self performSelectorOnMainThread:@selector(failed) withObject:nil waitUntilDone:NO];
+                    [self performSelectorOnMainThread:@selector(failed:) withObject:result waitUntilDone:NO];
                 }
             } else {
-                [self performSelectorOnMainThread:@selector(failed) withObject:nil waitUntilDone:NO];
+                [self performSelectorOnMainThread:@selector(failed:) withObject:result waitUntilDone:NO];
             }
         }];
     }
 }
 
 -(void)resultPosted:(BSPResult*)result {
+    TFLog(@"Successfully Published Result %@: %@ %@ - S:%@", result.objectId, result.firstName, result.lastName, result.studyId);
     self.syncing = NO;
     [self.database removeResult:result];
     [self startSync];
 }
 
--(void)failed {
+-(void)failed:(BSPResult*)result {
+    TFLog(@"Failed to published result %@: %@ %@ - S:%@", result.objectId, result.firstName, result.lastName, result.studyId);
     self.syncing = NO;
 }
 
