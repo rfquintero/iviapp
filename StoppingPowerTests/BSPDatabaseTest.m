@@ -1,5 +1,7 @@
 #import <GHUnitIOS/GHUnit.h>
 #import "BSPDatabase.h"
+#import "BSPStudy.h"
+#import "BSPImagePair.h"
 
 @interface BSPDatabaseTest : GHTestCase {
     BSPDatabase *testObject;
@@ -12,7 +14,6 @@
 @implementation BSPDatabaseTest
 
 -(void)setUp {
-    [super setUp];
     [super setUp];
     NSString *documentsDirectory = [NSSearchPathForDirectoriesInDomains (NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     NSString *dbPath = [documentsDirectory stringByAppendingPathComponent:@"test_database.sqlite"];
@@ -59,6 +60,40 @@
     
     GHAssertTrue([testObject2 getResults].count == 1, nil);
     GHAssertEqualObjects(result2.jsonData, ((BSPResult*)[testObject2 getResults][0]).jsonData, nil);
+}
+
+-(void)testWhenStudiesAreSavedThenTheyCanBeRetrieved {
+    BSPImagePair *pair1 = [[BSPImagePair alloc] initWithLeftId:@"l1" leftUrlString:@"lurl1" leftCaption:@"lcap1" rightId:@"r1" rightUrlString:@"rurl1" rightCaption:@"rcap1"];
+    BSPImagePair *pair2 = [[BSPImagePair alloc] initWithLeftId:@"l2" leftUrlString:@"lurl2" leftCaption:@"lcap2" rightId:@"r2" rightUrlString:@"rurl2" rightCaption:@"rcap2"];
+    BSPImagePair *pair3 = [[BSPImagePair alloc] initWithLeftId:@"l3" leftUrlString:@"lurl3" leftCaption:@"lcap3" rightId:@"r3" rightUrlString:@"rurl3" rightCaption:@"rcap3"];
+    BSPImagePair *pair4 = [[BSPImagePair alloc] initWithLeftId:@"l4" leftUrlString:@"lurl4" leftCaption:@"lcap4" rightId:@"r4" rightUrlString:@"rurl4" rightCaption:@"rcap4"];
+    BSPStudy *study1 = [[BSPStudy alloc] initWithId:@"1" title:@"title1" description:@"desc1" pairs:@[pair1, pair2, pair3]];
+    BSPStudy *study2 = [[BSPStudy alloc] initWithId:@"2" title:@"title2" description:@"desc2" pairs:@[pair4]];
+    
+    [testObject saveStudies:@[study1, study2]];
+    
+    NSArray* studies = [testObject2 getStudies];
+    
+    [self assertStudy:studies[0] isEqual:study1];
+    [self assertStudy:studies[1] isEqual:study2];
+}
+
+-(void)assertStudy:(BSPStudy*)study1 isEqual:(BSPStudy*)study2 {
+    GHAssertEqualObjects(study1.objectId, study2.objectId, nil);
+    GHAssertEqualObjects(study1.title, study2.title, nil);
+    GHAssertEqualObjects(study1.description, study2.description, nil);
+    
+    GHAssertEquals(study1.pairs.count, study2.pairs.count, nil);
+    for(int i=0; i<study1.pairs.count; i++) {
+        BSPImagePair *pair1 = study1.pairs[i];
+        BSPImagePair *pair2 = study2.pairs[i];
+        GHAssertEqualObjects(pair1.leftId, pair2.leftId, nil);
+        GHAssertEqualObjects(pair1.leftImageUrlString, pair2.leftImageUrlString, nil);
+        GHAssertEqualObjects(pair1.leftCaption, pair2.leftCaption, nil);
+        GHAssertEqualObjects(pair1.rightId, pair2.rightId, nil);
+        GHAssertEqualObjects(pair1.rightImageUrlString, pair2.rightImageUrlString, nil);
+        GHAssertEqualObjects(pair1.rightCaption, pair2.rightCaption, nil);
+    }
 }
 
 @end

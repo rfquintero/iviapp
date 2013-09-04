@@ -1,6 +1,7 @@
 #import "BSPStudyModel.h"
 #import "BSPImagePair.h"
 #import <SDWebImage/SDWebImageManager.h>
+#import "TestFlight.h"
 
 @interface BSPStudyModel()
 @property (nonatomic, readwrite) NSArray *studies;
@@ -8,13 +9,17 @@
 @property (atomic) NSUInteger studyCount;
 @property (nonatomic) NSUInteger imageProgress;
 @property (nonatomic) BSPDao *dao;
+@property (nonatomic) BSPDatabase *database;
 @end
 
 @implementation BSPStudyModel
 
--(id)initWithDao:(BSPDao*)dao {
+-(id)initWithDao:(BSPDao*)dao database:(BSPDatabase*)database{
     if(self = [super init]) {
         self.dao = dao;
+        self.database = database;
+        self.studies = [self.database getStudies];
+        TFLog(@"Retrieved %i studies from the db.", self.studies.count);
     }
     
     return self;
@@ -49,6 +54,7 @@
         }
     }
     
+    [self.database saveStudies:studies];
     self.studies = studies;
     [self postNotificationOnMainThread:BSPStudyModelStudiesRetrieved userInfo:nil];
 }
@@ -77,7 +83,7 @@
     } else if ([[NSNull null] isEqual:string]) {
         return @"";
     }
-    return string;
+    return [NSString stringWithFormat:@"%@", string];
 }
 
 -(void)postNotificationOnMainThread:(NSString*)name userInfo:(NSDictionary*)userInfo {

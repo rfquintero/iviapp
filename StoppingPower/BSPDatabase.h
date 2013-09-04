@@ -7,4 +7,7 @@
 -(void)saveResult:(BSPResult*)result;
 -(void)removeResult:(BSPResult*)result;
 -(NSArray*)getResults;
+
+-(void)saveStudies:(NSArray*)studies;
+-(NSArray*)getStudies;
 @end

@@ -21,6 +21,9 @@
 		451CFB20176E71F7000339DB /* MyriadPro-It.otf in Resources */ = {isa = PBXBuildFile; fileRef = 451CFB1C176E71F7000339DB /* MyriadPro-It.otf */; };
 		451CFB21176E71F7000339DB /* MyriadPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 451CFB1D176E71F7000339DB /* MyriadPro-Regular.otf */; };
 		451CFB25176ED2C3000339DB /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 451CFB24176ED2C3000339DB /* ImageIO.framework */; };
+		45379FC417D76B0F00457023 /* BSPStudyImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F01FDD17826C290059D2A9 /* BSPStudyImage.m */; };
+		45379FC517D76B2F00457023 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 45F01FCE177D00800059D2A9 /* libTestFlight.a */; };
+		45379FC617D76C0900457023 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 45F01FD6177D00DF0059D2A9 /* libz.dylib */; };
 		4544076C1755A9E9005D8C22 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4544076B1755A9E9005D8C22 /* UIKit.framework */; };
 		4544076E1755A9E9005D8C22 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4544076D1755A9E9005D8C22 /* Foundation.framework */; };
 		454407701755A9E9005D8C22 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4544076F1755A9E9005D8C22 /* CoreGraphics.framework */; };
@@ -275,6 +278,8 @@
 				45F01F8A177CE2CA0059D2A9 /* libsqlite3.dylib in Frameworks */,
 				45F01F94177CE2DA0059D2A9 /* GHUnitIOS.framework in Frameworks */,
 				45F01F95177CE2DA0059D2A9 /* libOCMock.a in Frameworks */,
+				45379FC517D76B2F00457023 /* libTestFlight.a in Frameworks */,
+				45379FC617D76C0900457023 /* libz.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,7 +319,6 @@
 		4544075F1755A9E9005D8C22 = {
 			isa = PBXGroup;
 			children = (
-				45F01FD6177D00DF0059D2A9 /* libz.dylib */,
 				454407711755A9E9005D8C22 /* StoppingPower */,
 				45F01F72177CE2960059D2A9 /* StoppingPowerTests */,
 				4544076A1755A9E9005D8C22 /* Frameworks */,
@@ -335,6 +339,7 @@
 		4544076A1755A9E9005D8C22 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				45F01FD6177D00DF0059D2A9 /* libz.dylib */,
 				45F01FCD177D00800059D2A9 /* TestFlightSDK1.2.6 */,
 				45F01F8B177CE2DA0059D2A9 /* GHUnitIOS.framework */,
 				45F01F8C177CE2DA0059D2A9 /* OCMock */,
@@ -790,6 +795,7 @@
 				45F01FAE177CE5860059D2A9 /* BSPLandingViewController.m in Sources */,
 				45F01F79177CE2970059D2A9 /* main.m in Sources */,
 				45F01F98177CE3DD0059D2A9 /* BSPDatabaseTest.m in Sources */,
+				45379FC417D76B0F00457023 /* BSPStudyImage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

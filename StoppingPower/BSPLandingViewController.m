@@ -24,7 +24,7 @@
 -(id)initWithAppState:(BSPApplicationState*)applicationState {
     if(self = [super init]) {
         self.applicationState = applicationState;
-        self.model = [[BSPStudyModel alloc] initWithDao:applicationState.dao];
+        self.model = [[BSPStudyModel alloc] initWithDao:applicationState.dao database:applicationState.database];
         self.userModel = [[BSPUserModel alloc] init];
     }
     return self;
@@ -41,6 +41,14 @@
     self.studyView = [[BSPStudyView alloc] initWithFrame:CGRectMake(0, 0, kSettingsWidth, self.view.bounds.size.height)];
     self.studyView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
     
+    if(self.model.studies.count < 1) {
+        TFLog(@"**No studies present, updating**");
+        [self updateStudies];
+    } else {
+        [self.studyView setStudies:self.model.studies];
+        [self.landingView setLoading:NO animated:YES];
+    }
+    
     [self.view addSubview:self.studyView];
     [self.view addSubview:self.landingView];
 }
@@ -54,10 +62,6 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(studySelected) name:BSPStudyViewStudySelected object:self.studyView];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refresh) name:BSPUserModelChanged object:self.userModel];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(becameActive) name:UIApplicationDidBecomeActiveNotification object:nil];
-
-    if(self.model.studies.count < 1) {
-        [self updateStudies];
-    }
     
     [self syncResults];
     [self clearFields];
@@ -115,6 +119,7 @@
 }
 
 -(void)refreshSelected {
+    TFLog(@"Refresh selected, updating studies");
     [self settingsSelected];
     [self updateStudies];
 }
