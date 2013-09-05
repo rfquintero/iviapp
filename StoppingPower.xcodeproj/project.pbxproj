@@ -237,7 +237,6 @@
 		45F01F91177CE2DA0059D2A9 /* OCMock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMock.h; sourceTree = "<group>"; };
 		45F01F92177CE2DA0059D2A9 /* OCMockObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMockObject.h; sourceTree = "<group>"; };
 		45F01F93177CE2DA0059D2A9 /* OCMockRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMockRecorder.h; sourceTree = "<group>"; };
-		45F01F96177CE3DD0059D2A9 /* BSPDatabaseTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSPDatabaseTest.h; sourceTree = "<group>"; };
 		45F01F97177CE3DD0059D2A9 /* BSPDatabaseTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSPDatabaseTest.m; sourceTree = "<group>"; };
 		45F01FCE177D00800059D2A9 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
 		45F01FCF177D00800059D2A9 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
@@ -564,7 +563,6 @@
 			isa = PBXGroup;
 			children = (
 				45F01F73177CE2970059D2A9 /* Supporting Files */,
-				45F01F96177CE3DD0059D2A9 /* BSPDatabaseTest.h */,
 				45F01F97177CE3DD0059D2A9 /* BSPDatabaseTest.m */,
 			);
 			path = StoppingPowerTests;

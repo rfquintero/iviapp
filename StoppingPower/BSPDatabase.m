@@ -66,105 +66,133 @@ static int const kSchemaVersion = 3;
 }
 
 -(void)saveResult:(BSPResult *)result {
-    NSData *selectionData = [NSJSONSerialization dataWithJSONObject:result.selections options:0 error:nil];
-    static const char *sql = "INSERT INTO results (first_name, last_name, group_id, gender, study_id, selections) VALUES (?, ?, ?, ?, ?, ?)";
-    sqlite3_stmt *statement = NULL;
-    sqlite3_prepare_v2(self.database, sql, -1, &statement, NULL);
-    sqlite3_bind_string(statement, 1, result.firstName);
-    sqlite3_bind_string(statement, 2, result.lastName);
-    sqlite3_bind_string(statement, 3, result.groupId);
-    sqlite3_bind_string(statement, 4, result.gender);
-    sqlite3_bind_string(statement, 5, result.studyId);
-    sqlite3_bind_blob(statement, 6, selectionData.bytes, selectionData.length, SQLITE_TRANSIENT);
-    sqlite3_step(statement);
-    sqlite3_finalize(statement);
-}
-
-
--(NSArray*)getResults {
-    NSMutableArray *results = [NSMutableArray array];
-    const char *sql = "SELECT first_name, last_name, group_id, gender, study_id, selections, ROWID FROM results";
-    sqlite3_stmt *statement = NULL;
-    sqlite3_prepare_v2(self.database, sql, -1, &statement, NULL);
-    BSPResult *result;
-    while (sqlite3_step(statement) == SQLITE_ROW) {
-        result  = [[BSPResult alloc] init];
-        result.firstName = sqlite3_column_string(statement, 0);
-        result.lastName = sqlite3_column_string(statement, 1);
-        result.groupId = sqlite3_column_string(statement, 2);
-        result.gender = sqlite3_column_string(statement, 3);
-        result.studyId = sqlite3_column_string(statement, 4);
-        result.objectId = sqlite3_column_int64(statement, 6);
-        
-        const void * bytes = sqlite3_column_blob(statement, 5);
-        int length = sqlite3_column_bytes(statement, 5);
-        NSData *selectionData = [NSData dataWithBytes:bytes length:length];
-        result.selections = [NSJSONSerialization JSONObjectWithData:selectionData options:0 error:nil];
-        
-        [results addObject:result];
-    }
-    sqlite3_finalize(statement);
-    return results;
-}
-
--(void)removeResult:(BSPResult*)result {
-    const char *sql = "DELETE FROM results WHERE ROWID=?";
-    sqlite3_stmt *statement = NULL;
-    sqlite3_prepare_v2(self.database, sql, -1, &statement, NULL);
-    sqlite3_bind_int64(statement, 1, result.objectId);
-    sqlite3_step(statement);
-    sqlite3_finalize(statement);
-}
-
--(void)saveStudies:(NSArray *)studies {
-    for(BSPStudy* study in studies) {
-        NSMutableArray *pairIds = [NSMutableArray array];
-        for(int i=0; i<study.pairs.count; i++) {
-            BSPImagePair *pair = study.pairs[i];
-            [pairIds addObject:@([self savePair:pair])];
-        }
-        
-        NSData *pairData = [NSJSONSerialization dataWithJSONObject:pairIds options:0 error:nil];
-        static const char *sql = "INSERT INTO studies (object_id, title, description, pairIds) VALUES (?, ?, ?, ?)";
+    @synchronized(self) {
+        NSData *selectionData = [NSJSONSerialization dataWithJSONObject:result.selections options:0 error:nil];
+        static const char *sql = "INSERT INTO results (first_name, last_name, group_id, gender, study_id, selections) VALUES (?, ?, ?, ?, ?, ?)";
         sqlite3_stmt *statement = NULL;
         sqlite3_prepare_v2(self.database, sql, -1, &statement, NULL);
-        sqlite3_bind_string(statement, 1, study.objectId);
-        sqlite3_bind_string(statement, 2, study.title);
-        sqlite3_bind_string(statement, 3, study.description);
-        sqlite3_bind_blob(statement, 4, pairData.bytes, pairData.length, SQLITE_TRANSIENT);
+        sqlite3_bind_string(statement, 1, result.firstName);
+        sqlite3_bind_string(statement, 2, result.lastName);
+        sqlite3_bind_string(statement, 3, result.groupId);
+        sqlite3_bind_string(statement, 4, result.gender);
+        sqlite3_bind_string(statement, 5, result.studyId);
+        sqlite3_bind_blob(statement, 6, selectionData.bytes, selectionData.length, SQLITE_TRANSIENT);
         sqlite3_step(statement);
         sqlite3_finalize(statement);
     }
 }
 
+
+-(NSArray*)getResults {
+    NSMutableArray *results = [NSMutableArray array];
+    @synchronized(self) {
+        const char *sql = "SELECT first_name, last_name, group_id, gender, study_id, selections, ROWID FROM results";
+        sqlite3_stmt *statement = NULL;
+        sqlite3_prepare_v2(self.database, sql, -1, &statement, NULL);
+        BSPResult *result;
+        while (sqlite3_step(statement) == SQLITE_ROW) {
+            result  = [[BSPResult alloc] init];
+            result.firstName = sqlite3_column_string(statement, 0);
+            result.lastName = sqlite3_column_string(statement, 1);
+            result.groupId = sqlite3_column_string(statement, 2);
+            result.gender = sqlite3_column_string(statement, 3);
+            result.studyId = sqlite3_column_string(statement, 4);
+            result.objectId = sqlite3_column_int64(statement, 6);
+            
+            const void * bytes = sqlite3_column_blob(statement, 5);
+            int length = sqlite3_column_bytes(statement, 5);
+            NSData *selectionData = [NSData dataWithBytes:bytes length:length];
+            result.selections = [NSJSONSerialization JSONObjectWithData:selectionData options:0 error:nil];
+            
+            [results addObject:result];
+        }
+        sqlite3_finalize(statement);
+    }
+    return results;
+}
+
+-(void)removeResult:(BSPResult*)result {
+    @synchronized(self) {
+        const char *sql = "DELETE FROM results WHERE ROWID=?";
+        sqlite3_stmt *statement = NULL;
+        sqlite3_prepare_v2(self.database, sql, -1, &statement, NULL);
+        sqlite3_bind_int64(statement, 1, result.objectId);
+        sqlite3_step(statement);
+        sqlite3_finalize(statement);
+    }
+}
+
+-(void)saveStudies:(NSArray *)studies {
+    @synchronized(self) {
+        [self removeStudies];
+        [self removePairs];
+        for(BSPStudy* study in studies) {
+            NSMutableArray *pairIds = [NSMutableArray array];
+            for(int i=0; i<study.pairs.count; i++) {
+                BSPImagePair *pair = study.pairs[i];
+                [pairIds addObject:@([self savePair:pair])];
+            }
+            
+            NSData *pairData = [NSJSONSerialization dataWithJSONObject:pairIds options:0 error:nil];
+            static const char *sql = "INSERT INTO studies (object_id, title, description, pairIds) VALUES (?, ?, ?, ?)";
+            sqlite3_stmt *statement = NULL;
+            sqlite3_prepare_v2(self.database, sql, -1, &statement, NULL);
+            sqlite3_bind_string(statement, 1, study.objectId);
+            sqlite3_bind_string(statement, 2, study.title);
+            sqlite3_bind_string(statement, 3, study.description);
+            sqlite3_bind_blob(statement, 4, pairData.bytes, pairData.length, SQLITE_TRANSIENT);
+            sqlite3_step(statement);
+            sqlite3_finalize(statement);
+        }
+    }
+}
+
 -(NSArray*)getStudies {
     NSMutableArray *studies = [NSMutableArray array];
-    const char *sql = "SELECT object_id, title, description, pairIds FROM studies";
+    @synchronized(self) {
+        const char *sql = "SELECT object_id, title, description, pairIds FROM studies";
+        sqlite3_stmt *statement = NULL;
+        sqlite3_prepare_v2(self.database, sql, -1, &statement, NULL);
+
+        while (sqlite3_step(statement) == SQLITE_ROW) {
+            NSString *objectId = sqlite3_column_string(statement, 0);
+            NSString *title = sqlite3_column_string(statement, 1);
+            NSString *description = sqlite3_column_string(statement, 2);
+            
+            const void * bytes = sqlite3_column_blob(statement, 3);
+            int length = sqlite3_column_bytes(statement, 3);
+            NSData *pairData = [NSData dataWithBytes:bytes length:length];
+            NSArray *pairIds = [NSJSONSerialization JSONObjectWithData:pairData options:0 error:nil];
+            
+            NSMutableArray *pairs = [NSMutableArray array];
+            for(NSNumber *pairId in pairIds) {
+                BSPImagePair *pair = [self getPair:[pairId longValue]];
+                if(pair) {
+                    [pairs addObject:pair];
+                }
+            }
+            
+            [studies addObject:[[BSPStudy alloc] initWithId:objectId title:title description:description pairs:pairs]];
+        }
+        sqlite3_finalize(statement);
+    }
+    return studies;
+}
+
+-(void)removeStudies {
+    const char *sql = "DELETE FROM studies";
     sqlite3_stmt *statement = NULL;
     sqlite3_prepare_v2(self.database, sql, -1, &statement, NULL);
-
-    while (sqlite3_step(statement) == SQLITE_ROW) {
-        NSString *objectId = sqlite3_column_string(statement, 0);
-        NSString *title = sqlite3_column_string(statement, 1);
-        NSString *description = sqlite3_column_string(statement, 2);
-        
-        const void * bytes = sqlite3_column_blob(statement, 3);
-        int length = sqlite3_column_bytes(statement, 3);
-        NSData *pairData = [NSData dataWithBytes:bytes length:length];
-        NSArray *pairIds = [NSJSONSerialization JSONObjectWithData:pairData options:0 error:nil];
-        
-        NSMutableArray *pairs = [NSMutableArray array];
-        for(NSNumber *pairId in pairIds) {
-            BSPImagePair *pair = [self getPair:[pairId longValue]];
-            if(pair) {
-                [pairs addObject:pair];
-            }
-        }
-        
-        [studies addObject:[[BSPStudy alloc] initWithId:objectId title:title description:description pairs:pairs]];
-    }
+    sqlite3_step(statement);
     sqlite3_finalize(statement);
-    return studies;
+}
+
+-(void)removePairs {
+    const char *sql = "DELETE FROM ipairs";
+    sqlite3_stmt *statement = NULL;
+    sqlite3_prepare_v2(self.database, sql, -1, &statement, NULL);
+    sqlite3_step(statement);
+    sqlite3_finalize(statement);
 }
 
 -(sqlite3_int64)savePair:(BSPImagePair*)pair {

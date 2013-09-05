@@ -25,7 +25,7 @@
     if(results.count > 0 && !self.syncing) {
         self.syncing = YES;
         BSPResult *result = results[0];
-        TFLog(@"Publishing Result %@: %@ %@ - S:%@", result.objectId, result.firstName, result.lastName, result.studyId);
+        TFLog(@"Publishing Result %i: %@ %@ - S:%@", result.objectId, result.firstName, result.lastName, result.studyId);
         [self.dao publishResult:result handler:^(NSURLResponse *response, NSData *data, NSError *error) {
             if(!error && response) {
                 NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*)response;
@@ -42,14 +42,14 @@
 }
 
 -(void)resultPosted:(BSPResult*)result {
-    TFLog(@"Successfully Published Result %@: %@ %@ - S:%@", result.objectId, result.firstName, result.lastName, result.studyId);
+    TFLog(@"Successfully Published Result %i: %@ %@ - S:%@", result.objectId, result.firstName, result.lastName, result.studyId);
     self.syncing = NO;
     [self.database removeResult:result];
     [self startSync];
 }
 
 -(void)failed:(BSPResult*)result {
-    TFLog(@"Failed to published result %@: %@ %@ - S:%@", result.objectId, result.firstName, result.lastName, result.studyId);
+    TFLog(@"Failed to published result %i: %@ %@ - S:%@", result.objectId, result.firstName, result.lastName, result.studyId);
     self.syncing = NO;
 }
 

@@ -78,6 +78,24 @@
     [self assertStudy:studies[1] isEqual:study2];
 }
 
+-(void)testWhenStudiesAreSavedThenOldStudiesAreRemoved {
+    BSPImagePair *pair1 = [[BSPImagePair alloc] initWithLeftId:@"l1" leftUrlString:@"lurl1" leftCaption:@"lcap1" rightId:@"r1" rightUrlString:@"rurl1" rightCaption:@"rcap1"];
+    BSPImagePair *pair2 = [[BSPImagePair alloc] initWithLeftId:@"l2" leftUrlString:@"lurl2" leftCaption:@"lcap2" rightId:@"r2" rightUrlString:@"rurl2" rightCaption:@"rcap2"];
+    BSPImagePair *pair3 = [[BSPImagePair alloc] initWithLeftId:@"l3" leftUrlString:@"lurl3" leftCaption:@"lcap3" rightId:@"r3" rightUrlString:@"rurl3" rightCaption:@"rcap3"];
+    BSPImagePair *pair4 = [[BSPImagePair alloc] initWithLeftId:@"l4" leftUrlString:@"lurl4" leftCaption:@"lcap4" rightId:@"r4" rightUrlString:@"rurl4" rightCaption:@"rcap4"];
+    BSPStudy *study1 = [[BSPStudy alloc] initWithId:@"1" title:@"title1" description:@"desc1" pairs:@[pair1, pair2, pair3]];
+    BSPStudy *study2 = [[BSPStudy alloc] initWithId:@"2" title:@"title2" description:@"desc2" pairs:@[pair4]];
+    BSPStudy *study3 = [[BSPStudy alloc] initWithId:@"3" title:@"title3" description:@"desc3" pairs:@[pair1, pair4]];
+    
+    [testObject saveStudies:@[study1, study2]];
+    [testObject saveStudies:@[study3]];
+    
+    NSArray* studies = [testObject getStudies];
+    
+    GHAssertTrue(studies.count == 1, nil);
+    [self assertStudy:studies[0] isEqual:study3];
+}
+
 -(void)assertStudy:(BSPStudy*)study1 isEqual:(BSPStudy*)study2 {
     GHAssertEqualObjects(study1.objectId, study2.objectId, nil);
     GHAssertEqualObjects(study1.title, study2.title, nil);
