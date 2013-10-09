@@ -7,7 +7,7 @@
 #define BSPStudyPairViewImageKey @"BSPStudyPairViewImageKey"
 
 @interface BSPStudyPairView : UIView
--(id)initWithFrame:(CGRect)frame study:(BSPStudy*)study;
+-(id)initWithFrame:(CGRect)frame study:(BSPStudy*)study pairs:(NSArray*)pairs;
 -(void)startStudyTimer;
 -(void)killTimer;
 @end

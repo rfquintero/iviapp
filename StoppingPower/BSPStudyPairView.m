@@ -24,12 +24,12 @@
 
 @implementation BSPStudyPairView
 
-- (id)initWithFrame:(CGRect)frame study:(BSPStudy*)study {
+-(id)initWithFrame:(CGRect)frame study:(BSPStudy*)study pairs:(NSArray*)pairs {
     self = [super initWithFrame:frame];
     if (self) {
 
         self.backgroundColor = [UIColor studyBgDarkGray];
-        self.pairs = [NSMutableArray arrayWithArray:study.pairs];
+        self.pairs = [NSMutableArray arrayWithArray:pairs];
         self.totalPairs = self.pairs.count;
         
         self.titleLabel = [BSPUI labelWithFont:[BSPUI boldFontOfSize:16.0f]];

@@ -10,6 +10,7 @@
 @property (nonatomic) NSString *groupId;
 @property (nonatomic) NSString *gender;
 @property (nonatomic) BSPStudy *study;
+@property (nonatomic, readonly) NSArray *sessionPairs;
 @property (nonatomic, readonly) BOOL infoComplete;
 
 -(void)clearFields;

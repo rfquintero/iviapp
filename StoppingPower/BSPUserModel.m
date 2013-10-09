@@ -2,6 +2,7 @@
 
 @interface BSPUserModel()
 @property (nonatomic) NSMutableArray *selections;
+@property (nonatomic, readwrite) NSArray *sessionPairs;
 @end
 
 @implementation BSPUserModel
@@ -72,6 +73,22 @@
 
 -(void)prepare {
     self.selections = [NSMutableArray array];
+    self.sessionPairs = [self createSessionPairs];
+}
+
+-(NSArray*)createSessionPairs {
+    if(self.study.randomize) {
+        NSUInteger count = self.study.pairs.count;
+        NSMutableArray *pairs = [NSMutableArray arrayWithArray:self.study.pairs];
+        for (NSUInteger i = 0; i < count; ++i) {
+            NSInteger nElements = count - i;
+            NSInteger n = (arc4random() % nElements) + i;
+            [pairs exchangeObjectAtIndex:i withObjectAtIndex:n];
+        }
+        return pairs;
+    } else {
+        return self.study.pairs;
+    }
 }
 
 @end

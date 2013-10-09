@@ -27,7 +27,7 @@
 -(void)loadView {
     [super loadView];
     
-    BSPStudyPairView *pairView = [[BSPStudyPairView alloc] initWithFrame:self.view.bounds study:self.model.study];
+    BSPStudyPairView *pairView = [[BSPStudyPairView alloc] initWithFrame:self.view.bounds study:self.model.study pairs:self.model.sessionPairs];
     pairView.autoresizingMask = UIViewFlexibleHeightWidth;
     self.pairView = pairView;
     
