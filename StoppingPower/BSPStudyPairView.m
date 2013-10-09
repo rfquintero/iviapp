@@ -19,6 +19,7 @@
 
 @property (nonatomic) NSTimer *timer;
 @property (nonatomic) NSDate *startTime;
+@property (nonatomic) CGFloat timerDelay;
 @end
 
 @implementation BSPStudyPairView
@@ -73,6 +74,7 @@
         [self addSubview:self.cancelButton];
         [self addSubview:self.timerLabel];
         
+        self.timerDelay = study.timer;
         [self loadNextPage];
     }
     return self;
@@ -135,12 +137,17 @@
 }
 
 -(void)startStudyTimer {
-    self.startTime = [NSDate date];
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:0.01f target:self selector:@selector(timerFired) userInfo:nil repeats:YES];
+    if(self.timerDelay > 0.0f) {
+        self.timerLabel.hidden = NO;
+        self.startTime = [NSDate date];
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:0.01f target:self selector:@selector(timerFired) userInfo:nil repeats:YES];
+    } else {
+        self.timerLabel.hidden = YES;
+    }
 }
 
 -(void)timerFired {
-    NSTimeInterval elapsed = 2.0f+[self.startTime timeIntervalSinceNow];
+    NSTimeInterval elapsed = self.timerDelay+[self.startTime timeIntervalSinceNow];
     if(elapsed < 0 && self.pairs.count > 0) {
         [self killTimer];
         id pair = [self dequeuePair];

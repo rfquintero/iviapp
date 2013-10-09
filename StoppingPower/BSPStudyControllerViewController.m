@@ -39,6 +39,7 @@
     
     BSPInstructionView *instructionView = [[BSPInstructionView alloc] initWithFrame:self.view.bounds];
     instructionView.autoresizingMask = UIViewFlexibleHeightWidth;
+    instructionView.instructions = self.model.study.instructions;
     self.instructionView = instructionView;
     
     [self.view addSubview:pairView];

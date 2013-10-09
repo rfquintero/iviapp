@@ -9,7 +9,7 @@
 
 @implementation BSPDatabase
 
-static int const kSchemaVersion = 3;
+static int const kSchemaVersion = 4;
 
 - (id)initWithDatabasePath:(NSString *)databasePath {
     if ((self = [super init])) {
@@ -51,7 +51,7 @@ static int const kSchemaVersion = 3;
 - (void)performCreate:(sqlite3 *)database {
     sqlite3_execute(database, @"CREATE TABLE results (first_name TEXT, last_name TEXT, group_id TEXT, gender TEXT, study_id TEXT, selections TEXT)");
     sqlite3_execute(database, @"CREATE TABLE ipairs (left_id TEXT, left_url TEXT, left_caption TEXT, right_id TEXT, right_url TEXT, right_caption TEXT)");
-    sqlite3_execute(database, @"CREATE TABLE studies (object_id TEXT PRIMARY KEY, title TEXT, description TEXT, pairIds TEXT)");
+    sqlite3_execute(database, @"CREATE TABLE studies (object_id TEXT PRIMARY KEY, title TEXT, description TEXT, pairIds TEXT, instructions TEXT, timer REAL, randomize BOOLEAN)");
     
     sqlite3_execute(database, @"CREATE TABLE version (version INTEGER PRIMARY KEY)");
     sqlite3_execute(database, [NSString stringWithFormat:@"INSERT INTO version VALUES (%d)", kSchemaVersion]);
@@ -134,13 +134,16 @@ static int const kSchemaVersion = 3;
             }
             
             NSData *pairData = [NSJSONSerialization dataWithJSONObject:pairIds options:0 error:nil];
-            static const char *sql = "INSERT INTO studies (object_id, title, description, pairIds) VALUES (?, ?, ?, ?)";
+            static const char *sql = "INSERT INTO studies (object_id, title, description, pairIds, instructions, timer, randomize) VALUES (?, ?, ?, ?, ?, ?, ?)";
             sqlite3_stmt *statement = NULL;
             sqlite3_prepare_v2(self.database, sql, -1, &statement, NULL);
             sqlite3_bind_string(statement, 1, study.objectId);
             sqlite3_bind_string(statement, 2, study.title);
             sqlite3_bind_string(statement, 3, study.description);
             sqlite3_bind_blob(statement, 4, pairData.bytes, pairData.length, SQLITE_TRANSIENT);
+            sqlite3_bind_string(statement, 5, study.instructions);
+            sqlite3_bind_double(statement, 6, study.timer);
+            sqlite3_bind_int(statement, 7, study.randomize);
             sqlite3_step(statement);
             sqlite3_finalize(statement);
         }
@@ -150,7 +153,7 @@ static int const kSchemaVersion = 3;
 -(NSArray*)getStudies {
     NSMutableArray *studies = [NSMutableArray array];
     @synchronized(self) {
-        const char *sql = "SELECT object_id, title, description, pairIds FROM studies";
+        const char *sql = "SELECT object_id, title, description, pairIds, instructions, timer, randomize FROM studies";
         sqlite3_stmt *statement = NULL;
         sqlite3_prepare_v2(self.database, sql, -1, &statement, NULL);
 
@@ -158,6 +161,9 @@ static int const kSchemaVersion = 3;
             NSString *objectId = sqlite3_column_string(statement, 0);
             NSString *title = sqlite3_column_string(statement, 1);
             NSString *description = sqlite3_column_string(statement, 2);
+            NSString *instructions = sqlite3_column_string(statement, 4);
+            CGFloat timer = sqlite3_column_double(statement, 5);
+            BOOL randomize = sqlite3_column_int(statement, 6);
             
             const void * bytes = sqlite3_column_blob(statement, 3);
             int length = sqlite3_column_bytes(statement, 3);
@@ -172,7 +178,8 @@ static int const kSchemaVersion = 3;
                 }
             }
             
-            [studies addObject:[[BSPStudy alloc] initWithId:objectId title:title description:description pairs:pairs]];
+            [studies addObject:[[BSPStudy alloc] initWithId:objectId title:title description:description pairs:pairs
+                                instructions:instructions timer:timer randomize:randomize]];
         }
         sqlite3_finalize(statement);
     }

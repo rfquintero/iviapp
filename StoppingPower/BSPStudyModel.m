@@ -49,8 +49,12 @@
             NSString *title = [self nullSafe:jsonStudy[@"name"]];
             NSString *description = [self nullSafe:jsonStudy[@"caption"]];
             NSArray *pairs = [self parsePairs:jsonStudy[@"pairs"]];
+            NSString *instructions = [self nullSafe:jsonStudy[@"instructions"]];
+            CGFloat timer = [[self nullSafeId:jsonStudy[@"timer"]] floatValue];
+            BOOL randomize = [[self nullSafeId:jsonStudy[@"randomize"]] boolValue];
 
-            [studies addObject:[[BSPStudy alloc] initWithId:objectId title:title description:description pairs:pairs]];
+            [studies addObject:[[BSPStudy alloc] initWithId:objectId title:title description:description pairs:pairs
+                                instructions:instructions timer:timer randomize:randomize]];
         }
     }
     
@@ -84,6 +88,17 @@
         return @"";
     }
     return [NSString stringWithFormat:@"%@", string];
+}
+
+-(id)nullSafeId:(id)object {
+    if(object == NULL) {
+        return nil;
+    } else if (!object) {
+        return nil;
+    } else if ([[NSNull null] isEqual:object]) {
+        return nil;
+    }
+    return object;
 }
 
 -(void)postNotificationOnMainThread:(NSString*)name userInfo:(NSDictionary*)userInfo {
