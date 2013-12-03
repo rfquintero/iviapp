@@ -7,12 +7,13 @@
 @property (nonatomic, readwrite) NSArray *pairs;
 @property (nonatomic, readwrite) NSString *instructions;
 @property (nonatomic, readwrite) CGFloat timer;
+@property (nonatomic, readwrite) NSInteger warmupPairs;
 @property (nonatomic, readwrite) BOOL randomize;
 @end
 
 @implementation BSPStudy
 
--(id)initWithId:(NSString*)objectId title:(NSString*)title description:(NSString*)description pairs:(NSArray*)pairs instructions:(NSString *)instructions timer:(CGFloat)timer randomize:(BOOL)randomize {
+-(id)initWithId:(NSString*)objectId title:(NSString*)title description:(NSString*)description pairs:(NSArray*)pairs instructions:(NSString *)instructions timer:(CGFloat)timer randomize:(BOOL)randomize warmupPairs:(NSInteger)warmupPairs {
     if(self = [super init]) {
         self.objectId = objectId;
         self.title = title;
@@ -21,6 +22,7 @@
         self.instructions = instructions;
         self.timer = timer;
         self.randomize = randomize;
+        self.warmupPairs = warmupPairs;
     }
     return self;
 }

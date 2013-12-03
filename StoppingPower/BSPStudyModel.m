@@ -51,10 +51,12 @@
             NSArray *pairs = [self parsePairs:jsonStudy[@"pairs"]];
             NSString *instructions = [self nullSafe:jsonStudy[@"instructions"]];
             CGFloat timer = [[self nullSafeId:jsonStudy[@"timer"]] floatValue];
+            NSInteger warmupPairs = [[self nullSafeId:jsonStudy[@"warmup_pairs"]] integerValue];
             BOOL randomize = [[self nullSafeId:jsonStudy[@"randomize"]] boolValue];
+            
 
             [studies addObject:[[BSPStudy alloc] initWithId:objectId title:title description:description pairs:pairs
-                                instructions:instructions timer:timer randomize:randomize]];
+                                instructions:instructions timer:timer randomize:randomize warmupPairs:warmupPairs]];
         }
     }
     

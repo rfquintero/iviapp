@@ -67,8 +67,8 @@
     BSPImagePair *pair2 = [[BSPImagePair alloc] initWithLeftId:@"l2" leftUrlString:@"lurl2" leftCaption:@"lcap2" rightId:@"r2" rightUrlString:@"rurl2" rightCaption:@"rcap2"];
     BSPImagePair *pair3 = [[BSPImagePair alloc] initWithLeftId:@"l3" leftUrlString:@"lurl3" leftCaption:@"lcap3" rightId:@"r3" rightUrlString:@"rurl3" rightCaption:@"rcap3"];
     BSPImagePair *pair4 = [[BSPImagePair alloc] initWithLeftId:@"l4" leftUrlString:@"lurl4" leftCaption:@"lcap4" rightId:@"r4" rightUrlString:@"rurl4" rightCaption:@"rcap4"];
-    BSPStudy *study1 = [[BSPStudy alloc] initWithId:@"1" title:@"title1" description:@"desc1" pairs:@[pair1, pair2, pair3] instructions:@"Hi" timer:1.5 randomize:YES];
-    BSPStudy *study2 = [[BSPStudy alloc] initWithId:@"2" title:@"title2" description:@"desc2" pairs:@[pair4] instructions:@"Hello" timer:0.0 randomize:NO];
+    BSPStudy *study1 = [[BSPStudy alloc] initWithId:@"1" title:@"title1" description:@"desc1" pairs:@[pair1, pair2, pair3] instructions:@"Hi" timer:1.5 randomize:YES warmupPairs:0];
+    BSPStudy *study2 = [[BSPStudy alloc] initWithId:@"2" title:@"title2" description:@"desc2" pairs:@[pair4] instructions:@"Hello" timer:0.0 randomize:NO warmupPairs:2];
     
     [testObject saveStudies:@[study1, study2]];
     
@@ -83,9 +83,9 @@
     BSPImagePair *pair2 = [[BSPImagePair alloc] initWithLeftId:@"l2" leftUrlString:@"lurl2" leftCaption:@"lcap2" rightId:@"r2" rightUrlString:@"rurl2" rightCaption:@"rcap2"];
     BSPImagePair *pair3 = [[BSPImagePair alloc] initWithLeftId:@"l3" leftUrlString:@"lurl3" leftCaption:@"lcap3" rightId:@"r3" rightUrlString:@"rurl3" rightCaption:@"rcap3"];
     BSPImagePair *pair4 = [[BSPImagePair alloc] initWithLeftId:@"l4" leftUrlString:@"lurl4" leftCaption:@"lcap4" rightId:@"r4" rightUrlString:@"rurl4" rightCaption:@"rcap4"];
-    BSPStudy *study1 = [[BSPStudy alloc] initWithId:@"1" title:@"title1" description:@"desc1" pairs:@[pair1, pair2, pair3] instructions:@"Hi" timer:1.5 randomize:YES];
-    BSPStudy *study2 = [[BSPStudy alloc] initWithId:@"2" title:@"title2" description:@"desc2" pairs:@[pair4] instructions:@"Hello" timer:0.0 randomize:NO];
-    BSPStudy *study3 = [[BSPStudy alloc] initWithId:@"3" title:@"title3" description:@"desc3" pairs:@[pair1, pair4] instructions:@"Take the study" timer:2.5 randomize:YES];
+    BSPStudy *study1 = [[BSPStudy alloc] initWithId:@"1" title:@"title1" description:@"desc1" pairs:@[pair1, pair2, pair3] instructions:@"Hi" timer:1.5 randomize:YES warmupPairs:1];
+    BSPStudy *study2 = [[BSPStudy alloc] initWithId:@"2" title:@"title2" description:@"desc2" pairs:@[pair4] instructions:@"Hello" timer:0.0 randomize:NO warmupPairs:2];
+    BSPStudy *study3 = [[BSPStudy alloc] initWithId:@"3" title:@"title3" description:@"desc3" pairs:@[pair1, pair4] instructions:@"Take the study" timer:2.5 randomize:YES warmupPairs:3];
     
     [testObject saveStudies:@[study1, study2]];
     [testObject saveStudies:@[study3]];
@@ -103,6 +103,7 @@
     GHAssertEqualObjects(study1.instructions, study2.instructions, nil);
     GHAssertEqualsWithAccuracy(study1.timer, study2.timer, 0.0001, nil);
     GHAssertEquals(study1.randomize, study2.randomize, nil);
+    GHAssertEquals(study1.warmupPairs, study2.warmupPairs, nil);
     
     GHAssertEquals(study1.pairs.count, study2.pairs.count, nil);
     for(int i=0; i<study1.pairs.count; i++) {

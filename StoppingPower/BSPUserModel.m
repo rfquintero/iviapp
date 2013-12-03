@@ -1,4 +1,5 @@
 #import "BSPUserModel.h"
+#import "BSPImagePair.h"
 
 @interface BSPUserModel()
 @property (nonatomic) NSMutableArray *selections;
@@ -80,10 +81,16 @@
     if(self.study.randomize) {
         NSUInteger count = self.study.pairs.count;
         NSMutableArray *pairs = [NSMutableArray arrayWithArray:self.study.pairs];
-        for (NSUInteger i = 0; i < count; ++i) {
+        
+        for (NSUInteger i = self.study.warmupPairs; i < count; ++i) {
             NSInteger nElements = count - i;
             NSInteger n = (arc4random() % nElements) + i;
             [pairs exchangeObjectAtIndex:i withObjectAtIndex:n];
+        }
+        
+        for (NSUInteger i = 0; i< count; ++i) {
+            BSPImagePair *pair = [pairs objectAtIndex:i];
+            [pairs replaceObjectAtIndex:i withObject:[pair pairRandomized:self.study.randomize]];
         }
         return pairs;
     } else {

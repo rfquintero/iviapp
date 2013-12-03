@@ -8,4 +8,5 @@
 @property (nonatomic, readonly) NSString *rightImageUrlString;
 @property (nonatomic, readonly) NSString *rightCaption;
 -(id)initWithLeftId:(NSString*)leftId leftUrlString:(NSString*)leftUrlString leftCaption:(NSString*)leftCaption rightId:(NSString*)rightId rightUrlString:(NSString*)rightUrlString rightCaption:(NSString*)rightCaption;
+-(BSPImagePair*)pairRandomized:(BOOL)randomized;
 @end

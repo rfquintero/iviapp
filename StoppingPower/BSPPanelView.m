@@ -24,6 +24,7 @@
         self.navItem = [[UINavigationItem alloc] initWithTitle:@""];
         
         self.navBar = [[UINavigationBar alloc] initWithFrame:CGRectZero];
+        [self.navBar setTranslucent:NO];
         [self.navBar pushNavigationItem:self.navItem animated:NO];
     
         self.contentView = contentView;

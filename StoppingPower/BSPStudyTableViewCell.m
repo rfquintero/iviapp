@@ -19,6 +19,7 @@
     self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
     if (self) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
+        self.backgroundColor = [UIColor clearColor];
         
         self.background = [[UIImageView alloc] init];
         self.circle = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ic_study_circle"]];

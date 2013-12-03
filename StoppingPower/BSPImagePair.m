@@ -23,4 +23,17 @@
     return self;
 }
 
+-(BSPImagePair*)pairRandomized:(BOOL)randomized {
+    BOOL flip = randomized ? (arc4random() % 2) : NO;
+    return [self copyFlipped:flip];
+}
+
+-(BSPImagePair*)copyFlipped:(BOOL)flip {
+    if(flip) {
+        return [[BSPImagePair alloc] initWithLeftId:self.rightId leftUrlString:self.rightImageUrlString leftCaption:self.rightCaption rightId:self.leftId rightUrlString:self.leftImageUrlString rightCaption:self.leftCaption];
+    } else {
+        return [[BSPImagePair alloc] initWithLeftId:self.leftId leftUrlString:self.leftImageUrlString leftCaption:self.leftCaption rightId:self.rightId rightUrlString:self.rightImageUrlString rightCaption:self.rightCaption];
+    }
+}
+
 @end
