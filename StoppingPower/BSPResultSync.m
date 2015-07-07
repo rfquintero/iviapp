@@ -1,5 +1,4 @@
 #import "BSPResultSync.h"
-#import "TestFlight.h"
 
 @interface BSPResultSync()
 @property (nonatomic) BSPDao *dao;

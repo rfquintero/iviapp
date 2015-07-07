@@ -99,7 +99,7 @@
 -(void)assertStudy:(BSPStudy*)study1 isEqual:(BSPStudy*)study2 {
     GHAssertEqualObjects(study1.objectId, study2.objectId, nil);
     GHAssertEqualObjects(study1.title, study2.title, nil);
-    GHAssertEqualObjects(study1.description, study2.description, nil);
+    GHAssertEqualObjects(study1.info, study2.info, nil);
     GHAssertEqualObjects(study1.instructions, study2.instructions, nil);
     GHAssertEqualsWithAccuracy(study1.timer, study2.timer, 0.0001, nil);
     GHAssertEquals(study1.randomize, study2.randomize, nil);

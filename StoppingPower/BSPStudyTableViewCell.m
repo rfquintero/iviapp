@@ -97,7 +97,7 @@
 
 -(void)setStudy:(BSPStudy*)study number:(NSUInteger)number {
     self.titleLabel.text = study.title;
-    self.descriptionLabel.text = study.description;
+    self.descriptionLabel.text = study.info;
     self.numberLabel.text = [NSString stringWithFormat:@"%i", number];
 }
 

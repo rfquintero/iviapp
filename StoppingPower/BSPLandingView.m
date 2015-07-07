@@ -6,6 +6,7 @@
 @interface BSPLandingView()
 @property (nonatomic) UIView *backgroundView;
 @property (nonatomic) UIView *logoView;
+@property (nonatomic) UIView *bradoLogoView;
 @property (nonatomic) UIButton *settingsButton;
 @property (nonatomic) UIButton *refreshButton;
 @property (nonatomic) BSPPanelView *panelView;
@@ -27,7 +28,8 @@
         self.showsVerticalScrollIndicator = NO;
         
         self.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background"]];
-        self.logoView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"brado_logo"]];
+        self.logoView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ivi_logo"]];
+        self.bradoLogoView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"brado_logo"]];
         
         BSPUserInfoView *userInfoView = [[BSPUserInfoView alloc] initWithFrame:CGRectZero];
         self.userInfoView = userInfoView;
@@ -61,6 +63,7 @@
         
         [self addSubview:self.backgroundView];
         [self addSubview:self.logoView];
+        [self addSubview:self.bradoLogoView];
         [self addSubview:self.spinner];
         [self addSubview:self.loadingLabel];
         [self addSubview:panelView];
@@ -94,6 +97,7 @@
     self.backgroundView.frame = self.bounds;
     [self.logoView centerHorizonallyAtY:(self.loading ? 175 : 65) inBounds:boundsWithOffset thatFits:CGSizeUnbounded];
     [self.panelView centerHorizonallyAtY:CGRectGetMaxY(self.logoView.frame)+35 inBounds:self.bounds withSize:CGSizeMake(540,375)];
+    [self.bradoLogoView centerHorizonallyAtY:CGRectGetMaxY(self.panelView.frame)+50 inBounds:self.bounds thatFits:CGSizeUnbounded];
     [self.spinner centerHorizonallyAtY:CGRectGetMaxY(self.logoView.frame)+35 inBounds:self.bounds thatFits:CGSizeUnbounded];
     [self.loadingLabel centerHorizonallyAtY:CGRectGetMaxY(self.spinner.frame)+10 inBounds:self.bounds thatFits:CGSizeUnbounded];
     [self.settingsButton setFrameAtOrigin:CGPointMake(20, self.bounds.size.height-50) thatFits:CGSizeUnbounded];
@@ -120,17 +124,20 @@
 
 -(void)animateOffsetX:(CGFloat)offsetX showInfo:(BOOL)show {
     self.panelView.hidden = NO;
+    self.bradoLogoView.hidden = NO;
     self.refreshButton.hidden = NO;
     self.offsetX = offsetX;
     NSString *settingsTitle = show ? @"Select Study" : @"Close Selection";
     [UIView animateWithDuration:0.3f animations:^{
         [self setFrameAtOrigin:CGPointMake(offsetX, self.frame.origin.y)];
         self.panelView.alpha = show ? 1.0f : 0.0f;
+        self.bradoLogoView.alpha = show ? 1.0f : 0.0f;
         self.refreshButton.alpha = show ? 0.0f : 1.0f;
         [self.settingsButton setTitle:settingsTitle forState:UIControlStateNormal];
         [self layoutSubviews];
     } completion:^(BOOL finished) {
         self.panelView.hidden = !show;
+        self.bradoLogoView.hidden = !show;
         self.refreshButton.hidden = show;
     }];
 }
@@ -145,15 +152,20 @@
 
     if(animated) {
         self.panelView.hidden = NO;
+        self.bradoLogoView.hidden = NO;
         [UIView animateWithDuration:0.3f animations:^{
             self.panelView.alpha = self.loading ? 0.0f : 1.0f;
+            self.bradoLogoView.alpha = self.loading ? 0.0f : 1.0f;
             [self layoutSubviews];
         } completion:^(BOOL finished) {
             self.panelView.hidden = loading;
+            self.bradoLogoView.hidden = loading;
         }];
     } else {
         self.panelView.hidden = loading;
         self.panelView.alpha = self.loading ? 0.0f : 1.0f;
+        self.bradoLogoView.hidden = loading;
+        self.bradoLogoView.alpha = self.loading ? 0.0f : 1.0f;
         [self layoutSubviews];
     }
 }

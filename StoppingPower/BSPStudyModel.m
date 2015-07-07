@@ -1,7 +1,6 @@
 #import "BSPStudyModel.h"
 #import "BSPImagePair.h"
 #import <SDWebImage/SDWebImageManager.h>
-#import "TestFlight.h"
 
 @interface BSPStudyModel()
 @property (nonatomic, readwrite) NSArray *studies;
@@ -145,9 +144,9 @@
 -(void)downloadImage:(NSString*)imageUrlString {
     NSURL* imageUrl = [NSURL URLWithString:imageUrlString];
     SDWebImageManager *manager = [SDWebImageManager sharedManager];
-    [manager downloadWithURL:imageUrl options:0 progress:^(NSUInteger receivedSize, long long expectedSize) {}
+    [manager downloadWithURL:imageUrl options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {}
                    completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished) {
-                       NSLog(@"Image Retrieved from (0-web, 1-disk, 2-mem): %i", cacheType);
+                       NSLog(@"Image Retrieved from (0-web, 1-disk, 2-mem): %i", (int)cacheType);
                        if(image && finished) {
                            [self performSelectorOnMainThread:@selector(imageRetrieved) withObject:nil waitUntilDone:NO];
                        } else {

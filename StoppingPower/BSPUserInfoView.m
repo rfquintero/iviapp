@@ -2,6 +2,7 @@
 #import "BSPGroupedButton.h"
 #import "BSPUserInfoCell.h"
 #import "BSPUI.h"
+#import "BSPConstants.h"
 
 @interface BSPUserInfoView()<UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 @property (nonatomic) UIView *backgroundView;
@@ -51,7 +52,9 @@
     
     self.backgroundView.frame = self.bounds;
     self.tableView.frame = CGRectMake(0, 10, self.bounds.size.width, 232);
-    self.maleButton.frame = CGRectMake(30, CGRectGetMaxY(self.tableView.frame)+5.0f, 200, 46);
+    
+    CGFloat offset = SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0") ? 10.0f : 5.0f;
+    self.maleButton.frame = CGRectMake(30, CGRectGetMaxY(self.tableView.frame)+offset, 200, 46);
     self.femaleButton.frame = CGRectMake(CGRectGetMaxX(self.maleButton.frame)+20, self.maleButton.frame.origin.y, 200, 46);
 }
 

@@ -139,7 +139,7 @@ static int const kSchemaVersion = 5;
             sqlite3_prepare_v2(self.database, sql, -1, &statement, NULL);
             sqlite3_bind_string(statement, 1, study.objectId);
             sqlite3_bind_string(statement, 2, study.title);
-            sqlite3_bind_string(statement, 3, study.description);
+            sqlite3_bind_string(statement, 3, study.info);
             sqlite3_bind_blob(statement, 4, pairData.bytes, pairData.length, SQLITE_TRANSIENT);
             sqlite3_bind_string(statement, 5, study.instructions);
             sqlite3_bind_double(statement, 6, study.timer);

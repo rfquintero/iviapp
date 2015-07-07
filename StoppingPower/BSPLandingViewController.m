@@ -5,7 +5,6 @@
 #import "BSPStudyModel.h"
 #import "BSPStudyControllerViewController.h"
 #import "BSPUserModel.h"
-#import "TestFlight.h"
 
 #define kSettingsWidth 480
 

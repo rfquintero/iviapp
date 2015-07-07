@@ -3,7 +3,7 @@
 @interface BSPStudy : NSObject
 @property (nonatomic, readonly) NSString *objectId;
 @property (nonatomic, readonly) NSString* title;
-@property (nonatomic, readonly) NSString* description;
+@property (nonatomic, readonly) NSString* info;
 @property (nonatomic, readonly) NSString* instructions;
 @property (nonatomic, readonly) CGFloat timer;
 @property (nonatomic, readonly) NSInteger warmupPairs;

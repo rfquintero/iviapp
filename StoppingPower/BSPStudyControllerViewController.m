@@ -3,7 +3,6 @@
 #import "BSPUI.h"
 #import "BSPCompletionView.h"
 #import "BSPInstructionView.h"
-#import "TestFlight.h"
 
 @interface BSPStudyControllerViewController ()<UIAlertViewDelegate>
 @property (nonatomic) BSPApplicationState *applicationState;

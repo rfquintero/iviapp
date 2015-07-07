@@ -38,7 +38,7 @@
         
         self.descriptionLabel = [BSPUI labelWithFont:[BSPUI fontOfSize:14.0f]];
         self.descriptionLabel.textColor = [UIColor whiteColor];
-        self.descriptionLabel.text = study.description;
+        self.descriptionLabel.text = study.info;
         
         self.pageLabel = [BSPUI labelWithFont:[BSPUI fontOfSize:14.0f]];
         self.pageLabel.textColor = [UIColor whiteColor];

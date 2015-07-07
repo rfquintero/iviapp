@@ -3,7 +3,7 @@
 @interface BSPStudy()
 @property (nonatomic, readwrite) NSString *objectId;
 @property (nonatomic, readwrite) NSString *title;
-@property (nonatomic, readwrite) NSString *description;
+@property (nonatomic, readwrite) NSString *info;
 @property (nonatomic, readwrite) NSArray *pairs;
 @property (nonatomic, readwrite) NSString *instructions;
 @property (nonatomic, readwrite) CGFloat timer;
@@ -17,7 +17,7 @@
     if(self = [super init]) {
         self.objectId = objectId;
         self.title = title;
-        self.description = description;
+        self.info = description;
         self.pairs = pairs;
         self.instructions = instructions;
         self.timer = timer;
