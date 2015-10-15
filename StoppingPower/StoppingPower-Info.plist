@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>BSPWebEndpoint</key>
-	<string>http://brado-dev.herokuapp.com/</string>
+	<string>https://brado-dev.herokuapp.com/</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
@@ -46,5 +46,29 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+	      <key>NSExceptionDomains</key>
+	      <dict>
+	            <key>amazonaws.com</key>
+	            <dict>
+	                  <key>NSThirdPartyExceptionMinimumTLSVersion</key>
+	                  <string>TLSv1.0</string>
+	                  <key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
+	                  <false/>
+	                  <key>NSIncludesSubdomains</key>
+	                  <true/>
+	            </dict>
+	            <key>amazonaws.com.cn</key>
+	            <dict>
+	                  <key>NSThirdPartyExceptionMinimumTLSVersion</key>
+	                  <string>TLSv1.0</string>
+	                  <key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
+	                  <false/>
+	                  <key>NSIncludesSubdomains</key>
+	                  <true/>
+	            </dict>
+	      </dict>
+	</dict>
 </dict>
 </plist>

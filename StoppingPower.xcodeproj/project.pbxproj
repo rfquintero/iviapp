@@ -33,7 +33,6 @@
 		451CFB21176E71F7000339DB /* MyriadPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 451CFB1D176E71F7000339DB /* MyriadPro-Regular.otf */; };
 		451CFB25176ED2C3000339DB /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 451CFB24176ED2C3000339DB /* ImageIO.framework */; };
 		45379FC417D76B0F00457023 /* BSPStudyImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F01FDD17826C290059D2A9 /* BSPStudyImage.m */; };
-		45379FC617D76C0900457023 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 45F01FD6177D00DF0059D2A9 /* libz.dylib */; };
 		4544076C1755A9E9005D8C22 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4544076B1755A9E9005D8C22 /* UIKit.framework */; };
 		4544076E1755A9E9005D8C22 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4544076D1755A9E9005D8C22 /* Foundation.framework */; };
 		454407701755A9E9005D8C22 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4544076F1755A9E9005D8C22 /* CoreGraphics.framework */; };
@@ -76,6 +75,8 @@
 		459C0FAE176EE38600C335F9 /* BSPApplicationState.m in Sources */ = {isa = PBXBuildFile; fileRef = 459C0FAD176EE38600C335F9 /* BSPApplicationState.m */; };
 		459C0FB5176F3E9D00C335F9 /* BSPStudyControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 459C0FB4176F3E9D00C335F9 /* BSPStudyControllerViewController.m */; };
 		459C0FBB176F3F5D00C335F9 /* BSPStudyPairView.m in Sources */ = {isa = PBXBuildFile; fileRef = 459C0FBA176F3F5D00C335F9 /* BSPStudyPairView.m */; };
+		45ED16A01BCF4F6A0078948D /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 45ED169F1BCF4F6A0078948D /* libsqlite3.tbd */; };
+		45ED16A21BCF4F730078948D /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 45ED16A11BCF4F730078948D /* libz.tbd */; };
 		45F01ED21778C6B50059D2A9 /* BSPUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F01ED11778C6B50059D2A9 /* BSPUserModel.m */; };
 		45F01EEF177BD6A10059D2A9 /* BSPCompletionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F01EEE177BD6A10059D2A9 /* BSPCompletionView.m */; };
 		45F01EF2177BF8E10059D2A9 /* BSPResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F01EF1177BF8E00059D2A9 /* BSPResult.m */; };
@@ -85,7 +86,6 @@
 		45F01EFC177C214D0059D2A9 /* bg_instructions@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 45F01EFA177C214D0059D2A9 /* bg_instructions@2x.png */; };
 		45F01F04177CD0B30059D2A9 /* BSPDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F01F03177CD0AD0059D2A9 /* BSPDatabase.m */; };
 		45F01F21177CD1E10059D2A9 /* BSPDatabaseUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F01F20177CD1E10059D2A9 /* BSPDatabaseUtilities.m */; };
-		45F01F48177CD5210059D2A9 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 45F01F47177CD51F0059D2A9 /* libsqlite3.dylib */; };
 		45F01F6F177CE2960059D2A9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4544076B1755A9E9005D8C22 /* UIKit.framework */; };
 		45F01F70177CE2960059D2A9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4544076D1755A9E9005D8C22 /* Foundation.framework */; };
 		45F01F71177CE2960059D2A9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4544076F1755A9E9005D8C22 /* CoreGraphics.framework */; };
@@ -97,7 +97,6 @@
 		45F01F87177CE2C60059D2A9 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 459C0FA1176ED5A100C335F9 /* SDWebImage.framework */; };
 		45F01F88177CE2C70059D2A9 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 451CFB24176ED2C3000339DB /* ImageIO.framework */; };
 		45F01F89177CE2C70059D2A9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 454407AB1755BC01005D8C22 /* QuartzCore.framework */; };
-		45F01F8A177CE2CA0059D2A9 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 45F01F47177CD51F0059D2A9 /* libsqlite3.dylib */; };
 		45F01F94177CE2DA0059D2A9 /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45F01F8B177CE2DA0059D2A9 /* GHUnitIOS.framework */; };
 		45F01F95177CE2DA0059D2A9 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 45F01F8D177CE2DA0059D2A9 /* libOCMock.a */; };
 		45F01F98177CE3DD0059D2A9 /* BSPDatabaseTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F01F97177CE3DD0059D2A9 /* BSPDatabaseTest.m */; };
@@ -126,7 +125,6 @@
 		45F01FB1177CE5A00059D2A9 /* BSPInstructionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F01EF7177C1E5E0059D2A9 /* BSPInstructionView.m */; };
 		45F01FB2177CE5AC0059D2A9 /* BSPDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F01F03177CD0AD0059D2A9 /* BSPDatabase.m */; };
 		45F01FB3177CE5AC0059D2A9 /* BSPDatabaseUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F01F20177CD1E10059D2A9 /* BSPDatabaseUtilities.m */; };
-		45F01FD7177D00E20059D2A9 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 45F01FD6177D00DF0059D2A9 /* libz.dylib */; };
 		45F01FDE17826C2A0059D2A9 /* BSPStudyImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F01FDD17826C290059D2A9 /* BSPStudyImage.m */; };
 /* End PBXBuildFile section */
 
@@ -230,6 +228,8 @@
 		459C0FB4176F3E9D00C335F9 /* BSPStudyControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSPStudyControllerViewController.m; sourceTree = "<group>"; };
 		459C0FB9176F3F5D00C335F9 /* BSPStudyPairView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSPStudyPairView.h; sourceTree = "<group>"; };
 		459C0FBA176F3F5D00C335F9 /* BSPStudyPairView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSPStudyPairView.m; sourceTree = "<group>"; };
+		45ED169F1BCF4F6A0078948D /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		45ED16A11BCF4F730078948D /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		45F01ED01778C6B50059D2A9 /* BSPUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSPUserModel.h; sourceTree = "<group>"; };
 		45F01ED11778C6B50059D2A9 /* BSPUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSPUserModel.m; sourceTree = "<group>"; };
 		45F01EED177BD6A10059D2A9 /* BSPCompletionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSPCompletionView.h; sourceTree = "<group>"; };
@@ -246,7 +246,6 @@
 		45F01F03177CD0AD0059D2A9 /* BSPDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSPDatabase.m; sourceTree = "<group>"; };
 		45F01F1F177CD1E10059D2A9 /* BSPDatabaseUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSPDatabaseUtilities.h; sourceTree = "<group>"; };
 		45F01F20177CD1E10059D2A9 /* BSPDatabaseUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSPDatabaseUtilities.m; sourceTree = "<group>"; };
-		45F01F47177CD51F0059D2A9 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		45F01F6E177CE2960059D2A9 /* StoppingPowerTests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StoppingPowerTests.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		45F01F74177CE2970059D2A9 /* StoppingPowerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "StoppingPowerTests-Info.plist"; sourceTree = "<group>"; };
 		45F01F76177CE2970059D2A9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -264,7 +263,6 @@
 		45F01F92177CE2DA0059D2A9 /* OCMockObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMockObject.h; sourceTree = "<group>"; };
 		45F01F93177CE2DA0059D2A9 /* OCMockRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMockRecorder.h; sourceTree = "<group>"; };
 		45F01F97177CE3DD0059D2A9 /* BSPDatabaseTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSPDatabaseTest.m; sourceTree = "<group>"; };
-		45F01FD6177D00DF0059D2A9 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		45F01FDC17826C290059D2A9 /* BSPStudyImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSPStudyImage.h; sourceTree = "<group>"; };
 		45F01FDD17826C290059D2A9 /* BSPStudyImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSPStudyImage.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -274,8 +272,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				45F01FD7177D00E20059D2A9 /* libz.dylib in Frameworks */,
-				45F01F48177CD5210059D2A9 /* libsqlite3.dylib in Frameworks */,
+				45ED16A21BCF4F730078948D /* libz.tbd in Frameworks */,
+				45ED16A01BCF4F6A0078948D /* libsqlite3.tbd in Frameworks */,
 				459C0FA2176ED5A100C335F9 /* SDWebImage.framework in Frameworks */,
 				451CFB25176ED2C3000339DB /* ImageIO.framework in Frameworks */,
 				454407AC1755BC01005D8C22 /* QuartzCore.framework in Frameworks */,
@@ -295,10 +293,8 @@
 				45F01F87177CE2C60059D2A9 /* SDWebImage.framework in Frameworks */,
 				45F01F88177CE2C70059D2A9 /* ImageIO.framework in Frameworks */,
 				45F01F89177CE2C70059D2A9 /* QuartzCore.framework in Frameworks */,
-				45F01F8A177CE2CA0059D2A9 /* libsqlite3.dylib in Frameworks */,
 				45F01F94177CE2DA0059D2A9 /* GHUnitIOS.framework in Frameworks */,
 				45F01F95177CE2DA0059D2A9 /* libOCMock.a in Frameworks */,
-				45379FC617D76C0900457023 /* libz.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,10 +371,10 @@
 		4544076A1755A9E9005D8C22 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				45F01FD6177D00DF0059D2A9 /* libz.dylib */,
+				45ED16A11BCF4F730078948D /* libz.tbd */,
+				45ED169F1BCF4F6A0078948D /* libsqlite3.tbd */,
 				45F01F8B177CE2DA0059D2A9 /* GHUnitIOS.framework */,
 				45F01F8C177CE2DA0059D2A9 /* OCMock */,
-				45F01F47177CD51F0059D2A9 /* libsqlite3.dylib */,
 				459C0FA1176ED5A100C335F9 /* SDWebImage.framework */,
 				451CFB24176ED2C3000339DB /* ImageIO.framework */,
 				454407AB1755BC01005D8C22 /* QuartzCore.framework */,
@@ -949,7 +945,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "StoppingPower/StoppingPower-Prefix.pch";
 				INFOPLIST_FILE = "StoppingPower/StoppingPower-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -974,7 +970,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "StoppingPower/StoppingPower-Prefix.pch";
 				INFOPLIST_FILE = "StoppingPower/StoppingPower-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
