@@ -4,7 +4,7 @@ int sqlite3_bind_string(sqlite3_stmt *statement, int column, NSString *string) {
     int returnCode;
     if (string) {
         const char *value = [string UTF8String];
-        returnCode = sqlite3_bind_text(statement, column, value, strlen(value), SQLITE_TRANSIENT);
+        returnCode = sqlite3_bind_text(statement, column, value, (int)strlen(value), SQLITE_TRANSIENT);
     } else {
         returnCode = sqlite3_bind_null(statement, column);
     }

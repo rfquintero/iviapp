@@ -98,7 +98,7 @@
 -(void)setStudy:(BSPStudy*)study number:(NSUInteger)number {
     self.titleLabel.text = study.title;
     self.descriptionLabel.text = study.info;
-    self.numberLabel.text = [NSString stringWithFormat:@"%i", number];
+    self.numberLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)number];
 }
 
 +(CGFloat)heightForCell {

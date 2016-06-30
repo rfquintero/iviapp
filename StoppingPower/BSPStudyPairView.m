@@ -119,7 +119,7 @@
         self.currentPair = self.pairs[0];
         [self.leftImage setImageWithURL:self.currentPair.leftImageUrlString caption:self.currentPair.leftCaption];
         [self.rightImage setImageWithURL:self.currentPair.rightImageUrlString caption:self.currentPair.rightCaption];
-        self.pageLabel.text = [NSString stringWithFormat:@"%i of %i", (self.totalPairs - self.pairs.count + 1), self.totalPairs];
+        self.pageLabel.text = [NSString stringWithFormat:@"%lu of %lu", (self.totalPairs - self.pairs.count + 1), self.totalPairs];
         
         [self setNeedsLayout];
     } else {

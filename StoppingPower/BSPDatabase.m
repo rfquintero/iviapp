@@ -76,7 +76,7 @@ static int const kSchemaVersion = 5;
         sqlite3_bind_string(statement, 3, result.groupId);
         sqlite3_bind_string(statement, 4, result.gender);
         sqlite3_bind_string(statement, 5, result.studyId);
-        sqlite3_bind_blob(statement, 6, selectionData.bytes, selectionData.length, SQLITE_TRANSIENT);
+        sqlite3_bind_blob(statement, 6, selectionData.bytes, (int)selectionData.length, SQLITE_TRANSIENT);
         sqlite3_step(statement);
         sqlite3_finalize(statement);
     }
@@ -140,11 +140,11 @@ static int const kSchemaVersion = 5;
             sqlite3_bind_string(statement, 1, study.objectId);
             sqlite3_bind_string(statement, 2, study.title);
             sqlite3_bind_string(statement, 3, study.info);
-            sqlite3_bind_blob(statement, 4, pairData.bytes, pairData.length, SQLITE_TRANSIENT);
+            sqlite3_bind_blob(statement, 4, pairData.bytes, (int)pairData.length, SQLITE_TRANSIENT);
             sqlite3_bind_string(statement, 5, study.instructions);
             sqlite3_bind_double(statement, 6, study.timer);
             sqlite3_bind_int(statement, 7, study.randomize);
-            sqlite3_bind_int(statement, 8, study.warmupPairs);
+            sqlite3_bind_int(statement, 8, (int)study.warmupPairs);
             sqlite3_step(statement);
             sqlite3_finalize(statement);
         }
@@ -216,7 +216,7 @@ static int const kSchemaVersion = 5;
     sqlite3_bind_string(statement, 6, pair.rightCaption);
     sqlite3_step(statement);
     sqlite3_finalize(statement);
-    int rowId = sqlite3_last_insert_rowid(self.database);
+    sqlite3_int64 rowId = sqlite3_last_insert_rowid(self.database);
 
     return rowId;
 }
