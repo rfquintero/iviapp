@@ -24,31 +24,26 @@
     if(results.count > 0 && !self.syncing) {
         self.syncing = YES;
         BSPResult *result = results[0];
-        TFLog(@"Publishing Result %i: %@ %@ - S:%@", result.objectId, result.firstName, result.lastName, result.studyId);
-        [self.dao publishResult:result handler:^(NSURLResponse *response, NSData *data, NSError *error) {
-            if(!error && response) {
-                NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*)response;
-                if(httpResponse.statusCode == 200) {
-                    [self performSelectorOnMainThread:@selector(resultPosted:) withObject:result waitUntilDone:NO];
-                } else {
-                    [self performSelectorOnMainThread:@selector(failed:) withObject:result waitUntilDone:NO];
-                }
+        TFLog(@"Publishing Result %li: %@ %@ - S:%@", (long)result.objectId, result.firstName, result.lastName, result.studyId);
+        [self.dao publishResult:result handler:^(NSHTTPURLResponse *response, NSData *data, NSError *error) {
+            if(response) {
+                [self resultPosted:result];
             } else {
-                [self performSelectorOnMainThread:@selector(failed:) withObject:result waitUntilDone:NO];
+                [self failed:result];
             }
         }];
     }
 }
 
 -(void)resultPosted:(BSPResult*)result {
-    TFLog(@"Successfully Published Result %i: %@ %@ - S:%@", result.objectId, result.firstName, result.lastName, result.studyId);
+    TFLog(@"Successfully Published Result %li: %@ %@ - S:%@", (long)result.objectId, result.firstName, result.lastName, result.studyId);
     self.syncing = NO;
     [self.database removeResult:result];
     [self startSync];
 }
 
 -(void)failed:(BSPResult*)result {
-    TFLog(@"Failed to published result %i: %@ %@ - S:%@", result.objectId, result.firstName, result.lastName, result.studyId);
+    TFLog(@"Failed to published result %li: %@ %@ - S:%@", (long)result.objectId, result.firstName, result.lastName, result.studyId);
     self.syncing = NO;
 }
 

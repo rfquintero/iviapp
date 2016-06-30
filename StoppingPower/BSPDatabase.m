@@ -9,7 +9,7 @@
 
 @implementation BSPDatabase
 
-static int const kSchemaVersion = 5;
+static int const kSchemaVersion = 6;
 
 - (id)initWithDatabasePath:(NSString *)databasePath {
     if ((self = [super init])) {
@@ -52,6 +52,7 @@ static int const kSchemaVersion = 5;
     sqlite3_execute(database, @"CREATE TABLE results (first_name TEXT, last_name TEXT, group_id TEXT, gender TEXT, study_id TEXT, selections TEXT)");
     sqlite3_execute(database, @"CREATE TABLE ipairs (left_id TEXT, left_url TEXT, left_caption TEXT, right_id TEXT, right_url TEXT, right_caption TEXT)");
     sqlite3_execute(database, @"CREATE TABLE studies (object_id TEXT PRIMARY KEY, title TEXT, description TEXT, pairIds TEXT, instructions TEXT, timer REAL, randomize BOOLEAN, warmupPairs INTEGER)");
+    sqlite3_execute(database, @"CREATE TABLE tokens (token TEXT)");
     
     sqlite3_execute(database, @"CREATE TABLE version (version INTEGER PRIMARY KEY)");
     sqlite3_execute(database, [NSString stringWithFormat:@"INSERT INTO version VALUES (%d)", kSchemaVersion]);
@@ -61,6 +62,7 @@ static int const kSchemaVersion = 5;
     sqlite3_execute(database, @"DROP TABLE IF EXISTS results");
     sqlite3_execute(database, @"DROP TABLE IF EXISTS studies");
     sqlite3_execute(database, @"DROP TABLE IF EXISTS ipairs");
+    sqlite3_execute(database, @"DROP TABLE IF EXISTS tokens");
     sqlite3_execute(database, @"DROP TABLE IF EXISTS version");
     [self performCreate:database];
 }
@@ -122,10 +124,16 @@ static int const kSchemaVersion = 5;
     }
 }
 
--(void)saveStudies:(NSArray *)studies {
-    @synchronized(self) {
+-(void)removeAllStudies {
+    @synchronized (self) {
         [self removeStudies];
         [self removePairs];
+    }
+}
+
+-(void)saveStudies:(NSArray *)studies {
+    @synchronized(self) {
+        [self removeAllStudies];
         for(BSPStudy* study in studies) {
             NSMutableArray *pairIds = [NSMutableArray array];
             for(int i=0; i<study.pairs.count; i++) {
@@ -240,6 +248,37 @@ static int const kSchemaVersion = 5;
     }
     sqlite3_finalize(statement);
     return pair;
+}
+
+-(void)saveToken:(NSString*)token {
+    [self removeToken];
+    static const char *sql = "INSERT INTO tokens (token) VALUES (?)";
+    sqlite3_stmt *statement = NULL;
+    sqlite3_prepare_v2(self.database, sql, -1, &statement, NULL);
+    sqlite3_bind_string(statement, 1, token);
+    sqlite3_step(statement);
+    sqlite3_finalize(statement);
+}
+
+-(void)removeToken {
+    const char *sql = "DELETE FROM tokens";
+    sqlite3_stmt *statement = NULL;
+    sqlite3_prepare_v2(self.database, sql, -1, &statement, NULL);
+    sqlite3_step(statement);
+    sqlite3_finalize(statement);
+}
+
+-(NSString*)getToken {
+    const char *sql = "SELECT token FROM tokens";
+    sqlite3_stmt *statement = NULL;
+    sqlite3_prepare_v2(self.database, sql, -1, &statement, NULL);
+    
+    NSString *token = nil;
+    while (sqlite3_step(statement) == SQLITE_ROW) {
+        token = sqlite3_column_string(statement, 0);
+    }
+    sqlite3_finalize(statement);
+    return token;
 }
 
 

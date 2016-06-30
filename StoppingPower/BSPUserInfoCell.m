@@ -4,6 +4,7 @@
 @interface BSPUserInfoCell()
 @property (nonatomic) UILabel *titleLabel;
 @property (nonatomic) UITextField *textField;
+@property (nonatomic, weak) id<BSPUserInfoCellDelegate> delegate;
 @end
 
 @implementation BSPUserInfoCell
@@ -21,6 +22,8 @@
         
         [self.contentView addSubview:self.titleLabel];
         [self.contentView addSubview:self.textField];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textChanged) name:UITextFieldTextDidChangeNotification object:self.textField];
     }
     return self;
 }
@@ -43,12 +46,17 @@
     self.textField.tag = tag;
 }
 
--(void)setInputDelegate:(id<UITextFieldDelegate>)delegate {
+-(void)setInputDelegate:(id<BSPUserInfoCellDelegate>)delegate {
+    _delegate = delegate;
     self.textField.delegate = delegate;
 }
 
 -(void)clear {
     self.textField.text = @"";
+}
+
+-(void)textChanged {
+    [self.delegate textFieldChanged:self.textField];
 }
 
 @end

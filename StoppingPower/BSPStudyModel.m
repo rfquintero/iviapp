@@ -18,19 +18,26 @@
         self.dao = dao;
         self.database = database;
         self.studies = [self.database getStudies];
-        TFLog(@"Retrieved %i studies from the db.", self.studies.count);
+        TFLog(@"Retrieved %lu studies from the db.", (unsigned long)self.studies.count);
     }
     
     return self;
 }
 
+-(void)registerDevice:(NSString*)password {
+    [self.dao registerDevice:password handler:^(NSHTTPURLResponse *response, NSData *data, NSError *error) {
+        if(error) {
+            [self postNotificationNamed:BSPStudyModelError userInfo:@{BSPStudyModelErrorKey : error}];
+        } else {
+            [self postNotificationNamed:BSPStudyModelRegistered userInfo:nil];
+        }
+    }];
+}
+
 -(void)retrieveStudies {
     [self.dao retrieveStudies:^(NSURLResponse *response, NSData *data, NSError *error) {
         if(error) {
-            [self postNotificationOnMainThread:BSPStudyModelError userInfo:@{BSPStudyModelErrorKey : error}];
-        } else if(!response){
-            error = [NSError errorWithDomain:@"Unable to reach server. Please check your internet connection." code:0 userInfo:nil];
-            [self postNotificationOnMainThread:BSPStudyModelError userInfo:@{BSPStudyModelErrorKey : error}];
+            [self postNotificationNamed:BSPStudyModelError userInfo:@{BSPStudyModelErrorKey : error}];
         } else {
             NSArray *studies = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
             [self parseStudies:studies];
@@ -61,7 +68,7 @@
     
     [self.database saveStudies:studies];
     self.studies = studies;
-    [self postNotificationOnMainThread:BSPStudyModelStudiesRetrieved userInfo:nil];
+    [self postNotificationNamed:BSPStudyModelStudiesRetrieved userInfo:nil];
 }
 
 -(NSArray*)parsePairs:(NSArray*)jsonPairs {
@@ -105,6 +112,11 @@
 -(void)postNotificationOnMainThread:(NSString*)name userInfo:(NSDictionary*)userInfo {
     NSNotification *notification = [NSNotification notificationWithName:name object:self userInfo:userInfo];
     [self performSelectorOnMainThread:@selector(postNotification:) withObject:notification waitUntilDone:NO];
+}
+
+-(void)postNotificationNamed:(NSString*)name userInfo:(NSDictionary*)userInfo {
+    NSNotification *notification = [NSNotification notificationWithName:name object:self userInfo:userInfo];
+    [self postNotification:notification];
 }
 
 -(void)postNotification:(NSNotification*)notification {

@@ -5,6 +5,7 @@
 
 #define BSPStudyModelStudiesRetrieved @"BSPStudyModelStudiesRetrieved"
 #define BSPStudyModelStudyImagesRetrieved @"BSPStudyModelStudyImagesRetrieved"
+#define BSPStudyModelRegistered @"BSPStudyModelRegistered"
 #define BSPStudyModelError @"BSPStudyModelError"
 #define BSPStudyModelErrorKey @"BSPStudyModelErrorKey"
 
@@ -14,4 +15,5 @@
 -(id)initWithDao:(BSPDao*)dao database:(BSPDatabase*)database;
 -(void)retrieveStudies;
 -(void)retrieveAllImages;
+-(void)registerDevice:(NSString*)password;
 @end

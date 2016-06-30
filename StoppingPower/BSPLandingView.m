@@ -9,6 +9,7 @@
 @property (nonatomic) UIView *bradoLogoView;
 @property (nonatomic) UIButton *settingsButton;
 @property (nonatomic) UIButton *refreshButton;
+@property (nonatomic) UIButton *registerButton;
 @property (nonatomic) BSPPanelView *panelView;
 @property (nonatomic) BSPUserInfoView *userInfoView;
 @property (nonatomic) UIActivityIndicatorView *spinner;
@@ -52,6 +53,10 @@
         refreshButton.hidden = YES;
         self.refreshButton = refreshButton;
         
+        self.registerButton = [BSPUI blackButtonWithTitle:@"Activate Web Access"];
+        [self.registerButton addTarget:self action:@selector(registerSelected) forControlEvents:UIControlEventTouchUpInside];
+        [self setRegisterHidden:YES animated:NO];
+        
         self.spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
         [self.spinner startAnimating];
         [self.spinner sizeToFit];
@@ -69,6 +74,7 @@
         [self addSubview:panelView];
         [self addSubview:settingsButton];
         [self addSubview:refreshButton];
+        [self addSubview:self.registerButton];
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(maleSelected) name:BSPUserInfoViewMaleSelected object:self.userInfoView];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(femaleSelected) name:BSPUserInfoViewFemaleSelected object:self.userInfoView];
@@ -100,8 +106,33 @@
     [self.bradoLogoView centerHorizonallyAtY:CGRectGetMaxY(self.panelView.frame)+50 inBounds:self.bounds thatFits:CGSizeUnbounded];
     [self.spinner centerHorizonallyAtY:CGRectGetMaxY(self.logoView.frame)+35 inBounds:self.bounds thatFits:CGSizeUnbounded];
     [self.loadingLabel centerHorizonallyAtY:CGRectGetMaxY(self.spinner.frame)+10 inBounds:self.bounds thatFits:CGSizeUnbounded];
-    [self.settingsButton setFrameAtOrigin:CGPointMake(20, self.bounds.size.height-50) thatFits:CGSizeUnbounded];
-    [self.refreshButton setFrameAtOrigin:CGPointMake(CGRectGetMaxX(self.settingsButton.frame)+30, self.bounds.size.height-50) thatFits:CGSizeUnbounded];
+    
+    CGFloat buttonY = self.bounds.size.height - 50;
+    [self.settingsButton setFrameAtOrigin:CGPointMake(20, buttonY) thatFits:CGSizeUnbounded];
+    [self.refreshButton setFrameAtOrigin:CGPointMake(CGRectGetMaxX(self.settingsButton.frame)+30, buttonY) thatFits:CGSizeUnbounded];
+    
+    CGSize registerSize = [self.registerButton sizeThatFits:CGSizeUnbounded];
+    self.registerButton.frame = CGRectMake(self.bounds.size.width-registerSize.width-20, buttonY, registerSize.width, registerSize.height);
+}
+
+-(void)setRegisterHidden:(BOOL)hidden animated:(BOOL)animated {
+    if(animated) {
+        self.registerButton.hidden = NO;
+        self.settingsButton.hidden = NO;
+        [UIView animateWithDuration:0.3f animations:^{
+            self.registerButton.alpha = hidden ? 0.0f : 1.0f;
+            self.settingsButton.alpha = hidden ? 1.0f: 0.0f;
+        } completion:^(BOOL finished) {
+            self.registerButton.hidden = hidden;
+            self.settingsButton.hidden = !hidden;
+        }];
+    } else {
+        self.registerButton.alpha = hidden ? 0.0f: 1.0f;
+        self.registerButton.hidden = hidden;
+        
+        self.settingsButton.alpha = hidden ? 1.0f: 0.0f;
+        self.settingsButton.hidden = !hidden;
+    }
 }
 
 -(void)setStartEnabled:(BOOL)enabled {
@@ -175,6 +206,10 @@
 }
 
 #pragma mark callbacks
+
+-(void)registerSelected {
+    [self.landingDelegate registerSelected];
+}
 
 -(void)startSelected {
     [self.landingDelegate startSelected];

@@ -14,7 +14,7 @@
     return [NSString stringWithFormat:@"%@", value];
 }
 
--(NSData*)jsonData {
+-(NSDictionary*)toJson {
     NSMutableDictionary *result = [NSMutableDictionary dictionary];
     result[@"first_name"] = self.firstName;
     result[@"last_name"] = self.lastName;
@@ -23,8 +23,11 @@
     result[@"study_id"] = self.studyId;
     result[@"selections"] = self.selections;
     
-    NSDictionary *jsonResult = @{@"result" : result};
-    return [NSJSONSerialization dataWithJSONObject:jsonResult options:0 error:nil];
+    return @{@"result" : result};
+}
+
+-(NSData*)jsonData {
+    return [NSJSONSerialization dataWithJSONObject:[self toJson] options:0 error:nil];
 }
 
 @end

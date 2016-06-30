@@ -6,6 +6,7 @@
 -(void)settingsSelected;
 -(void)startSelected;
 -(void)refreshSelected;
+-(void)registerSelected;
 -(void)firstNameChanged:(NSString*)value;
 -(void)lastNameChanged:(NSString*)value;
 -(void)groupChanged:(NSString*)value;
@@ -19,6 +20,7 @@
 -(void)setLandingDelegate:(id<BSPLandingViewDelegate>)delegate;
 
 -(void)animateOffsetX:(CGFloat)offsetX showInfo:(BOOL)show;
+-(void)setRegisterHidden:(BOOL)hidden animated:(BOOL)animated;
 -(void)setLoading:(BOOL)loading animated:(BOOL)animated;
 -(void)stopLoadingIndicator;
 @end

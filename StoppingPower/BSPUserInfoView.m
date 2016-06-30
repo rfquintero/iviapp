@@ -4,7 +4,7 @@
 #import "BSPUI.h"
 #import "BSPConstants.h"
 
-@interface BSPUserInfoView()<UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
+@interface BSPUserInfoView()<UITableViewDataSource, UITableViewDelegate, BSPUserInfoCellDelegate>
 @property (nonatomic) UIView *backgroundView;
 @property (nonatomic) UITableView *tableView;
 @property (nonatomic) BSPGroupedButton *maleButton;
@@ -155,6 +155,10 @@
     } else if (textField.tag == 2) {
         [self postNotification:BSPUserInfoViewGroupChanged value:textField.text];
     }
+}
+
+-(void)textFieldChanged:(UITextField *)textField {
+    [self textFieldDidEndEditing:textField];
 }
 
 @end

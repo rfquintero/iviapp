@@ -12,8 +12,8 @@
         NSString *documentsDirectory = [NSSearchPathForDirectoriesInDomains (NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
         NSString *dbPath = [documentsDirectory stringByAppendingPathComponent:@"db.sqlite"];
         
-        self.dao = [[BSPDao alloc] init];
         self.database = [[BSPDatabase alloc] initWithDatabasePath:dbPath];
+        self.dao = [[BSPDao alloc] initWithDatabase:self.database];
         self.resultSync = [[BSPResultSync alloc] initWithDao:self.dao database:self.database];
     }
     return self;

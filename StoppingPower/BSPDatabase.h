@@ -10,4 +10,9 @@
 
 -(void)saveStudies:(NSArray*)studies;
 -(NSArray*)getStudies;
+-(void)removeAllStudies;
+
+-(void)saveToken:(NSString*)token;
+-(void)removeToken;
+-(NSString*)getToken;
 @end

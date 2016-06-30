@@ -10,5 +10,6 @@
 @property (nonatomic) NSString *studyId;
 @property (nonatomic) NSArray *selections;
 
+@property (nonatomic, readonly) NSDictionary *toJson;
 @property (nonatomic, readonly) NSData *jsonData;
 @end

@@ -7,8 +7,9 @@
 #import "BSPUserModel.h"
 
 #define kSettingsWidth 480
+#define kAlertRegister 101
 
-@interface BSPLandingViewController ()<BSPLandingViewDelegate>
+@interface BSPLandingViewController ()<BSPLandingViewDelegate, UIAlertViewDelegate>
 @property (nonatomic) BSPApplicationState *applicationState;
 @property (nonatomic) BSPLandingView *landingView;
 @property (nonatomic) BSPStudyView *studyView;
@@ -16,6 +17,7 @@
 @property (nonatomic) BSPUserModel *userModel;
 @property (nonatomic) BOOL settingsShowing;
 @property (nonatomic) UIAlertView *alertView;
+@property (nonatomic, readonly) BOOL authorized;
 @end
 
 @implementation BSPLandingViewController
@@ -40,7 +42,7 @@
     self.studyView = [[BSPStudyView alloc] initWithFrame:CGRectMake(0, 0, kSettingsWidth, self.view.bounds.size.height)];
     self.studyView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
     
-    if(self.model.studies.count < 1) {
+    if(self.model.studies.count < 1 && self.authorized) {
         TFLog(@"**No studies present, updating**");
         [self updateStudies];
     } else {
@@ -59,17 +61,24 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(imagesRetrieved) name:BSPStudyModelStudyImagesRetrieved object:self.model];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(error:) name:BSPStudyModelError object:self.model];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(studySelected) name:BSPStudyViewStudySelected object:self.studyView];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refresh) name:BSPUserModelChanged object:self.userModel];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshStart) name:BSPUserModelChanged object:self.userModel];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(becameActive) name:UIApplicationDidBecomeActiveNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(registered) name:BSPStudyModelRegistered object:self.model];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshRegistration) name:BSPDaoAuthorizationChanged object:self.applicationState.dao];
     
     [self syncResults];
     [self clearFields];
-    [self refresh];
+    [self refreshStart];
+    [self refreshRegistration];
 }
 
 -(void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+-(BOOL)authorized {
+    return self.applicationState.dao.authorized;
 }
 
 -(void)syncResults {
@@ -93,11 +102,61 @@
     [self.landingView clearFields];
 }
 
--(void)refresh {
-    [self.landingView setStartEnabled:self.userModel.infoComplete];
+-(void)refreshStart {
+    [self.landingView setStartEnabled:(self.userModel.infoComplete && self.authorized)];
+}
+
+-(void)showAlertView:(UIAlertView*)alertView {
+    [_alertView dismissWithClickedButtonIndex:_alertView.cancelButtonIndex animated:NO];
+    _alertView = alertView;
+    [alertView show];
+}
+
+#pragma mark registration
+
+-(void)registered {
+    [self refreshRegistration];
+    if(self.model.studies.count < 1) {
+        TFLog(@"**No studies present, updating**");
+        [self updateStudies];
+    } else {
+        [self.landingView setLoading:NO animated:YES];
+    }
+}
+
+-(void)refreshRegistration {
+    [self.landingView setRegisterHidden:self.authorized animated:YES];
+    [self.studyView setStudies:self.model.studies];
+}
+
+-(void)requestToken {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Enter Access Key" message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Ok", nil];
+    alert.alertViewStyle = UIAlertViewStyleSecureTextInput;
+    alert.tag = kAlertRegister;
+    [self showAlertView:alert];
+}
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if(alertView.tag == kAlertRegister) {
+        if(buttonIndex == alertView.cancelButtonIndex) {
+            
+        } else {
+            NSString *key = [alertView textFieldAtIndex:0].text;
+            if(key.length > 0) {
+                [self.landingView setLoading:YES animated:NO];
+                [self.model registerDevice:key];
+            }
+        }
+    }
+    self.alertView = nil;
 }
 
 #pragma mark callbacks
+
+-(void)registerSelected {
+    [self requestToken];
+}
+
 -(void)maleSelected {
     [self.landingView setMaleSelected:YES];
     [self.landingView setFemaleSelected:NO];
@@ -155,11 +214,11 @@
 
 -(void)error:(NSNotification*)notification {
     NSError *error = [notification.userInfo objectForKey:BSPStudyModelErrorKey];
-    if(!self.alertView) {
-        self.alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:error.localizedDescription delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-        [self.alertView show];
-        [self.landingView stopLoadingIndicator];
-    }
+
+    [self showAlertView:[[UIAlertView alloc] initWithTitle:@"Error" message:error.localizedDescription delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil]];
+    
+    [self.landingView setLoading:NO animated:YES];
+    [self refreshRegistration];
 }
 
 -(void)studySelected {
@@ -174,11 +233,8 @@
 -(void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     TFLog(@"Received memory warning: showing alert message.");
-    if(self.alertView) {
-        [self.alertView dismissWithClickedButtonIndex:0 animated:NO];
-    }
-    self.alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Not enough free space to store all study images. Please de-activate unneeded studies and try again." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-    [self.alertView show];
+    
+    [self showAlertView:[[UIAlertView alloc] initWithTitle:@"Error" message:@"Not enough free space to store all study images. Please de-activate unneeded studies and try again." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil]];
     [self.landingView stopLoadingIndicator];
 }
 
